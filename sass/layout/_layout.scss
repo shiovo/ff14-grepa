@@ -1,0 +1,79 @@
+@charset "UTF-8";
+/* --------------------------------------------------------------
+    layout
+-------------------------------------------------------------- */
+body{
+    text-align: center;
+}
+
+main{
+    position: relative;
+}
+
+footer{
+    margin-top: 20px;
+    font-size: 75%;
+    padding: 0 10% 20px;
+}
+
+.wrap{
+    text-align: left;
+}
+
+/* PC */
+@include media-pc {
+    .wrap{
+        margin: 20px auto;
+        text-align: left;
+        width:900px;
+        @include clearfix;
+
+        & > header{
+            width: 200px;
+            float: left;
+        }
+
+        .box-input{
+            .m-switch{
+                margin: 15px 0;
+            }
+        }
+
+        main{
+            width: 680px;
+            float: right;
+            background-color: rgba(27,29,31,0.5);
+            border-radius: 5px;
+
+            section{
+                padding: 30px;
+            }
+        }
+    }
+}
+
+/* SP */
+@include media-sp {
+    .wrap{
+        text-align: left;
+    }
+
+    main{
+        section{
+            padding: 10px 0;
+        }
+
+        .box-input{
+            .m-switch{
+                margin: 15px 0;
+                padding: 0 3%;
+            }
+        }
+
+        .box-select,.box-macro{
+            padding: 10px 3%;
+        }
+    }
+
+
+}

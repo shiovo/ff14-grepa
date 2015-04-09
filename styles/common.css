@@ -1,0 +1,711 @@
+@charset "UTF-8";
+/* --------------------------------------------------------------
+    base
+-------------------------------------------------------------- */
+/* common */
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Meiryo','メイリオ',arial,'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3',Osaka,'ＭＳ Ｐゴシック',"MS P Gothic",sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #262626;
+  text-align: center;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1, #0f2d4a), color-stop(0.5, black));
+  background: -webkit-linear-gradient(top, black 50%, #0f2d4a 100%);
+  background: -moz-linear-gradient(top, black 50%, #0f2d4a 100%);
+  background: -o-linear-gradient(top, black 50%, #0f2d4a 100%);
+  background: -ms-linear-gradient(top, black 50%, #0f2d4a 100%);
+  background: linear-gradient(top, #000000 50%, #0f2d4a 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  transition: opacity .3s ease;
+  opacity: 0.7;
+  -ms-filter: "alpha(opacity=70)";
+}
+
+small.error {
+  color: #FF0000;
+}
+
+p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ul, ol, li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+dl, dt, dd {
+  margin: 0;
+  padding: 0;
+}
+
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 4px 5px;
+  border: 0;
+  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 0;
+  border-bottom: 0;
+}
+
+th {
+  font-weight: normal;
+}
+
+main {
+  display: block;
+}
+
+/* PC */
+@media only screen and (min-width: 900px) {
+  body {
+    font-size: 1.4em;
+  }
+
+  a:hover {
+    transition: opacity .3s ease;
+    opacity: 0.7;
+    -ms-filter: "alpha(opacity=80)";
+  }
+}
+/* SP */
+@media only screen and (max-width: 899px) {
+  body {
+    font-size: 1.4em;
+  }
+}
+/* --------------------------------------------------------------
+    utility
+-------------------------------------------------------------- */
+.border0 {
+  border: 0 none !important;
+}
+
+.clear {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* error
+----------------------------------------------------*/
+/* 必須
+----------------------------------------------------*/
+/* float
+----------------------------------------------------*/
+.flL {
+  float: left;
+}
+
+.flR {
+  float: right;
+}
+
+/* text-align
+----------------------------------------------------*/
+.alL {
+  text-align: left !important;
+}
+
+.alR {
+  text-align: right !important;
+}
+
+.alC {
+  text-align: center !important;
+}
+
+.valT {
+  vertical-align: top !important;
+}
+
+.valM {
+  vertical-align: middle !important;
+}
+
+.valB {
+  vertical-align: bottom !important;
+}
+
+/* margin-set
+----------------------------------------------------*/
+/* top */
+.mt0 {
+  margin-top: 0px !important;
+}
+
+.mt5 {
+  margin-top: 5px !important;
+}
+
+.mt7 {
+  margin-top: 7px !important;
+}
+
+.mt8 {
+  margin-top: 8px !important;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
+.mt20 {
+  margin-top: 20px !important;
+}
+
+.mt30 {
+  margin-top: 30px !important;
+}
+
+/* bottom */
+.mb0 {
+  margin-bottom: 0px !important;
+}
+
+.mb10 {
+  margin-bottom: 10px !important;
+}
+
+.mb15 {
+  margin-bottom: 15px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.mb25 {
+  margin-bottom: 25px !important;
+}
+
+.mb30 {
+  margin-bottom: 30px !important;
+}
+
+.mb35 {
+  margin-bottom: 35px !important;
+}
+
+.mb40 {
+  margin-bottom: 40px !important;
+}
+
+.mb50 {
+  margin-bottom: 50px !important;
+}
+
+/* left */
+.ml0 {
+  margin-left: 0px !important;
+}
+
+.ml10 {
+  margin-left: 10px !important;
+}
+
+.ml15 {
+  margin-left: 15px !important;
+}
+
+.ml20 {
+  margin-left: 20px !important;
+}
+
+.ml30 {
+  margin-left: 30px !important;
+}
+
+.ml35 {
+  margin-left: 35px !important;
+}
+
+.ml40 {
+  margin-left: 40px !important;
+}
+
+/* right */
+.mr0 {
+  margin-right: 0px !important;
+}
+
+.mr10 {
+  margin-right: 10px !important;
+}
+
+.mr15 {
+  margin-right: 15px !important;
+}
+
+.mr20 {
+  margin-right: 20px !important;
+}
+
+.mr30 {
+  margin-right: 30px !important;
+}
+
+.mr35 {
+  margin-right: 35px !important;
+}
+
+.mr40 {
+  margin-right: 40px !important;
+}
+
+/* padding-set
+----------------------------------------------------*/
+.p0 {
+  padding: 0px !important;
+}
+
+.p10 {
+  padding: 10px !important;
+}
+
+.p15 {
+  padding: 15px !important;
+}
+
+.p20 {
+  padding: 20px !important;
+}
+
+/* top */
+.pt0 {
+  padding-top: 0px !important;
+}
+
+.pt10 {
+  padding-top: 10px !important;
+}
+
+.pt15 {
+  padding-top: 15px !important;
+}
+
+.pt20 {
+  padding-top: 20px !important;
+}
+
+.pt25 {
+  padding-top: 25px !important;
+}
+
+.pt30 {
+  padding-top: 30px !important;
+}
+
+.pt35 {
+  padding-top: 35px !important;
+}
+
+.pt40 {
+  padding-top: 40px !important;
+}
+
+/* bottom */
+.pb0 {
+  padding-bottom: 0px !important;
+}
+
+.pb10 {
+  padding-bottom: 10px !important;
+}
+
+.pb15 {
+  padding-bottom: 15px !important;
+}
+
+.pb20 {
+  padding-bottom: 20px !important;
+}
+
+.pb25 {
+  padding-bottom: 25px !important;
+}
+
+.pb30 {
+  padding-bottom: 30px !important;
+}
+
+.pb35 {
+  padding-bottom: 35px !important;
+}
+
+.pb40 {
+  padding-bottom: 40px !important;
+}
+
+/* left */
+.pl0 {
+  padding-left: 0px !important;
+}
+
+.pl10 {
+  padding-left: 10px !important;
+}
+
+.pl15 {
+  padding-left: 15px !important;
+}
+
+.pl20 {
+  padding-left: 20px !important;
+}
+
+.pl25 {
+  padding-left: 25px !important;
+}
+
+.pl30 {
+  padding-left: 30px !important;
+}
+
+.pl35 {
+  padding-left: 35px !important;
+}
+
+.pl40 {
+  padding-left: 40px !important;
+}
+
+/* right */
+.pr0 {
+  padding-right: 0px !important;
+}
+
+.pr10 {
+  padding-right: 10px !important;
+}
+
+.pr15 {
+  padding-right: 15px !important;
+}
+
+.pr20 {
+  padding-right: 20px !important;
+}
+
+.pr25 {
+  padding-right: 25px !important;
+}
+
+.pr30 {
+  padding-right: 30px !important;
+}
+
+.pr35 {
+  padding-right: 35px !important;
+}
+
+.pr40 {
+  padding-right: 40px !important;
+}
+
+/* width
+----------------------------------------------------*/
+.w80 {
+  width: 80px;
+}
+
+.w70 {
+  width: 70px;
+}
+
+.w60 {
+  width: 60px;
+}
+
+/* --------------------------------------------------------------
+    layout
+-------------------------------------------------------------- */
+body {
+  text-align: center;
+}
+
+main {
+  position: relative;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 75%;
+  padding: 0 10% 20px;
+}
+
+.wrap {
+  text-align: left;
+}
+
+/* PC */
+@media only screen and (min-width: 900px) {
+  .wrap {
+    margin: 20px auto;
+    text-align: left;
+    width: 900px;
+    zoom: 1;
+  }
+  .wrap:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .wrap > header {
+    width: 200px;
+    float: left;
+  }
+  .wrap .box-input .m-switch {
+    margin: 15px 0;
+  }
+  .wrap main {
+    width: 680px;
+    float: right;
+    background-color: rgba(27, 29, 31, 0.5);
+    border-radius: 5px;
+  }
+  .wrap main section {
+    padding: 30px;
+  }
+}
+/* SP */
+@media only screen and (max-width: 899px) {
+  .wrap {
+    text-align: left;
+  }
+
+  main section {
+    padding: 10px 0;
+  }
+  main .box-input .m-switch {
+    margin: 15px 0;
+    padding: 0 3%;
+  }
+  main .box-select, main .box-macro {
+    padding: 10px 3%;
+  }
+}
+/* --------------------------------------------------------------
+    module
+-------------------------------------------------------------- */
+.bg {
+  background: url(../images/common/bg.jpg) center center no-repeat fixed;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.wrap > header {
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-text {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 90%;
+  border: 1px solid #D63538;
+  font-weight: normal;
+  white-space: nowrap;
+  box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.2);
+  background: #ab2450;
+  border: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+.btn-text.is-edit {
+  background: #2f4fbc;
+}
+.btn-text.is-gray {
+  background: #2f4fbc;
+}
+
+/* select */
+.box-select {
+  padding-bottom: 0 !important;
+}
+.box-select h2 {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+}
+
+.m-switch label {
+  margin: 0 15px 0 8px;
+}
+
+/* input */
+.box-input table {
+  width: 100%;
+}
+.box-input table th, .box-input table td {
+  padding: 8px 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.box-input table input {
+  width: 100%;
+}
+.box-input table thead th {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.box-input table tbody th {
+  text-align: center;
+  width: 30px;
+}
+.box-input .td-item {
+  display: table;
+  width: 100%;
+}
+.box-input .td-item figure {
+  display: table-cell;
+  vertical-align: top;
+  text-align: left;
+}
+.box-input .td-item figure img {
+  vertical-align: top;
+  width: 100%;
+}
+.box-input .td-item figcaption {
+  display: table-cell;
+  padding-left: 8px;
+  vertical-align: middle;
+  text-align: left;
+}
+.box-input .td-item figcaption span, .box-input .td-item figcaption small {
+  display: block;
+}
+.box-input .td-item figcaption small {
+  font-size: 78%;
+}
+
+/* macro */
+.box-macro textarea {
+  width: 100%;
+}
+.box-macro header {
+  zoom: 1;
+  display: block;
+}
+.box-macro header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.box-macro header h3 {
+  float: left;
+}
+.box-macro header button {
+  float: right;
+  margin-bottom: 5px;
+  position: relative;
+  top: -2px;
+}
+.box-macro h3 {
+  font-size: 101%;
+  margin-bottom: 10px;
+}
+.box-macro .m-switch {
+  margin-bottom: 10px;
+}
+
+.m-clear {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+/* PC */
+@media only screen and (min-width: 900px) {
+  /* input */
+  .box-input {
+    padding-top: 10px !important;
+  }
+  .box-input table {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .box-input .td-item figure {
+    width: 40px;
+  }
+
+  /* macro */
+  .box-macro {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+/* SP */
+@media only screen and (max-width: 899px) {
+  .btn-text {
+    padding: 6px 6px;
+  }
+
+  /* input */
+  .box-input .td-item figure {
+    width: 30px;
+  }
+  .box-input thead th, .box-input thead td {
+    border: 0 !important;
+  }
+
+  .m-clear {
+    right: 3%;
+    top: 12px;
+  }
+}

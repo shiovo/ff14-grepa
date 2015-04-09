@@ -1,0 +1,243 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------
+    module
+-------------------------------------------------------------- */
+.bg{
+	background: url(../images/common/bg.jpg) center center no-repeat fixed;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+.wrap > header{
+    // background-color: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+
+}
+
+.btn-text{
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: 3px;
+	font-size: 90%;
+	border: 1px solid #D63538;
+	font-weight: normal;
+	white-space: nowrap;
+
+	box-shadow: inset 0 0 4px 1px rgba(255,255,255, 0.2);
+
+	background: #ab2450;
+	// background: -moz-linear-gradient(top, #cc6163 0%, #bf4648 50%, #a50002 51%, #d63538 100%);
+	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc6163), color-stop(50%,#bf4648), color-stop(51%,#a50002), color-stop(100%,#d63538));
+	// background: -webkit-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
+	// background: -o-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
+	// background: -ms-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
+	// background: linear-gradient(to bottom, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
+
+	border: 0;
+	color: rgba(255,255,255,0.8);
+
+
+	&.is-edit{
+		background: #2f4fbc;
+		// background: -moz-linear-gradient(top, #7c7c7c 0%, #3a3a3a 50%, #262626 51%, #545454 100%);
+		// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7c7c7c), color-stop(50%,#3a3a3a), color-stop(51%,#262626), color-stop(100%,#545454));
+		// background: -webkit-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
+		// background: -o-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
+		// background: -ms-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
+		// background: linear-gradient(to bottom, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
+	}
+
+	&.is-gray{
+		background: #2f4fbc;
+	}
+
+}
+
+
+
+/* select */
+.box-select{
+	padding-bottom: 0!important;
+
+	h2{
+		display: inline-block;
+		margin-right: 10px;
+		position: relative;
+		top: 3px;
+	}
+
+}
+
+.m-switch{
+	label{
+		margin:0 15px 0 8px;
+	}
+}
+
+/* input */
+.box-input{
+
+
+	table{
+		width: 100%;
+
+		th,td{
+			padding: 8px 5px;
+			border-top:1px solid $color-border;
+			border-bottom:1px solid $color-border;
+		}
+
+		input{
+			width: 100%;
+			// ime-mode: disabled;
+		}
+
+		thead{
+			th{
+				text-align: center;
+				background-color: rgba(0,0,0,0.2);
+			}
+		}
+
+
+		tbody{
+			th{
+				text-align: center;
+				width: 30px;
+			}
+		}
+	}
+
+	.td-item{
+		display: table;
+		width: 100%;
+
+		figure{
+			display: table-cell;
+			vertical-align: top;
+			text-align: left;
+
+			img{
+				vertical-align: top;
+				width: 100%;
+			}
+		}
+
+		figcaption{
+			display: table-cell;
+			padding-left: 8px;
+			vertical-align: middle;
+			text-align: left;
+
+			span,small{
+				display: block;
+			}
+
+			small{
+				font-size: 78%;
+			}
+
+		}
+	}
+}
+
+/* macro */
+.box-macro{
+	textarea{
+		width: 100%;
+	}
+
+	header{
+		@include clearfix;
+		display: block;
+
+		h3{
+			float: left;
+		}
+
+		button{
+			float: right;
+			margin-bottom: 5px;
+			position: relative;
+			top: -2px;
+		}
+	}
+
+	h3{
+		font-size: 101%;
+		margin-bottom: 10px;
+	}
+
+	.m-switch{
+		margin-bottom: 10px;
+	}
+}
+
+.m-clear{
+	position: absolute;
+	right: 30px;
+	top: 30px;
+}
+
+
+
+/* PC */
+@include media-pc {
+
+	/* input */
+	.box-input{
+		padding-top: 10px!important;
+
+		table{
+			border:1px solid $color-border;
+		}
+
+		.td-item{
+			figure{
+				width: 40px;
+			}
+		}
+	}
+
+	/* macro */
+	.box-macro{
+		border-top: 1px solid $color-border;
+	}
+
+}
+
+/* SP */
+@include media-sp {
+	.btn-text{
+		padding: 6px 6px;
+	}
+
+	/* input */
+	.box-input{
+		.td-item{
+			figure{
+				width: 30px;
+			}
+		}
+		thead{
+			th,td{
+				border: 0!important;
+			}
+		}
+	}
+
+	.m-clear{
+		right: 3%;
+		top: 12px;
+	}
+}
