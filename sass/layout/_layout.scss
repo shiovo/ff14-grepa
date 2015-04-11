@@ -10,6 +10,12 @@ main{
     position: relative;
 }
 
+.m-sns{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 footer{
     margin-top: 20px;
     font-size: 75%;
@@ -22,32 +28,43 @@ footer{
 
 /* PC */
 @include media-pc {
+    body{
+        margin: 0 5%;
+    }
     .wrap{
         margin: 20px auto;
         text-align: left;
-        width:900px;
+        max-width: 1100px;
+        position: relative;
         @include clearfix;
 
-        & > header{
-            width: 200px;
-            float: left;
-        }
-
-        .box-input{
-            .m-switch{
-                margin: 15px 0;
-            }
-        }
-
         main{
-            width: 680px;
-            float: right;
-            background-color: rgba(27,29,31,0.5);
+            @include clearfix;
+            width: 900px;
+            // float: right;
+            // background-color: rgba(27,29,31,0.1);
+            border: 2px solid $color-border;
             border-radius: 5px;
+            display: table;
+            width: 100%;
+        }
 
-            section{
-                padding: 30px;
-            }
+        .l-input,.l-macro{
+            position: relative;
+            display: table-cell;
+            padding: 30px;
+            vertical-align: top;
+        }
+
+        .l-input{
+            display: table-cell;
+            width: 60%;
+            border-right: 2px solid $color-border;
+        }
+
+        .l-macro{
+            display: table-cell;
+            width: 40%;
         }
     }
 }
@@ -57,6 +74,14 @@ footer{
     .wrap{
         text-align: left;
     }
+
+    .wrap > header ,.info ,main{
+        display: flex;
+        width: 100%;
+        flex-direction:column;
+    }
+
+
 
     main{
         section{

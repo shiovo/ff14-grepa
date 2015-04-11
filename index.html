@@ -23,196 +23,227 @@
 </head>
 
 <body>
-
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="bg"></div>
 
 <div class="wrap">
     <header>
-        <h1>グリパ帳</h1>
-
-        制作
+        <h1>FF14 グリパ帳</h1>
+        <ul class="m-sns">
+            <li>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ff14-d-co.xyz/" data-text="FF14 ID周回に便利なグリパ帳">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </li>
+            <li>
+                <div class="fb-like" data-href="http://ff14-d-co.xyz/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>  
+            </li>  
+        </ul>
     </header>
 
     <main>
-        <div class="m-clear"><button class="btn-text is-normal">クリア</button></div>
-        
-        <section class="box-select">
-            <!-- <h2>真成４層</h2> -->
-            <select>
-                <option value="cate-1">討伐・討滅選</option>
-                <option value="cate-2">レイド</option>
-            </select>
+        <div class="l-input">
+            
+            <div class="m-clear"><button class="btn-text is-normal">クリア</button></div>
 
-            <select>
-                <option value="id-1">真成１層</option>
-                <option value="id-2">真成2層</option>
-                <option value="id-3">真成3層</option>
-                <option value="id-4">真成4層</option>
-            </select>
-            <button class="btn-text">決定</button>
-        </section>
+            
+             <section class="box-select">
+                <!-- <h2>真成４層</h2> -->
+                <select>
+                    <option value="cate-1">討伐・討滅選</option>
+                    <option value="cate-2">レイド</option>
+                </select>
 
-        <section class="box-input">
-            <div class="m-switch">
-                <input type="checkbox" id="switch-job"><label for="switch-job">ジョブ希望制</label></div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>名前</th>
-                        <th>希望品</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Shio</td>
-                        <td>
-                            <div class="td-item">
-                                <figure>
-                                    <img src="images/dummy/5faf78c6822.png" alt="バハムートヒーラーケーン">
-                                </figure>
-                                <figcaption>
-                                    <span>白杖<span>
-                                    <small>&lt;バハムート・ストライカーサークレット&gt;</small>
-                                </figcaption>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn-text is-edit">編集</button>
-                        </td>
-                    </tr>
+                <select>
+                    <option value="id-1">真成１層</option>
+                    <option value="id-2">真成2層</option>
+                    <option value="id-3">真成3層</option>
+                    <option value="id-4">真成4層</option>
+                </select>
+                <button class="btn-text">決定</button>
+            </section> 
 
-                    <tr>
-                        <th>2</th>
-                        <td>Shio</td>
-                        <td>
-                            <div class="td-item">
-                                <figure>
-                                    <img src="images/dummy/job.png" alt="">
-                                </figure>
-                                <figcaption>
-                                    <span>タンク<span>
-                                </figcaption>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn-text is-edit">編集</button>
-                        </td>
-                    </tr>
+            <section class="box-input">
+                <div class="m-switch">
+                    <input type="checkbox" id="switch-job"><label for="switch-job">ジョブ希望制</label></div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>名前</th>
+                            <th>希望品</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>Shio</td>
+                            <td>
+                                <div class="td-item">
+                                    <figure>
+                                        <img src="images/dummy/5faf78c6822.png" alt="バハムートヒーラーケーン">
+                                    </figure>
+                                    <figcaption>
+                                        <span>白杖<span>
+                                        <small>&lt;バハムート・ストライカーサークレット&gt;</small>
+                                    </figcaption>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn-text is-edit">編集</button>
+                            </td>
+                        </tr>
 
-                    <tr>
-                        <th>3</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>Shio</td>
+                            <td>
+                                <div class="td-item">
+                                    <figure>
+                                        <img src="images/dummy/job.png" alt="">
+                                    </figure>
+                                    <figcaption>
+                                        <span>タンク<span>
+                                    </figcaption>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn-text is-edit">編集</button>
+                            </td>
+                        </tr>
 
-
-                    <tr>
-                        <th>4</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>5</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>6</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>7</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>8</th>
-                        <td><input type="text"></td>
-                        <td>
-                            <select>
-                                <option value="">剣</option>
-                                <option value="">斧</option>
-                                <option value="">白杖</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn-text">決定</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+                        <tr>
+                            <th>3</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
 
 
-        <section class="box-macro">
-            <header>
-                <h3>コピペ用マクロ</h3>
-                <button class="btn-text is-normal">コピー</button>
-            </header>
+                        <tr>
+                            <th>4</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>6</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>7</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>8</th>
+                            <td><input type="text"></td>
+                            <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn-text">決定</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
-            <div class="m-switch">
-                <input type="radio" id="switch-name1" name="switch-name" checked="checked"><label for="switch-name1">アイテムのみ</label>
 
-                <input type="radio" id="switch-name2" name="switch-name"><label for="switch-name2">名前入り</label>
-            </div>
+        </div>
 
-            <textarea name="" id="" cols="30" rows="10">/p 〆：剣 斧 ヒラ杖</textarea>
-        </section>
+        <div class="l-macro">
+            <section class="box-macro">
+                <header>
+                    <h3>コピペ用マクロ</h3>
+                    <button class="btn-text is-normal">コピー</button>
+                </header>
+
+                <div class="m-switch">
+                    <input type="radio" id="switch-name1" name="switch-name" checked="checked"><label for="switch-name1">アイテムのみ</label>
+
+                    <input type="radio" id="switch-name2" name="switch-name"><label for="switch-name2">名前入り</label>
+                </div>
+
+                <textarea name="" id="" cols="30" rows="10">/p 〆：剣 斧 ヒラ杖</textarea>
+            </section>
+        </div>
     </main>
 
 </div>
 
 <div class="ad">
     広告が入ります
+</div>
+
+<div class="info">
+    <ul>
+        <li>Ver1.00</li>
+        <li>パッチ2.4対応</li>
+        <li>
+            制作者：<a href="http://jp.finalfantasyxiv.com/lodestone/character/7625710/" target="_blank">Shio Dufore</a>
+        </li>
+    </ul>
 </div>
 
 <footer>

@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: 'Meiryo','メイリオ',arial,'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3',Osaka,'ＭＳ Ｐゴシック',"MS P Gothic",sans-serif;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   background-color: #262626;
   text-align: center;
   height: 100%;
@@ -28,6 +28,7 @@ body {
 }
 
 a {
+  color: #98f2ff;
   text-decoration: none;
   cursor: pointer;
 }
@@ -82,7 +83,7 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   background-color: rgba(0, 0, 0, 0.2);
   padding: 4px 5px;
   border: 0;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.8);
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   border-left: 1px solid rgba(0, 0, 0, 0.2);
   border-right: 0;
@@ -98,7 +99,7 @@ main {
 }
 
 /* PC */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 850px) {
   body {
     font-size: 1.4em;
   }
@@ -110,7 +111,7 @@ main {
   }
 }
 /* SP */
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 849px) {
   body {
     font-size: 1.4em;
   }
@@ -476,6 +477,12 @@ main {
   position: relative;
 }
 
+.m-sns {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
 footer {
   margin-top: 20px;
   font-size: 75%;
@@ -487,11 +494,16 @@ footer {
 }
 
 /* PC */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 850px) {
+  body {
+    margin: 0 5%;
+  }
+
   .wrap {
     margin: 20px auto;
     text-align: left;
-    width: 900px;
+    max-width: 1100px;
+    position: relative;
     zoom: 1;
   }
   .wrap:after {
@@ -499,27 +511,45 @@ footer {
     display: block;
     clear: both;
   }
-  .wrap > header {
-    width: 200px;
-    float: left;
-  }
-  .wrap .box-input .m-switch {
-    margin: 15px 0;
-  }
   .wrap main {
-    width: 680px;
-    float: right;
-    background-color: rgba(27, 29, 31, 0.5);
+    zoom: 1;
+    width: 900px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
+    display: table;
+    width: 100%;
   }
-  .wrap main section {
+  .wrap main:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .wrap .l-input, .wrap .l-macro {
+    position: relative;
+    display: table-cell;
     padding: 30px;
+    vertical-align: top;
+  }
+  .wrap .l-input {
+    display: table-cell;
+    width: 60%;
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  .wrap .l-macro {
+    display: table-cell;
+    width: 40%;
   }
 }
 /* SP */
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 849px) {
   .wrap {
     text-align: left;
+  }
+
+  .wrap > header, .info, main {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
 
   main section {
@@ -552,7 +582,7 @@ footer {
 .wrap > header {
   border-radius: 5px;
   text-align: center;
-  padding: 10px;
+  margin: 30px 0;
 }
 
 .btn-text {
@@ -560,19 +590,45 @@ footer {
   padding: 4px 8px;
   border-radius: 3px;
   font-size: 90%;
-  border: 1px solid #D63538;
   font-weight: normal;
   white-space: nowrap;
-  box-shadow: inset 0 0 4px 1px rgba(255, 255, 255, 0.2);
-  background: #ab2450;
-  border: 0;
-  color: rgba(255, 255, 255, 0.8);
+  color: #f7f4f7;
+  background: -moz-linear-gradient(top, #fdd1ff 0%, #ff7afb 10%, #ff0091);
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdd1ff), color-stop(0.1, #ff7afb), to(#ff0091));
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #c500e3;
+  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
+  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
+  text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
 }
 .btn-text.is-edit {
-  background: #2f4fbc;
+  color: #f7f4f7;
+  background: -moz-linear-gradient(top, #d1ffff 0%, #69d0ff 10%, #0900ff);
+  background: -webkit-gradient(linear, left top, left bottom, from(#d1ffff), color-stop(0.1, #69d0ff), to(#0900ff));
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #124dff;
+  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
+  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
+  text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
 }
-.btn-text.is-gray {
-  background: #2f4fbc;
+.btn-text.is-normal {
+  color: #f7f4f7;
+  background: -moz-linear-gradient(top, #cfcfcf 0%, #bababa 1%, #5c5c5c 45%, #2b2b2b);
+  background: -webkit-gradient(linear, left top, left bottom, from(#cfcfcf), color-stop(0.1, #bababa), color-stop(0.45, #5c5c5c), to(#2b2b2b));
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border: 1px solid #5c5c5c;
+  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0px -1px 1px rgba(92, 92, 92, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
 }
 
 /* select */
@@ -596,8 +652,8 @@ footer {
 }
 .box-input table th, .box-input table td {
   padding: 8px 5px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .box-input table input {
   width: 100%;
@@ -639,6 +695,7 @@ footer {
 /* macro */
 .box-macro textarea {
   width: 100%;
+  overflow-y: scroll;
 }
 .box-macro header {
   zoom: 1;
@@ -673,25 +730,27 @@ footer {
 }
 
 /* PC */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 850px) {
   /* input */
   .box-input {
     padding-top: 10px !important;
   }
   .box-input table {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   .box-input .td-item figure {
     width: 40px;
   }
 
-  /* macro */
-  .box-macro {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  .info {
+    margin-top: 30px;
+  }
+  .info li {
+    margin-bottom: 10px;
   }
 }
 /* SP */
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 849px) {
   .btn-text {
     padding: 6px 6px;
   }

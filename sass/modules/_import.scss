@@ -20,7 +20,7 @@
     // background-color: rgba(0,0,0,0.6);
     border-radius: 5px;
     text-align: center;
-    padding: 10px;
+    margin: 30px 0;
 
 }
 
@@ -29,36 +29,118 @@
 	padding: 4px 8px;
 	border-radius: 3px;
 	font-size: 90%;
-	border: 1px solid #D63538;
 	font-weight: normal;
 	white-space: nowrap;
 
-	box-shadow: inset 0 0 4px 1px rgba(255,255,255, 0.2);
+	color: #f7f4f7;
+	background: -moz-linear-gradient(
+		top,
+		#fdd1ff 0%,
+		#ff7afb 10%,
+		#ff0091);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#fdd1ff),
+		color-stop(0.10, #ff7afb),
+		to(#ff0091));
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #c500e3;
+	-moz-box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.4);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.4);
+	box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.4);
+	text-shadow:
+		0px -1px 1px rgba(004,000,125,0.3),
+		0px 1px 0px rgba(255,255,255,0);
 
-	background: #ab2450;
-	// background: -moz-linear-gradient(top, #cc6163 0%, #bf4648 50%, #a50002 51%, #d63538 100%);
-	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc6163), color-stop(50%,#bf4648), color-stop(51%,#a50002), color-stop(100%,#d63538));
-	// background: -webkit-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
-	// background: -o-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
-	// background: -ms-linear-gradient(top, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
-	// background: linear-gradient(to bottom, #cc6163 0%,#bf4648 50%,#a50002 51%,#d63538 100%);
 
-	border: 0;
-	color: rgba(255,255,255,0.8);
+
+
+
 
 
 	&.is-edit{
-		background: #2f4fbc;
-		// background: -moz-linear-gradient(top, #7c7c7c 0%, #3a3a3a 50%, #262626 51%, #545454 100%);
-		// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7c7c7c), color-stop(50%,#3a3a3a), color-stop(51%,#262626), color-stop(100%,#545454));
-		// background: -webkit-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
-		// background: -o-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
-		// background: -ms-linear-gradient(top, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
-		// background: linear-gradient(to bottom, #7c7c7c 0%,#3a3a3a 50%,#262626 51%,#545454 100%);
+
+
+
+	color: #f7f4f7;
+	background: -moz-linear-gradient(
+		top,
+		#d1ffff 0%,
+		#69d0ff 10%,
+		#0900ff);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#d1ffff),
+		color-stop(0.10, #69d0ff),
+		to(#0900ff));
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #124dff;
+	-moz-box-shadow:
+		0px 1px 0px rgba(0,0,0,0.3),
+		inset 0px 1px 2px rgba(255,255,255,1);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(0,0,0,0.3),
+		inset 0px 1px 2px rgba(255,255,255,1);
+	box-shadow:
+		0px 1px 0px rgba(0,0,0,0.3),
+		inset 0px 1px 2px rgba(255,255,255,1);
+	text-shadow:
+		0px -1px 1px rgba(4,0,125,0.3),
+		0px 1px 0px rgba(255,255,255,0);
+
+
+
+
+
+
+
 	}
 
-	&.is-gray{
-		background: #2f4fbc;
+	&.is-normal{
+
+	color: #f7f4f7;
+	background: -moz-linear-gradient(
+		top,
+		#cfcfcf 0%,
+		#bababa 1%,
+		#5c5c5c 45%,
+		#2b2b2b);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#cfcfcf),
+		color-stop(0.1, #bababa),
+		color-stop(0.45, #5c5c5c),
+		to(#2b2b2b));
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	border: 1px solid #5c5c5c;
+	-moz-box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.8);
+	-webkit-box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.8);
+	box-shadow:
+		0px 1px 0px rgba(000,000,000,0.3),
+		inset 0px 1px 2px rgba(255,255,255,0.8);
+	text-shadow:
+		0px -1px 1px rgba(92,92,92,0.3),
+		0px 1px 0px rgba(255,255,255,0);
+
+
+
+
 	}
 
 }
@@ -155,6 +237,7 @@
 .box-macro{
 	textarea{
 		width: 100%;
+		overflow-y:scroll;
 	}
 
 	header{
@@ -209,9 +292,12 @@
 		}
 	}
 
-	/* macro */
-	.box-macro{
-		border-top: 1px solid $color-border;
+	.info{
+		margin-top: 30px;
+
+		li{
+			margin-bottom: 10px;
+		}
 	}
 
 }
