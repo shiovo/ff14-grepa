@@ -15,6 +15,7 @@ body {
   background-color: #262626;
   text-align: center;
   height: 100%;
+  line-height: 1.5;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(1, #0f2d4a), color-stop(0.5, black));
   background: -webkit-linear-gradient(top, black 50%, #0f2d4a 100%);
   background: -moz-linear-gradient(top, black 50%, #0f2d4a 100%);
@@ -113,7 +114,7 @@ main {
 /* SP */
 @media only screen and (max-width: 849px) {
   body {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
 }
 /* --------------------------------------------------------------
@@ -598,58 +599,37 @@ footer {
 
 .btn-text {
   display: inline-block;
-  padding: 4px 8px;
+  padding: 6px 8px;
   border-radius: 3px;
   font-size: 90%;
   font-weight: normal;
   white-space: nowrap;
-  color: #f7f4f7;
-  background: -moz-linear-gradient(top, #fdd1ff 0%, #ff7afb 10%, #ff0091);
-  background: -webkit-gradient(linear, left top, left bottom, from(#fdd1ff), color-stop(0.1, #ff7afb), to(#ff0091));
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid #c500e3;
-  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
-  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
-  text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
+  line-height: 1;
+  background: none;
+  border: 0 none;
+  color: #fff;
+  background: #e365fa;
+  box-shadow: inset 0 0 2px 1px rgba(168, 0, 198, 0.3);
+  text-shadow: 0px -1px 1px rgba(168, 0, 198, 0.3);
 }
 .btn-text:hover {
-  box-shadow: 0px 0px 2px 1px rgba(253, 209, 255, 0.5);
-  transition: all .3s ease;
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-edit {
-  color: #f7f4f7;
-  background: -moz-linear-gradient(top, #d1ffff 0%, #69d0ff 10%, #0900ff);
-  background: -webkit-gradient(linear, left top, left bottom, from(#d1ffff), color-stop(0.1, #69d0ff), to(#0900ff));
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid #124dff;
-  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
-  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
-  text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
+  background: #4896ff;
+  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
+  text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
 .btn-text.is-edit:hover {
-  box-shadow: 0px 0px 2px 1px rgba(209, 255, 255, 0.5);
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-normal {
-  color: #f7f4f7;
-  background: -moz-linear-gradient(top, #cfcfcf 0%, #bababa 1%, #5c5c5c 45%, #2b2b2b);
-  background: -webkit-gradient(linear, left top, left bottom, from(#cfcfcf), color-stop(0.1, #bababa), color-stop(0.45, #5c5c5c), to(#2b2b2b));
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid #5c5c5c;
-  -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
-  -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
-  box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
-  text-shadow: 0px -1px 1px rgba(92, 92, 92, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
+  background: #7d7d7d;
+  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
+  text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
 .btn-text.is-normal:hover {
-  box-shadow: 0px 0px 2px 1px rgba(207, 207, 207, 0.5);
+  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 
 /* select */
@@ -680,6 +660,7 @@ footer {
   width: 100%;
 }
 .box-input table thead th {
+  padding: 5px;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.2);
 }
@@ -687,13 +668,26 @@ footer {
   text-align: center;
   width: 30px;
 }
-.box-input table .td-item {
+.box-input table tbody > tr > td:last-child {
+  width: 12%;
+  text-align: center;
+}
+.box-input table tbody .td-item, .box-input table tbody .td-name span {
   display: none;
+}
+.box-input table tbody .td-name {
+  width: 40%;
 }
 .box-input table .is-selected select {
   display: none;
 }
 .box-input table .is-selected .td-item {
+  display: block;
+}
+.box-input table .is-selected .td-name input {
+  display: none;
+}
+.box-input table .is-selected .td-name span {
   display: block;
 }
 .box-input .td-item {
@@ -787,7 +781,7 @@ footer {
   }
 
   .btn-text {
-    padding: 6px 6px;
+    padding: 8px;
   }
 
   /* input */

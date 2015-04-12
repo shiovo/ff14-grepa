@@ -15,6 +15,7 @@ body {
     background-color: $color-body;
     text-align: center;
     height: 100%;
+    line-height: 1.5;
 
     background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #0f2d4a), color-stop(0.50, #000000));
     background: -webkit-linear-gradient(top, #000000 50%, #0f2d4a 100%);
@@ -120,7 +121,7 @@ main{
 @include media-sp {
 
     body {
-        font-size: 1.4em;
+        font-size: 1.5em;
     }
 
 }

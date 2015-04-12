@@ -33,131 +33,71 @@
 
 .btn-text{
 	display: inline-block;
-	padding: 4px 8px;
+	padding: 6px 8px;
 	border-radius: 3px;
 	font-size: 90%;
 	font-weight: normal;
 	white-space: nowrap;
+	line-height: 1;
 
-	color: #f7f4f7;
-	background: -moz-linear-gradient(
-		top,
-		#fdd1ff 0%,
-		#ff7afb 10%,
-		#ff0091);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#fdd1ff),
-		color-stop(0.10, #ff7afb),
-		to(#ff0091));
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	border: 1px solid #c500e3;
-	-moz-box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.4);
-	-webkit-box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.4);
-	box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.4);
-	text-shadow:
-		0px -1px 1px rgba(004,000,125,0.3),
-		0px 1px 0px rgba(255,255,255,0);
+	background: none;
+	border: 0 none;
+	color: #fff;
+
+	background: #e365fa;
+	box-shadow: inset 0 0 2px 1px rgba(#a800c6, 0.3);
+	text-shadow:0px -1px 1px rgba(#a800c6,0.3);
+
+	// border: 1px solid #5f86ff;
+
+	// background: -moz-linear-gradient(
+	// 			top,
+	// 			rgba(0,0,0,0) 0%,
+	// 			rgba(0,0,0,0.1));
+	// background: -webkit-gradient(
+	// 			linear, left top, left bottom,
+	// 			from(rgba(0,0,0,0)),
+	// 			to(rgba(0,0,0,0.1)));
+
+	// &:hover{
+	// 	box-shadow: inset 0 0 2px 1px rgba(#a8bdff, 0.4),0px 0px 2px 1px rgba(#fdd1ff,0.2);
+	// 	transition:all .3s ease;
+
+	// }
 
 		&:hover{
-			box-shadow: 0px 0px 2px 1px rgba(#fdd1ff,0.5);
+			box-shadow: 0px 0px 2px 1px rgba(#ffffff,0.5);
 
-			transition:all .3s ease;
 
 		}
-
-
 
 
 	&.is-edit{
 
-
-
-	color: #f7f4f7;
-	background: -moz-linear-gradient(
-		top,
-		#d1ffff 0%,
-		#69d0ff 10%,
-		#0900ff);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#d1ffff),
-		color-stop(0.10, #69d0ff),
-		to(#0900ff));
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	border: 1px solid #124dff;
-	-moz-box-shadow:
-		0px 1px 0px rgba(0,0,0,0.3),
-		inset 0px 1px 2px rgba(255,255,255,1);
-	-webkit-box-shadow:
-		0px 1px 0px rgba(0,0,0,0.3),
-		inset 0px 1px 2px rgba(255,255,255,1);
-	box-shadow:
-		0px 1px 0px rgba(0,0,0,0.3),
-		inset 0px 1px 2px rgba(255,255,255,1);
-	text-shadow:
-		0px -1px 1px rgba(4,0,125,0.3),
-		0px 1px 0px rgba(255,255,255,0);
-
+		background: #4896ff;
+		box-shadow: inset 0 0 2px 1px rgba(#005ad4, 0.3);
+		text-shadow:0px -1px 1px rgba(#005ad4,0.3);
 
 		&:hover{
-			box-shadow: 0px 0px 2px 1px rgba(#d1ffff,0.5);
+			box-shadow: 0px 0px 2px 1px rgba(#ffffff,0.5);
 
 
 		}
-
-
-
 
 	}
 
 	&.is-normal{
 
-	color: #f7f4f7;
-	background: -moz-linear-gradient(
-		top,
-		#cfcfcf 0%,
-		#bababa 1%,
-		#5c5c5c 45%,
-		#2b2b2b);
-	background: -webkit-gradient(
-		linear, left top, left bottom,
-		from(#cfcfcf),
-		color-stop(0.1, #bababa),
-		color-stop(0.45, #5c5c5c),
-		to(#2b2b2b));
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	border: 1px solid #5c5c5c;
-	-moz-box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.8);
-	-webkit-box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.8);
-	box-shadow:
-		0px 1px 0px rgba(000,000,000,0.3),
-		inset 0px 1px 2px rgba(255,255,255,0.8);
-	text-shadow:
-		0px -1px 1px rgba(92,92,92,0.3),
-		0px 1px 0px rgba(255,255,255,0);
+		background: #7d7d7d;
+		box-shadow: inset 0 0 2px 1px rgba(#005ad4, 0.3);
+		text-shadow:0px -1px 1px rgba(#005ad4,0.3);
 
 		&:hover{
-			box-shadow: 0px 0px 2px 1px rgba(#cfcfcf,0.5);
+			box-shadow: 0px 0px 2px 1px rgba(#ffffff,0.5);
 
 
 		}
+
 
 
 
@@ -206,6 +146,7 @@
 
 		thead{
 			th{
+				padding: 5px;
 				text-align: center;
 				background-color: rgba(0,0,0,0.2);
 			}
@@ -217,11 +158,23 @@
 				text-align: center;
 				width: 30px;
 			}
+
+			& > tr > td:last-child{
+				width: 12%;
+				text-align: center;
+			}
+
+			.td-item,.td-name span{
+				display: none;
+			}
+
+			.td-name{
+				width: 40%;
+			}
 		}
 
-		.td-item{
-			display: none;
-		}
+
+
 
 		.is-selected{
 			select{
@@ -230,7 +183,19 @@
 			.td-item{
 				display: block;
 			}
+
+			.td-name{
+				input{
+					display: none;
+				}
+				span{
+					display: block;
+				}
+
+			}
 		}
+
+
 	}
 
 	.td-item{
@@ -343,7 +308,7 @@
 		margin: 20px 0 5px;
 	}
 	.btn-text{
-		padding: 6px 6px;
+		padding: 8px;
 	}
 
 	/* input */
