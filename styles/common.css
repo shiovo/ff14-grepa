@@ -483,6 +483,9 @@ main {
   top: 0px;
   right: 0px;
 }
+.m-sns li {
+  display: inline-block;
+}
 
 footer {
   margin-top: 20px;
@@ -533,12 +536,12 @@ footer {
   }
   .wrap .l-input {
     display: table-cell;
-    width: 60%;
+    width: 65%;
     border-right: 2px solid rgba(255, 255, 255, 0.2);
   }
   .wrap .l-macro {
     display: table-cell;
-    width: 40%;
+    width: 35%;
   }
 }
 /* SP */
@@ -608,15 +611,15 @@ footer {
   background: none;
   border: 0 none;
   color: #fff;
-  background: #e365fa;
-  box-shadow: inset 0 0 2px 1px rgba(168, 0, 198, 0.3);
-  text-shadow: 0px -1px 1px rgba(168, 0, 198, 0.3);
+  background: #3795ff;
+  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
+  text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
 .btn-text:hover {
   box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-edit {
-  background: #4896ff;
+  background: #4a37ff;
   box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
   text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
@@ -624,7 +627,7 @@ footer {
   box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-normal {
-  background: #7d7d7d;
+  background: #3a3a3a;
   box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
   text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
@@ -704,6 +707,7 @@ footer {
 }
 .box-input .td-item figcaption small {
   font-size: 78%;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .m-switch {
