@@ -71,6 +71,10 @@ footer{
 
 /* SP */
 @include media-sp {
+.m-sns{
+    top: 10px;
+    right: 10px;
+}
     .wrap{
         text-align: left;
     }
@@ -80,8 +84,6 @@ footer{
         width: 100%;
         flex-direction:column;
     }
-
-
 
     main{
         section{

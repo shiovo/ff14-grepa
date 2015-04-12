@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-family: 'Meiryo','メイリオ',arial,'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3',Osaka,'ＭＳ Ｐゴシック',"MS P Gothic",sans-serif;
+  font-family: Verdana, "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
   color: rgba(255, 255, 255, 0.8);
   background-color: #262626;
   text-align: center;
@@ -101,7 +101,7 @@ main {
 /* PC */
 @media only screen and (min-width: 850px) {
   body {
-    font-size: 1.4em;
+    font-size: 1.5em;
   }
 
   a:hover {
@@ -542,6 +542,11 @@ footer {
 }
 /* SP */
 @media only screen and (max-width: 849px) {
+  .m-sns {
+    top: 10px;
+    right: 10px;
+  }
+
   .wrap {
     text-align: left;
   }
@@ -584,6 +589,12 @@ footer {
   text-align: center;
   margin: 30px 0;
 }
+.wrap > header h1 {
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+}
+.wrap > header h1 span {
+  padding-right: 10px;
+}
 
 .btn-text {
   display: inline-block;
@@ -604,6 +615,10 @@ footer {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.4);
   text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
 }
+.btn-text:hover {
+  box-shadow: 0px 0px 2px 1px rgba(253, 209, 255, 0.5);
+  transition: all .3s ease;
+}
 .btn-text.is-edit {
   color: #f7f4f7;
   background: -moz-linear-gradient(top, #d1ffff 0%, #69d0ff 10%, #0900ff);
@@ -617,6 +632,9 @@ footer {
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px white;
   text-shadow: 0px -1px 1px rgba(4, 0, 125, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
 }
+.btn-text.is-edit:hover {
+  box-shadow: 0px 0px 2px 1px rgba(209, 255, 255, 0.5);
+}
 .btn-text.is-normal {
   color: #f7f4f7;
   background: -moz-linear-gradient(top, #cfcfcf 0%, #bababa 1%, #5c5c5c 45%, #2b2b2b);
@@ -629,6 +647,9 @@ footer {
   -webkit-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
   box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3), inset 0px 1px 2px rgba(255, 255, 255, 0.8);
   text-shadow: 0px -1px 1px rgba(92, 92, 92, 0.3), 0px 1px 0px rgba(255, 255, 255, 0);
+}
+.btn-text.is-normal:hover {
+  box-shadow: 0px 0px 2px 1px rgba(207, 207, 207, 0.5);
 }
 
 /* select */
@@ -666,6 +687,15 @@ footer {
   text-align: center;
   width: 30px;
 }
+.box-input table .td-item {
+  display: none;
+}
+.box-input table .is-selected select {
+  display: none;
+}
+.box-input table .is-selected .td-item {
+  display: block;
+}
 .box-input .td-item {
   display: table;
   width: 100%;
@@ -690,6 +720,10 @@ footer {
 }
 .box-input .td-item figcaption small {
   font-size: 78%;
+}
+
+.m-switch {
+  margin-bottom: 10px;
 }
 
 /* macro */
@@ -717,9 +751,6 @@ footer {
 }
 .box-macro h3 {
   font-size: 101%;
-  margin-bottom: 10px;
-}
-.box-macro .m-switch {
   margin-bottom: 10px;
 }
 
@@ -751,6 +782,10 @@ footer {
 }
 /* SP */
 @media only screen and (max-width: 849px) {
+  .wrap > header {
+    margin: 20px 0 5px;
+  }
+
   .btn-text {
     padding: 6px 6px;
   }

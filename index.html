@@ -35,7 +35,7 @@
 
 <div class="wrap">
     <header>
-        <h1>FF14 グリパ帳</h1>
+        <h1><span>FF14</span>グリパ帳</h1>
         <ul class="m-sns">
             <li>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ff14-d-co.xyz/" data-text="FF14 ID周回に便利なグリパ帳">Tweet</a>
@@ -54,25 +54,24 @@
 
             
              <section class="box-select">
-                <!-- <h2>真成４層</h2> -->
-                <select>
+                <select id="select-category">
                     <option value="cate-1">討伐・討滅選</option>
                     <option value="cate-2">レイド</option>
                 </select>
 
-                <select>
+                <select id="select-id">
                     <option value="id-1">真成１層</option>
                     <option value="id-2">真成2層</option>
                     <option value="id-3">真成3層</option>
                     <option value="id-4">真成4層</option>
                 </select>
-                <button class="btn-text">決定</button>
             </section> 
 
             <section class="box-input">
                 <div class="m-switch">
-                    <input type="checkbox" id="switch-job"><label for="switch-job">ジョブ希望制</label></div>
-                <table>
+                    <input type="checkbox" id="switch-job"><label for="switch-job">ジョブ希望制</label>
+                </div>
+                <table id="members">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -82,10 +81,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="is-selected">
                             <th>1</th>
                             <td>Shio</td>
                             <td>
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
                                 <div class="td-item">
                                     <figure>
                                         <img src="images/dummy/5faf78c6822.png" alt="バハムートヒーラーケーン">
@@ -104,7 +108,12 @@
                         <tr>
                             <th>2</th>
                             <td>Shio</td>
-                            <td>
+                            <td class="is-selected">
+                                <select>
+                                    <option value="">剣</option>
+                                    <option value="">斧</option>
+                                    <option value="">白杖</option>
+                                </select>
                                 <div class="td-item">
                                     <figure>
                                         <img src="images/dummy/job.png" alt="">
@@ -250,6 +259,7 @@
     <p>記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。</p>
     <p>Copyright (C) 2010 - 2015 SQUARE ENIX CO., LTD. All Rights Reserved.</p>
 </footer>
- 
+
+<script src="js/index.js"></script> 
 </body>
 </html>

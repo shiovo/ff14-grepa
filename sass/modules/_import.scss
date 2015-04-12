@@ -22,6 +22,13 @@
     text-align: center;
     margin: 30px 0;
 
+    h1{
+    	font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+   		span{
+   			padding-right: 10px;
+   		}
+    }
+
 }
 
 .btn-text{
@@ -60,8 +67,12 @@
 		0px -1px 1px rgba(004,000,125,0.3),
 		0px 1px 0px rgba(255,255,255,0);
 
+		&:hover{
+			box-shadow: 0px 0px 2px 1px rgba(#fdd1ff,0.5);
 
+			transition:all .3s ease;
 
+		}
 
 
 
@@ -99,7 +110,11 @@
 		0px 1px 0px rgba(255,255,255,0);
 
 
+		&:hover{
+			box-shadow: 0px 0px 2px 1px rgba(#d1ffff,0.5);
 
+
+		}
 
 
 
@@ -138,6 +153,11 @@
 		0px -1px 1px rgba(92,92,92,0.3),
 		0px 1px 0px rgba(255,255,255,0);
 
+		&:hover{
+			box-shadow: 0px 0px 2px 1px rgba(#cfcfcf,0.5);
+
+
+		}
 
 
 
@@ -198,6 +218,19 @@
 				width: 30px;
 			}
 		}
+
+		.td-item{
+			display: none;
+		}
+
+		.is-selected{
+			select{
+				display: none;
+			}
+			.td-item{
+				display: block;
+			}
+		}
 	}
 
 	.td-item{
@@ -233,6 +266,10 @@
 	}
 }
 
+.m-switch{
+	margin-bottom: 10px;
+}
+
 /* macro */
 .box-macro{
 	textarea{
@@ -261,9 +298,7 @@
 		margin-bottom: 10px;
 	}
 
-	.m-switch{
-		margin-bottom: 10px;
-	}
+
 }
 
 .m-clear{
@@ -304,6 +339,9 @@
 
 /* SP */
 @include media-sp {
+	.wrap > header{
+		margin: 20px 0 5px;
+	}
 	.btn-text{
 		padding: 6px 6px;
 	}
