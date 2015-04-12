@@ -50,22 +50,124 @@ var data = [
 				name: '真成1層',
 				items: [
 					{
-						name: 'ばはむーとタンク胴',
-						shortName: 'タンク胴',
+						name: 'バハムート・ディフェンダーサバトン',
+						shortName: 'タンク足',
 						job: 0,
-						icon: 'images/dummy/5faf78c6822.png'
+						icon: 'images/item/sinsei/1/b01.png'
 					},
 					{
-						name: 'ばはむーと斧',
-						shortName: '斧',
-						job: 1,
-						icon: 'images/dummy/5faf78c6822.png'
+						name: 'バハムート・ストライカーサークレット',
+						shortName: 'モ頭',
+						job: 0,
+						icon: 'images/item/sinsei/1/b02.png'
 					},
 					{
-						name: 'ばはむーと剣',
-						shortName: '剣',
+						name: 'バハムート・ストライカーサッシュ',
+						shortName: 'モ腰',
 						job: 0,
-						icon: 'images/dummy/5faf78c6822.png'
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・スレイヤーヴァンブレイス',
+						shortName: '竜手',
+						job: 0,
+						icon: 'images/item/sinsei/1/b03.png'
+					},
+					{
+						name: 'バハムート・スレイヤータセット',
+						shortName: '竜腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・スカウトブレーサー',
+						shortName: '忍手',
+						job: 0,
+						icon: 'images/item/sinsei/1/b04.png'
+					},
+					{
+						name: 'バハムート・スカウトサッシュ',
+						shortName: '忍腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・スカウトブーツ',
+						shortName: '忍足',
+						job: 0,
+						icon: 'images/item/sinsei/1/b05.png'
+					},
+					{
+						name: 'バハムート・レンジャーブレーサー',
+						shortName: '詩手',
+						job: 0,
+						icon: 'images/item/sinsei/1/b06.png'
+					},
+					{
+						name: 'バハムート・レンジャーサッシュ',
+						shortName: '詩腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・キャスターペタソス',
+						shortName: 'キャス頭',
+						job: 0,
+						icon: 'images/item/sinsei/1/b07.png'
+					},
+					{
+						name: 'バハムート・ヒーラーフード',
+						shortName: 'ヒラ頭',
+						job: 0,
+						icon: 'images/item/sinsei/1/b08.png'
+					},
+					{
+						name: 'バハムート・ヒーラーシューズ',
+						shortName: 'ヒラ足',
+						job: 0,
+						icon: 'images/item/sinsei/1/b09.png'
+					},
+					{
+						name: 'バハムート・ディフェンダーブレスレット',
+						shortName: 'VIT腕',
+						job: 0,
+						icon: 'images/item/sinsei/c03.png'
+					},
+					{
+						name: 'バハムート・ディフェンダーリング',
+						shortName: 'VIT指',
+						job: 0,
+						icon: 'images/item/sinsei/c04.png'
+					},
+					{
+						name: 'バハムート・アタッカーチョーカー',
+						shortName: 'STR首',
+						job: 0,
+						icon: 'images/item/sinsei/c01.png'
+					},
+					{
+						name: 'バハムート・レンジャーイヤリング',
+						shortName: 'DEX耳',
+						job: 0,
+						icon: 'images/item/sinsei/c02.png'
+					},
+					{
+						name: 'バハムート・キャスターチョーカー',
+						shortName: 'INT首',
+						job: 0,
+						icon: 'images/item/sinsei/c01.png'
+					},
+					{
+						name: 'バハムート・キャスターリング',
+						shortName: 'INT指',
+						job: 0,
+						icon: 'images/item/sinsei/c04.png'
+					},
+					{
+						name: 'バハムート・ヒーラーイヤリング',
+						shortName: 'MND耳',
+						job: 0,
+						icon: 'images/item/sinsei/c02.png'
 					},
 				]
 			},
@@ -73,25 +175,230 @@ var data = [
 				name: '真成2層',
 				items: [
 					{
-						name: 'ばはむーとタンク耳',
-						shortName: 'タンク耳',
+						name: 'バハムート・ディフェンダーガントレット',
+						shortName: 'タンク手',
 						job: 0,
-						icon: 'images/dummy/5faf78c6822.png'
+						icon: 'images/item/sinsei/2/b01.png'
 					},
 					{
-						name: 'ばはむーと腕',
-						shortName: 'タンク腕',
-						job: 1,
-						icon: 'images/dummy/5faf78c6822.png'
+						name: 'バハムート・ストライカーブレーサー',
+						shortName: 'モ手',
+						job: 0,
+						icon: 'images/item/sinsei/2/b02.png'
 					},
 					{
-						name: 'ばはむーと盾',
-						shortName: '盾',
+						name: 'バハムート・ストライカーブーツ',
+						shortName: 'モ足',
 						job: 0,
-						icon: 'images/dummy/5faf78c6822.png'
+						icon: 'images/item/sinsei/2/b03.png'
+					},
+					{
+						name: 'バハムート・スレイヤーバルビュート',
+						shortName: '竜頭',
+						job: 0,
+						icon: 'images/item/sinsei/2/b04.png'
+					},
+					{
+						name: 'バハムート・スレイヤーメイル',
+						shortName: '竜胴',
+						job: 0,
+						icon: 'images/item/sinsei/2/b05.png'
+					},
+					{
+						name: 'バハムート・スカウトサークレット',
+						shortName: '忍頭',
+						job: 0,
+						icon: 'images/item/sinsei/2/b06.png'
+					},
+					{
+						name: 'バハムート・レンジャーグリーヴ',
+						shortName: '詩足',
+						job: 0,
+						icon: 'images/item/sinsei/2/b07.png'
+					},
+					{
+						name: 'バハムート・キャスターローブ',
+						shortName: 'キャス胴',
+						job: 0,
+						icon: 'images/item/sinsei/2/b08.png'
+					},
+					{
+						name: 'バハムート・キャスターベルト',
+						shortName: 'キャス腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・キャスターシューズ',
+						shortName: 'キャス足',
+						job: 0,
+						icon: 'images/item/sinsei/2/b09.png'
+					},
+					{
+						name: 'バハムート・ヒーラーベルト',
+						shortName: 'ヒラ腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・ヒーラートンバン',
+						shortName: 'ヒラ脚',
+						job: 0,
+						icon: 'images/item/sinsei/2/b10.png'
+					},
+					{
+						name: 'バハムート・ディフェンダーチョーカー',
+						shortName: 'VIT首',
+						job: 0,
+						icon: 'images/item/sinsei/c01.png'
+					},
+					{
+						name: 'バハムート・ディフェンダーイヤリング',
+						shortName: 'VIT耳',
+						job: 0,
+						icon: 'images/item/sinsei/c02.png'
+					},
+					{
+						name: 'バハムート・アタッカーリング',
+						shortName: 'STR指',
+						job: 0,
+						icon: 'images/item/sinsei/c04.png'
+					},
+					{
+						name: 'バハムート・レンジャーチョーカー',
+						shortName: 'DEX首',
+						job: 0,
+						icon: 'images/item/sinsei/c01.png'
+					},
+					{
+						name: 'バハムート・レンジャーブレスレット',
+						shortName: 'DEX腕',
+						job: 0,
+						icon: 'images/item/sinsei/c03.png'
+					},
+					{
+						name: 'バハムート・ヒーラーブレスレット',
+						shortName: 'MND腕',
+						job: 0,
+						icon: 'images/item/sinsei/c03.png'
 					},
 				]
 			},
+			
+			{
+				name: '真成3層',
+				items: [
+					{
+						name: 'バハムート・ディフェンダーコロネット',
+						shortName: 'タンク頭',
+						job: 0,
+						icon: 'images/item/sinsei/3/b01.png'
+					},
+					{
+						name: 'バハムート・ディフェンダータセット',
+						shortName: 'タンク腰',
+						job: 0,
+						icon: 'images/item/sinsei/b01.png'
+					},
+					{
+						name: 'バハムート・ディフェンダーサルエル',
+						shortName: 'タンク脚',
+						job: 0,
+						icon: 'images/item/sinsei/3/b02.png'
+					},
+					{
+						name: 'バハムートシールド',
+						shortName: '盾',
+						job: 0,
+						icon: 'images/item/sinsei/3/c01.png'
+					},
+					{
+						name: 'バハムート・ストライカーシクラス',
+						shortName: 'モ胴',
+						job: 0,
+						icon: 'images/item/sinsei/3/b03.png'
+					},
+					{
+						name: 'バハムート・スレイヤーグリーヴ',
+						shortName: '竜足',
+						job: 0,
+						icon: 'images/item/sinsei/3/b04.png'
+					},
+					{
+						name: 'バハムート・スカウトスロップ',
+						shortName: '忍脚',
+						job: 0,
+						icon: 'images/item/sinsei/3/b05.png'
+					},
+					{
+						name: 'バハムート・レンジャーシャポー',
+						shortName: '詩頭',
+						job: 0,
+						icon: 'images/item/sinsei/3/b06.png'
+					},
+					{
+						name: 'バハムート・レンジャーブリーチ',
+						shortName: '詩脚',
+						job: 0,
+						icon: 'images/item/sinsei/3/b07.png'
+					},
+					{
+						name: 'バハムート・キャスターグローブ',
+						shortName: 'キャス手',
+						job: 0,
+						icon: 'images/item/sinsei/3/b08.png'
+					},
+					{
+						name: 'バハムート・ヒーラーグローブ',
+						shortName: 'ヒラ手',
+						job: 0,
+						icon: 'images/item/sinsei/3/b09.png'
+					},
+					{
+						name: 'バハムート・アタッカーイヤリング',
+						shortName: 'STR耳',
+						job: 0,
+						icon: 'images/item/sinsei/c02.png'
+					},
+					{
+						name: 'バハムート・アタッカーブレスレット',
+						shortName: 'STR腕',
+						job: 0,
+						icon: 'images/item/sinsei/c03.png'
+					},
+					{
+						name: 'バハムート・レンジャーリング',
+						shortName: 'DEX指',
+						job: 0,
+						icon: 'images/item/sinsei/c04.png'
+					},
+					{
+						name: 'バハムート・キャスターイヤリング',
+						shortName: 'INT耳',
+						job: 0,
+						icon: 'images/item/sinsei/c02.png'
+					},
+					{
+						name: 'バハムート・キャスターブレスレット',
+						shortName: 'INT腕',
+						job: 0,
+						icon: 'images/item/sinsei/c03.png'
+					},
+					{
+						name: 'バハムート・ヒーラーチョーカー',
+						shortName: 'MND首',
+						job: 0,
+						icon: 'images/item/sinsei/c01.png'
+					},
+					{
+						name: 'バハムート・ヒーラーリング',
+						shortName: 'MND指',
+						job: 0,
+						icon: 'images/item/sinsei/c04.png'
+					}
+				]
+			},
+
 			{
 				name: '真成4層',
 				items: [
@@ -108,94 +415,101 @@ var data = [
 						icon: 'images/item/sinsei/4/a02.png'
 					},
 					{
-						name: 'バハムート・ディフェンダーアーマー',
-						shortName: 'タンク胴',
-						job: 0,
-						icon: 'images/item/sinsei/4/.png'
-					},
-					{
 						name: 'バハムートクロー',
 						shortName: '爪',
 						job: 6,
 						icon: 'images/item/sinsei/4/a03.png'
 					},
 					{
-						name: 'バハムート・ストライカースロップ',
-						shortName: 'モンク脚',
-						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
-					},
-					{
 						name: 'バハムートスピア',
 						shortName: '槍',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
-					},
-					{
-						name: 'バハムート・スレイヤーブリーチ',
-						shortName: '竜脚',
-						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a04.png'
 					},
 					{
 						name: 'バハムートダガー',
 						shortName: '双剣',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a06.png'
 					},
-					{
-						name: 'バハムート・スカウトシクラス',
-						shortName: '忍脚',
-						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
-					},
+
 					{
 						name: 'バハムートロングボウ',
 						shortName: '弓',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
-					},
-					{
-						name: 'バハムート・レンジャータバード',
-						shortName: '詩人胴',
-						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a05.png'
 					},
 					{
 						name: 'バハムートスタッフ',
 						shortName: '黒杖',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a08.png'
 					},
 					{
 						name: 'バハムートグリモア',
 						shortName: '召本',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
-					},
-					{
-						name: 'バハムート・キャスタートンバン',
-						shortName: 'キャス脚',
-						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a09.png'
 					},
 					{
 						name: 'バハムートケーン',
 						shortName: '白杖',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a07.png'
 					},
 					{
 						name: 'バハムートコーデックス',
 						shortName: '学本',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/a10.png'
 					},
 					{
-						name: 'バハムート・ヒーラーローブ',
-						shortName: 'ヒラ',
+						name: 'バハムート・ディフェンダーアーマー',
+						shortName: 'タンク胴',
+						job: 0,
+						icon: 'images/item/sinsei/4/b01.png'
+					},
+
+					{
+						name: 'バハムート・ストライカースロップ',
+						shortName: 'モ脚',
 						job: 6,
-						icon: 'images/item/sinsei/4/a02.png'
+						icon: 'images/item/sinsei/4/b02.png'
+					},
+
+					{
+						name: 'バハムート・スレイヤーブリーチ',
+						shortName: '竜脚',
+						job: 6,
+						icon: 'images/item/sinsei/4/b03.png'
+					},
+
+					{
+						name: 'バハムート・スカウトシクラス',
+						shortName: '忍胴',
+						job: 6,
+						icon: 'images/item/sinsei/4/b04.png'
+					},
+
+					{
+						name: 'バハムート・レンジャータバード',
+						shortName: '詩人胴',
+						job: 6,
+						icon: 'images/item/sinsei/4/b05.png'
+					},
+
+					{
+						name: 'バハムート・キャスタートンバン',
+						shortName: 'キャス脚',
+						job: 6,
+						icon: 'images/item/sinsei/4/b06.png'
+					},
+
+					{
+						name: 'バハムート・ヒーラーローブ',
+						shortName: 'ヒラ胴',
+						job: 6,
+						icon: 'images/item/sinsei/4/b07.png'
 					},
 				]
 			}
