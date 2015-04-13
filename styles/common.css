@@ -481,7 +481,7 @@ main {
 .m-sns {
   position: absolute;
   top: 0px;
-  right: 0px;
+  right: -50px;
 }
 .m-sns li {
   display: inline-block;
@@ -548,7 +548,7 @@ footer {
 @media only screen and (max-width: 849px) {
   .m-sns {
     top: 10px;
-    right: 10px;
+    right: -30px;
   }
 
   .wrap {
@@ -771,7 +771,8 @@ footer {
 /* SP */
 @media only screen and (max-width: 849px) {
   .wrap > header {
-    margin: 20px 0 5px;
+    margin: 40px 0 5px;
+    font-size: 90%;
   }
 
   .btn-text {
