@@ -497,6 +497,12 @@ footer {
   text-align: left;
 }
 
+.fb-like {
+  position: relative;
+  top: -4px;
+  margin-right: 10px;
+}
+
 .fb_iframe_widget iframe {
   right: 0;
 }
