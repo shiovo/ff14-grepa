@@ -557,6 +557,11 @@ footer {
     display: table-cell;
     width: 35%;
   }
+
+  .info {
+    max-width: 1100px;
+    margin: 30px auto 0;
+  }
 }
 /* SP */
 @media only screen and (max-width: 849px) {
@@ -584,6 +589,10 @@ footer {
   }
   main .box-select, main .box-macro {
     padding: 10px 3%;
+  }
+
+  .info {
+    padding: 15px 3%;
   }
 }
 /* --------------------------------------------------------------
@@ -760,6 +769,28 @@ footer {
   position: absolute;
   right: 30px;
   top: 30px;
+}
+
+.info .memo {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  text-align: left;
+}
+.info .memo h4 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.info .memo li {
+  font-size: 90%;
+  display: table;
+  width: 100%;
+}
+.info .memo li span, .info .memo li div {
+  display: table-cell;
+}
+.info .memo li span {
+  padding-right: 10px;
 }
 
 /* PC */

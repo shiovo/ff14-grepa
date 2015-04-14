@@ -262,6 +262,32 @@
 	top: 30px;
 }
 
+.info{
+	.memo{
+		margin-top: 20px;
+		padding: 20px;
+		border: 2px solid $color-border;
+		text-align: left;
+
+		h4{
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+		li{
+			font-size: 90%;
+			display: table;
+			width: 100%;
+			span,div{
+				display: table-cell;
+			}
+			span{
+				padding-right: 10px;
+			}
+		}
+	}
+
+}
 
 
 /* PC */
