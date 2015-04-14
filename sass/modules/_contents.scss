@@ -1,0 +1,237 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------
+    module
+-------------------------------------------------------------- */
+.bg{
+	background: url(../images/common/bg.jpg) center center no-repeat fixed;
+	background-size: cover;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+}
+
+.wrap > header{
+    // background-color: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    text-align: center;
+    margin: 30px 0;
+
+    h1{
+    	font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+   		span{
+   			padding-right: 10px;
+   		}
+    }
+
+}
+
+
+/* select */
+
+.m-switch{
+	label{
+		margin:0 15px 0 8px;
+	}
+}
+
+/* input */
+.box-input{
+
+
+	table{
+		width: 100%;
+
+		th,td{
+			padding: 8px 5px;
+			border-top:1px solid $color-border;
+			border-bottom:1px solid $color-border;
+		}
+
+		input{
+			width: 100%;
+			// ime-mode: disabled;
+		}
+
+		thead{
+			th{
+				padding: 5px;
+				text-align: center;
+				background-color: rgba(0,0,0,0.2);
+			}
+		}
+
+
+		tbody{
+			th{
+				text-align: center;
+				width: 30px;
+			}
+
+			& > tr > td:last-child{
+				width: 12%;
+				text-align: center;
+			}
+
+			.td-item,.td-name span{
+				display: none;
+			}
+
+			.td-name{
+				width: 30%;
+			}
+		}
+
+
+
+
+		.is-selected{
+			select{
+				display: none;
+			}
+			.td-item{
+				display: block;
+			}
+
+			.td-name{
+				input{
+					display: none;
+				}
+				span{
+					display: block;
+				}
+
+			}
+		}
+
+
+	}
+
+	.td-item{
+		display: table;
+		width: 100%;
+
+		figure{
+			display: table-cell;
+			vertical-align: top;
+			text-align: left;
+
+			img{
+				vertical-align: top;
+				width: 100%;
+			}
+		}
+
+		figcaption{
+			display: table-cell;
+			padding-left: 8px;
+			vertical-align: middle;
+			text-align: left;
+
+			span,small{
+				display: block;
+			}
+
+			small{
+				font-size: 78%;
+				color: rgba(255,255,255,0.6);
+			}
+
+		}
+	}
+}
+
+.m-switch{
+	margin-bottom: 10px;
+}
+
+/* macro */
+.box-macro{
+	textarea{
+		width: 100%;
+		overflow-y:scroll;
+	}
+
+	header{
+		@include clearfix;
+		display: block;
+
+		h3{
+			float: left;
+		}
+
+		button{
+			float: right;
+			margin-bottom: 5px;
+			position: relative;
+			top: -2px;
+		}
+	}
+
+	h3{
+		font-size: 101%;
+		margin-bottom: 10px;
+	}
+
+
+}
+
+.m-clear{
+	position: absolute;
+	right: 30px;
+	top: 30px;
+}
+
+/* PC */
+@include media-pc {
+
+	/* input */
+	.box-input{
+		padding-top: 10px!important;
+
+		table{
+			border:1px solid $color-border;
+		}
+
+		.td-item{
+			figure{
+				width: 40px;
+			}
+		}
+	}
+}
+
+/* SP */
+@include media-sp {
+	.wrap > header{
+		margin: 40px 0 5px;
+		font-size: 90%;
+	}
+	.btn-text{
+		padding: 8px;
+	}
+
+	/* input */
+	.box-input{
+		.td-item{
+			figure{
+				width: 30px;
+			}
+		}
+		thead{
+			th,td{
+				border: 0!important;
+			}
+		}
+	}
+
+	.m-clear{
+		right: 3%;
+		top: 12px;
+	}
+}

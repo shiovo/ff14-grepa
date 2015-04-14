@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------
+    info
+-------------------------------------------------------------- */
+.info{
+	.memo{
+		margin-top: 40px;
+		padding: 20px;
+		border: 2px solid $color-border;
+		text-align: left;
+
+		h4{
+			text-align: center;
+			margin-bottom: 15px;
+		}
+
+		li{
+			font-size: 90%;
+			display: table;
+			width: 100%;
+			span,div{
+				display: table-cell;
+			}
+			span{
+				padding-right: 15px;
+			}
+		}
+	}
+
+}
+
+
+/* PC */
+@include media-pc {
+	.info{
+		margin-top: 40px;
+
+		li{
+			margin-bottom: 10px;
+		}
+	}
+
+}
+
+/* SP */
+@include media-sp {
+
+}
