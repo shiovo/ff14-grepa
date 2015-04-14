@@ -492,7 +492,7 @@ main {
 }
 
 footer {
-  margin-top: 20px;
+  margin: 40px 0 30px;
   font-size: 75%;
   padding: 0 10% 20px;
 }
@@ -509,6 +509,14 @@ footer {
 
 .fb_iframe_widget iframe {
   right: 0;
+}
+
+.ad {
+  margin: 40px auto;
+}
+
+.pc img, .sp img {
+  max-width: 100%;
 }
 
 /* PC */
@@ -562,6 +570,14 @@ footer {
     max-width: 1100px;
     margin: 30px auto 0;
   }
+
+  .sp {
+    display: none;
+  }
+
+  .pc {
+    display: block;
+  }
 }
 /* SP */
 @media only screen and (max-width: 849px) {
@@ -593,6 +609,18 @@ footer {
 
   .info {
     padding: 15px 3%;
+  }
+
+  footer {
+    margin: 20px 0;
+  }
+
+  .sp {
+    display: block;
+  }
+
+  .pc {
+    display: none;
   }
 }
 /* --------------------------------------------------------------
@@ -849,3 +877,8 @@ footer {
   }
 }
 /* SP */
+@media only screen and (max-width: 849px) {
+  .info .memo {
+    margin-top: 30px;
+  }
+}
