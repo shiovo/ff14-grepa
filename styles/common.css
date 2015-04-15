@@ -611,6 +611,10 @@ footer {
     padding: 15px 3%;
   }
 
+  .ad {
+    margin: 20px 3% 0;
+  }
+
   footer {
     margin: 20px 0;
   }
@@ -837,6 +841,10 @@ footer {
     border: 0 !important;
   }
 
+  #macro-text {
+    height: 10em;
+  }
+
   .m-clear {
     right: 3%;
     top: 12px;
@@ -855,13 +863,20 @@ footer {
   text-align: center;
   margin-bottom: 15px;
 }
+.info .memo ul {
+  display: tabel;
+  width: 100%;
+}
 .info .memo li {
   font-size: 90%;
-  display: table;
+  display: table-row;
   width: 100%;
 }
 .info .memo li span, .info .memo li div {
   display: table-cell;
+  text-align: left;
+  vertical-align: top;
+  padding-bottom: 8px;
 }
 .info .memo li span {
   padding-right: 15px;
@@ -880,5 +895,9 @@ footer {
 @media only screen and (max-width: 849px) {
   .info .memo {
     margin-top: 30px;
+    padding: 15px;
+  }
+  .info .memo h4 {
+    margin-bottom: 10px;
   }
 }
