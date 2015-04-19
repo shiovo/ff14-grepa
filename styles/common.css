@@ -55,7 +55,7 @@ h1, h2, h3, h4 {
   font-weight: normal;
 }
 
-ul, ol, li {
+ul, li {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -478,19 +478,6 @@ main {
   position: relative;
 }
 
-.m-sns {
-  position: absolute;
-  top: 0px;
-  right: -40px;
-}
-.m-sns li {
-  display: inline-block;
-}
-.m-sns .m-sns-t {
-  width: 130px;
-  overflow: hidden;
-}
-
 footer {
   margin: 40px 0 30px;
   font-size: 75%;
@@ -691,6 +678,7 @@ footer {
 }
 .wrap > header h1 {
   font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+  font-size: 180%;
 }
 .wrap > header h1 span {
   padding-right: 10px;
@@ -900,4 +888,97 @@ footer {
   .info .memo h4 {
     margin-bottom: 10px;
   }
+}
+/* --------------------------------------------------------------
+    sns
+-------------------------------------------------------------- */
+.m-sns {
+  position: absolute;
+  top: 0px;
+  right: -20px;
+}
+.m-sns li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.m-sns .m-sns-t {
+  width: 130px;
+  overflow: hidden;
+}
+.m-sns #twitter-widget-0 {
+  width: 100px !important;
+}
+.m-sns .btn-about {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #98f2ff;
+  color: #4a37ff;
+  position: relative;
+  top: -2px;
+  font-weight: bold;
+}
+
+/* PC */
+/* SP */
+@media only screen and (max-width: 849px) {
+  .m-sns {
+    top: 15px;
+    right: 0px;
+  }
+}
+/* --------------------------------------------------------------
+    modal
+-------------------------------------------------------------- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+.modal.is-active {
+  display: block;
+}
+
+.modal-body {
+  display: inline-block;
+  text-align: left;
+  margin-top: 100px;
+  margin: 70px 5% 0;
+  line-height: 1.6;
+}
+.modal-body h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.modal-body h4 {
+  margin-bottom: 10px;
+}
+.modal-body p {
+  margin-bottom: 20px;
+}
+.modal-body ol {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.modal-body ol li {
+  list-style: decimal;
+  margin-bottom: 5px;
+}
+.modal-body small {
+  display: block;
+}
+.modal-body .modal-btn {
+  margin-top: 30px;
+  text-align: center;
+}
+.modal-body .btn-close {
+  display: block;
+  padding: 5px;
 }

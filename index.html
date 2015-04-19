@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <title>FF14グリパ帳</title>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta name="keywords" content="FF14,エオルゼア,グリードPT,グリパ,1品希望制,周回">
-    <meta name="description" content="グリパ帳は周回PT主催向けの便利ツールです。">
-    <meta property="og:title" content="FF14グリパ帳">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.asj-net.com/g-001/index.html">
-   <!--  <meta property="og:image" content="./images/common/og.jpg"> -->
-    <meta property="og:site_name" content="FF14グリパ帳">
-    <meta property="og:description" content="グリパ帳は周回PT主催向けの便利ツールです。">
+<meta charset="UTF-8">
+<title>FF14グリパ帳</title>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="keywords" content="FF14,エオルゼア,グリードPT,グリパ,1品希望制,周回">
+<meta name="description" content="グリパ帳は周回PT主催向けの便利ツールです。">
+<meta property="og:title" content="FF14グリパ帳">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://www.asj-net.com/g-001/index.html">
+<!--  <meta property="og:image" content="./images/common/og.jpg"> -->
+<meta property="og:site_name" content="FF14グリパ帳">
+<meta property="og:description" content="グリパ帳は周回PT主催向けの便利ツールです。">
 
-    <link rel="shortcut icon" type="image/x-icon" href="./images/common/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="./images/common/favicon.ico">
 
-    <script type="text/javascript" src="./scripts/lib/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="./js/libs/jquery-1.11.2.min.js"></script>
 
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/common.css">
+<link rel="stylesheet" href="./styles/normalize.css">
+<link rel="stylesheet" href="./styles/common.css">
+
+<script>
+$(function(){
+    $(".btn-about").click(function(){
+        $(".modal").addClass("is-active");
+    });
+    $(".btn-close").click(function(){
+        $(".modal").removeClass("is-active");
+    });
+
+});
+</script>
 </head>
 
 <body>
@@ -36,6 +48,9 @@
     <header>
         <h1><span>FF14</span>グリパ帳</h1>
         <ul class="m-sns">
+            <li>
+                <a class="btn-about" href="javascript:();">?</a>
+            </li>
             <!-- <li>
                 <div class="fb-like" data-href="http://ff14-d-co.xyz/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>  
             </li> -->
@@ -272,6 +287,27 @@
     <p>記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。</p>
     <p>Copyright (C) 2010 - 2015 SQUARE ENIX CO., LTD. All Rights Reserved.</p>
 </footer>
+
+<div class="modal">
+    <div class="modal-body">
+        <h3>ABOUT</h3>
+        <p>グリパ帳はグリード周回PT主催者さんのためのメモ帳です。</p>
+        <h4>▼使い方</h4>
+        <ol>
+            <li>行き先を選びます</li>
+            <li>参加者の名前入力・希望品を選択します</li>
+            <li>「決定」ボタンを押すと入力した内容が「コピペ用マクロ」エリアに反映されます</li>
+        </ol>
+        <small>※「編集」ボタンを押すと入力した内容を編集することができます。</small>
+        <small>※「クリア」ボタンを押すと内容がリセットされます。</small>
+
+        <div class="modal-btn">
+            <a href="javascript:();" class="btn-close">閉じる</a>
+        </div>
+
+    </div>
+
+</div>
 
 <script src="js/index.js"></script> 
 <script>
