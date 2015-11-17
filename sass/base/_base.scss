@@ -89,10 +89,15 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
     padding: 4px 5px;
     border: 0;
     color: $color-form-text;
-    border-top: 1px solid rgba(0,0,0,0.3);
-    border-left: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-left: 1px solid rgba(0,0,0,0.1);
     border-right: 0;
     border-bottom: 0;
+}
+
+select{
+    padding: 2px 5px;
+
 }
 
 th{

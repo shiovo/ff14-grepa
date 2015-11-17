@@ -10,7 +10,6 @@
         margin-left: 5px;
     }
     .m-sns-t{
-        width: 130px;
         overflow: hidden;
     }
 
@@ -24,11 +23,11 @@
 		width:22px;
 		height: 22px;
 		border-radius: 50%;
-		background-color: $color-link;
-		color:#4a37ff;
+		background-color: #4a37ff;
+		color:#fff;
 		position: relative;
 		top: -2px;
-		font-weight: bold;
+		font-weight: normal;
 	}
 }
 

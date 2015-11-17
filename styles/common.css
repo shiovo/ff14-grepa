@@ -24,7 +24,7 @@ body {
 }
 
 a {
-  color: #98f2ff;
+  color: #86bfff;
   text-decoration: none;
   cursor: pointer;
 }
@@ -80,10 +80,14 @@ select, textarea, input[type="text"], input[type="password"], input[type="dateti
   padding: 4px 5px;
   border: 0;
   color: rgba(255, 255, 255, 0.8);
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
-  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 0;
   border-bottom: 0;
+}
+
+select {
+  padding: 2px 5px;
 }
 
 th {
@@ -490,7 +494,7 @@ footer {
 }
 
 .ad {
-  margin: 40px auto;
+  margin: 50px auto;
 }
 
 .pc img, .sp img {
@@ -601,9 +605,9 @@ footer {
 -------------------------------------------------------------- */
 .m-header {
   text-align: left;
-  background-color: #fff;
   zoom: 1;
-  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  position: relative;
 }
 .m-header:after {
   content: "";
@@ -611,10 +615,9 @@ footer {
   clear: both;
 }
 .m-header h1 {
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
   font-size: 2rem;
   float: left;
-  color: #12377c;
+  color: #fff;
 }
 .m-header h1 span {
   padding-right: 10px;
@@ -624,8 +627,19 @@ footer {
 }
 
 /* PC */
+@media only screen and (min-width: 850px) {
+  .m-header {
+    padding: 10px 20px;
+  }
+  .m-header .m-sns {
+    margin-top: 5px;
+  }
+}
 /* SP */
 @media only screen and (max-width: 849px) {
+  .m-header {
+    padding: 10px 3%;
+  }
   .m-header h1 {
     font-size: 1.6rem;
   }
@@ -635,9 +649,9 @@ footer {
 -------------------------------------------------------------- */
 .btn-text {
   display: inline-block;
-  padding: 6px 8px;
+  padding: 6px 9px;
   border-radius: 3px;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: normal;
   white-space: nowrap;
   line-height: 1;
@@ -645,27 +659,23 @@ footer {
   border: 0 none;
   color: #fff;
   background: #3795ff;
-  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
   text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
-}
-.btn-text:hover {
-  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-edit {
   background: #4a37ff;
-  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
   text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
-}
-.btn-text.is-edit:hover {
-  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
 }
 .btn-text.is-normal {
   background: #3a3a3a;
-  box-shadow: inset 0 0 2px 1px rgba(0, 90, 212, 0.3);
   text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3);
 }
-.btn-text.is-normal:hover {
-  box-shadow: 0px 0px 2px 1px rgba(255, 255, 255, 0.5);
+.btn-text:hover {
+  opacity: 0.8;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
 /* --------------------------------------------------------------
@@ -695,7 +705,6 @@ footer {
 }
 .box-input table th, .box-input table td {
   padding: 8px 5px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .box-input table input {
@@ -853,7 +862,7 @@ footer {
 .info .memo {
   margin-top: 40px;
   padding: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   text-align: left;
 }
 .info .memo h4 {
@@ -885,12 +894,10 @@ footer {
 }
 .info_detail .info_creator span {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .info_detail .info_creator img {
-  width: 40px;
   border-radius: 50%;
-  margin-right: 5px;
 }
 
 /* PC */
@@ -900,6 +907,11 @@ footer {
   }
   .info li {
     margin-bottom: 10px;
+  }
+
+  .info_creator img {
+    width: 50px;
+    margin-right: 10px;
   }
 }
 /* SP */
@@ -911,6 +923,11 @@ footer {
   .info .memo h4 {
     margin-bottom: 10px;
   }
+
+  .info_creator img {
+    width: 40px;
+    margin-right: 8px;
+  }
 }
 /* --------------------------------------------------------------
     sns
@@ -921,7 +938,6 @@ footer {
   margin-left: 5px;
 }
 .m-sns .m-sns-t {
-  width: 130px;
   overflow: hidden;
 }
 .m-sns #twitter-widget-0 {
@@ -933,11 +949,11 @@ footer {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background-color: #98f2ff;
-  color: #4a37ff;
+  background-color: #4a37ff;
+  color: #fff;
   position: relative;
   top: -2px;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 /* PC */
@@ -952,11 +968,15 @@ footer {
   width: 100%;
   height: 100%;
   text-align: center;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s;
 }
 .modal.is-active {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.25s;
 }
 
 .modal-body {

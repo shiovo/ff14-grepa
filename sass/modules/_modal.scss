@@ -12,11 +12,16 @@
 
 	text-align: center;
 
-	background: rgba(0,0,0,0.8);
-	display: none;
+	background: rgba(0,0,0,0.85);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.25s;
 
 	&.is-active{
-		display: block;
+		opacity:1;
+		visibility: visible;
+
+		transition: all 0.25s;
 	}
 }
 
