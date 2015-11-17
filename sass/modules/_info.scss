@@ -21,7 +21,7 @@
 		}
 
 		li{
-			font-size: 90%;
+			font-size: 1.3rem;
 			display: table-row;
 			width: 100%;
 			span,div{
@@ -31,12 +31,30 @@
 				padding-bottom: 8px;
 			}
 			span{
-				padding-right: 15px;
+				padding-right: 18px;
 
 			}
 		}
 	}
+}
 
+.info_detail{
+	margin-top: 40px;
+	text-align: center;
+
+
+	.info_creator{
+		span{
+			display: inline-block;
+			margin-right: 10px;
+		}
+		img{
+			width: 40px;
+			border-radius: 50%;
+			margin-right: 5px;
+		}
+
+	}
 }
 
 

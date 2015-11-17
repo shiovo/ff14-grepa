@@ -16,28 +16,7 @@
 	z-index: -1;
 }
 
-.wrap > header{
-    // background-color: rgba(0,0,0,0.6);
-    border-radius: 5px;
-    text-align: center;
-    margin: 30px 0;
-
-    h1{
-    	font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
-    	font-size: 180%;
-   		span{
-   			padding-right: 10px;
-   		}
-    }
-
-
-
-}
-
-
-
 /* select */
-
 .m-switch{
 	label{
 		margin:0 15px 0 8px;
@@ -46,7 +25,6 @@
 
 /* input */
 .box-input{
-
 
 	table{
 		width: 100%;
@@ -91,9 +69,6 @@
 			}
 		}
 
-
-
-
 		.is-selected{
 			select{
 				display: none;
@@ -112,8 +87,6 @@
 
 			}
 		}
-
-
 	}
 
 	.td-item{
@@ -142,10 +115,9 @@
 			}
 
 			small{
-				font-size: 78%;
+				font-size: 1.1rem;
 				color: rgba(255,255,255,0.6);
 			}
-
 		}
 	}
 }
@@ -181,15 +153,8 @@
 		font-size: 101%;
 		margin-bottom: 10px;
 	}
-
-
 }
 
-.m-clear{
-	position: absolute;
-	right: 30px;
-	top: 30px;
-}
 
 /* PC */
 @include media-pc {
@@ -212,10 +177,7 @@
 
 /* SP */
 @include media-sp {
-	.wrap > header{
-		margin: 40px 0 5px;
-		font-size: 90%;
-	}
+
 	.btn-text{
 		padding: 8px;
 	}
@@ -234,12 +196,9 @@
 		}
 	}
 
-    #macro-text{
-        height: 10em;
-    }
+  #macro-text{
+      height: 10em;
+  }
 
-	.m-clear{
-		right: 3%;
-		top: 12px;
-	}
+
 }

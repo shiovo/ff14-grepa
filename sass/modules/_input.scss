@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------
+    m-input
+-------------------------------------------------------------- */
+.m-input-header{
+	@include clearfix;
+
+	.box-select{
+		float: left;
+	}
+
+	.m-clear{
+		float: right;
+	}
+}
+
+
+/* PC */
+@include media-pc {
+	
+}
+
+/* SP */
+@include media-sp {
+	.box-select{
+		float: none;
+	}
+}

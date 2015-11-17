@@ -13,6 +13,11 @@
 <meta property="og:site_name" content="FF14グリパ帳">
 <meta property="og:description" content="グリパ帳は周回PT主催向けの便利ツールです。">
 
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@ShioDufore">
+<meta name="twitter:creator" content="@ShioDufore">
+<meta name="twitter:domain" content="ff14-d-co.xyz">
+
 <link rel="shortcut icon" type="image/x-icon" href="./images/common/favicon.ico">
 
 <script type="text/javascript" src="./js/libs/jquery-1.11.2.min.js"></script>
@@ -44,43 +49,48 @@ $(function(){
 }(document, 'script', 'facebook-jssdk'));</script>
 <div class="bg"></div>
 
+
+<header class="m-header">
+    <h1><span>FF14</span>グリパ帳</h1>
+    <ul class="m-sns">
+        <li>
+            <a class="btn-about" href="javascript:();">?</a>
+        </li>
+        <!-- <li>
+            <div class="fb-like" data-href="http://ff14-d-co.xyz/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>  
+        </li> -->
+        <li class="m-sns-t">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ff14-d-co.xyz/" data-text="FF14 ID周回に便利なグリパ帳 #FF14">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </li>
+    </ul>
+</header>
+
 <div class="wrap">
-    <header>
-        <h1><span>FF14</span>グリパ帳</h1>
-        <ul class="m-sns">
-            <li>
-                <a class="btn-about" href="javascript:();">?</a>
-            </li>
-            <!-- <li>
-                <div class="fb-like" data-href="http://ff14-d-co.xyz/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>  
-            </li> -->
-            <li class="m-sns-t">
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://ff14-d-co.xyz/" data-text="FF14 ID周回に便利なグリパ帳 #FF14">Tweet</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-            </li>
-        </ul>
-    </header>
 
     <main>
         <div class="l-input">
             
-            <div class="m-clear"><button class="btn-text is-normal">クリア</button></div>
-
+            <div class="m-input-header">
                 
-             <section class="box-select">
-                <span>行き先:</span>
-                <select id="select-category">
-                    <option value="cate-1">討伐・討滅選</option>
-                    <option value="cate-2">レイド</option>
-                </select>
 
-                <select id="select-id">
-                    <option value="id-1">真成1層</option>
-                    <option value="id-2">真成2層</option>
-                    <option value="id-3">真成3層</option>
-                    <option value="id-4">真成4層</option>
-                </select>
-            </section>
+                 <section class="box-select">
+                    <span>行き先:</span>
+                    <select id="select-category">
+                        <option value="cate-1">討伐・討滅選</option>
+                        <option value="cate-2">レイド</option>
+                    </select>
+
+                    <select id="select-id">
+                        <option value="id-1">真成1層</option>
+                        <option value="id-2">真成2層</option>
+                        <option value="id-3">真成3層</option>
+                        <option value="id-4">真成4層</option>
+                    </select>
+                </section>
+
+                <div class="m-clear"><button class="btn-text is-normal">クリア</button></div>
+            </div>
 
             <section class="box-input">
                 <div class="m-switch">
@@ -264,54 +274,60 @@ $(function(){
         </div>
     </main>
 
-</div>
 
-<div class="ad">
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- ff14 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-4766551689489253"
-     data-ad-slot="4718360521"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+    <div class="ad">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- ff14 -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4766551689489253"
+         data-ad-slot="4718360521"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
 
-</div>
+    </div>
 
-<div class="info">
-    <ul>
+    <div class="info">
+
+        <div class="memo">
+            <h4>MEMO</h4>
+            <ul>
+                <li>
+                    <span>2015.11.17</span>
+                    <div>討伐・討滅戦に極ナイツオブラウンドを追加しました。</div>
+                </li>
+                <li>
+                    <span>2015.07.11</span>
+                    <div>討伐・討滅戦に極ラーヴァナを追加しました。</div>
+                </li>
+                <li>
+                    <span>2015.04.15</span>
+                    <div>討伐・討滅戦に極シヴァを追加しました。</div>
+                </li>
+                <li>
+                    <span>2015.04.13</span>
+                    <div>FF14グリパ帳をリリースしました。現状は必要最小限の実装になっていますが、これから極系・侵攻編・邂逅編のID追加やジョブ希望制の切り替えなど追加していく予定です。</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="info_detail">
         <li>Ver1.03</li>
         <!-- <li>パッチ2.4対応</li> -->
-        <li>
-            制作者：<a href="http://jp.finalfantasyxiv.com/lodestone/character/7627681/" target="_blank">Maromi Dufore</a> , <a href="http://jp.finalfantasyxiv.com/lodestone/character/7625710/" target="_blank">Shio Dufore</a>
+        <li class="info_creator">
+            制作者：
+             <span><a href="http://jp.finalfantasyxiv.com/lodestone/character/7627681/" target="_blank"><img src="images/common/icon_shio.png" alt="">Maromi Dufore</a></span>
+             <span><a href="http://jp.finalfantasyxiv.com/lodestone/character/7625710/" target="_blank"><img src="images/common/icon_shio.png" alt="">Shio Dufore</a></span>
         </li>
     </ul>
 
-    <div class="memo">
-        <h4>MEMO</h4>
-        <ul>
-            <li>
-                <span>2015.11.17</span>
-                <div>討伐・討滅戦に極ナイツオブラウンドを追加しました。</div>
-            </li>
-            <li>
-                <span>2015.07.11</span>
-                <div>討伐・討滅戦に極ラーヴァナを追加しました。</div>
-            </li>
-            <li>
-                <span>2015.04.15</span>
-                <div>討伐・討滅戦に極シヴァを追加しました。</div>
-            </li>
-            <li>
-                <span>2015.04.13</span>
-                <div>FF14グリパ帳をリリースしました。現状は必要最小限の実装になっていますが、これから極系・侵攻編・邂逅編のID追加やジョブ希望制の切り替えなど追加していく予定です。</div>
-            </li>
-        </ul>
-    </div>
+
 </div>
+
 
 <footer>
     <p>記載されている会社名・製品名・システム名などは、各社の商標、または登録商標です。</p>

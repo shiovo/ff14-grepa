@@ -16,12 +16,7 @@ body {
   text-align: center;
   height: 100%;
   line-height: 1.5;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(1, #0f2d4a), color-stop(0.5, black));
-  background: -webkit-linear-gradient(top, black 50%, #0f2d4a 100%);
-  background: -moz-linear-gradient(top, black 50%, #0f2d4a 100%);
-  background: -o-linear-gradient(top, black 50%, #0f2d4a 100%);
-  background: -ms-linear-gradient(top, black 50%, #0f2d4a 100%);
-  background: linear-gradient(top, #000000 50%, #0f2d4a 100%);
+  font-size: 1.4rem;
 }
 
 * {
@@ -101,10 +96,6 @@ main {
 
 /* PC */
 @media only screen and (min-width: 850px) {
-  body {
-    font-size: 1.5em;
-  }
-
   a:hover {
     transition: opacity .3s ease;
     opacity: 0.7;
@@ -113,8 +104,8 @@ main {
 }
 /* SP */
 @media only screen and (max-width: 849px) {
-  body {
-    font-size: 1.5em;
+  html {
+    font-size: 66%;
   }
 }
 /* --------------------------------------------------------------
@@ -508,14 +499,11 @@ footer {
 
 /* PC */
 @media only screen and (min-width: 850px) {
-  body {
-    margin: 0 5%;
-  }
-
   .wrap {
-    margin: 20px auto;
+    margin: 40px auto;
+    padding: 0 5%;
     text-align: left;
-    max-width: 1100px;
+    max-width: 1200px;
     position: relative;
     zoom: 1;
   }
@@ -527,7 +515,6 @@ footer {
   .wrap main {
     zoom: 1;
     width: 900px;
-    border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     display: table;
     width: 100%;
@@ -540,13 +527,12 @@ footer {
   .wrap .l-input, .wrap .l-macro {
     position: relative;
     display: table-cell;
-    padding: 30px;
     vertical-align: top;
   }
   .wrap .l-input {
     display: table-cell;
     width: 65%;
-    border-right: 2px solid rgba(255, 255, 255, 0.2);
+    padding-right: 40px;
   }
   .wrap .l-macro {
     display: table-cell;
@@ -568,12 +554,8 @@ footer {
 }
 /* SP */
 @media only screen and (max-width: 849px) {
-  .m-sns {
-    top: 10px;
-    right: -0px;
-  }
-
   .wrap {
+    margin-top: 10px;
     text-align: left;
   }
 
@@ -583,15 +565,12 @@ footer {
     flex-direction: column;
   }
 
-  main section {
-    padding: 10px 0;
+  .m-input-header {
+    margin: 10px 3%;
   }
-  main .box-input .m-switch {
-    margin: 15px 0;
-    padding: 0 3%;
-  }
-  main .box-select, main .box-macro {
-    padding: 10px 3%;
+
+  .l-macro {
+    padding: 15px 3%;
   }
 
   .info {
@@ -618,13 +597,47 @@ footer {
     module
 -------------------------------------------------------------- */
 /* --------------------------------------------------------------
+    header
+-------------------------------------------------------------- */
+.m-header {
+  text-align: left;
+  background-color: #fff;
+  zoom: 1;
+  padding: 10px;
+}
+.m-header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.m-header h1 {
+  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+  font-size: 2rem;
+  float: left;
+  color: #12377c;
+}
+.m-header h1 span {
+  padding-right: 10px;
+}
+.m-header .m-sns {
+  float: right;
+}
+
+/* PC */
+/* SP */
+@media only screen and (max-width: 849px) {
+  .m-header h1 {
+    font-size: 1.6rem;
+  }
+}
+/* --------------------------------------------------------------
     button
 -------------------------------------------------------------- */
 .btn-text {
   display: inline-block;
   padding: 6px 8px;
   border-radius: 3px;
-  font-size: 90%;
+  font-size: 1.2rem;
   font-weight: normal;
   white-space: nowrap;
   line-height: 1;
@@ -669,19 +682,6 @@ footer {
   right: 0;
   bottom: 0;
   z-index: -1;
-}
-
-.wrap > header {
-  border-radius: 5px;
-  text-align: center;
-  margin: 30px 0;
-}
-.wrap > header h1 {
-  font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
-  font-size: 180%;
-}
-.wrap > header h1 span {
-  padding-right: 10px;
 }
 
 /* select */
@@ -755,7 +755,7 @@ footer {
   display: block;
 }
 .box-input .td-item figcaption small {
-  font-size: 78%;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -791,12 +791,6 @@ footer {
   margin-bottom: 10px;
 }
 
-.m-clear {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-}
-
 /* PC */
 @media only screen and (min-width: 850px) {
   /* input */
@@ -812,11 +806,6 @@ footer {
 }
 /* SP */
 @media only screen and (max-width: 849px) {
-  .wrap > header {
-    margin: 40px 0 5px;
-    font-size: 90%;
-  }
-
   .btn-text {
     padding: 8px;
   }
@@ -832,10 +821,30 @@ footer {
   #macro-text {
     height: 10em;
   }
+}
+/* --------------------------------------------------------------
+    m-input
+-------------------------------------------------------------- */
+.m-input-header {
+  zoom: 1;
+}
+.m-input-header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.m-input-header .box-select {
+  float: left;
+}
+.m-input-header .m-clear {
+  float: right;
+}
 
-  .m-clear {
-    right: 3%;
-    top: 12px;
+/* PC */
+/* SP */
+@media only screen and (max-width: 849px) {
+  .box-select {
+    float: none;
   }
 }
 /* --------------------------------------------------------------
@@ -856,7 +865,7 @@ footer {
   width: 100%;
 }
 .info .memo li {
-  font-size: 90%;
+  font-size: 1.3rem;
   display: table-row;
   width: 100%;
 }
@@ -867,7 +876,21 @@ footer {
   padding-bottom: 8px;
 }
 .info .memo li span {
-  padding-right: 15px;
+  padding-right: 18px;
+}
+
+.info_detail {
+  margin-top: 40px;
+  text-align: center;
+}
+.info_detail .info_creator span {
+  display: inline-block;
+  margin-right: 10px;
+}
+.info_detail .info_creator img {
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 /* PC */
@@ -892,11 +915,6 @@ footer {
 /* --------------------------------------------------------------
     sns
 -------------------------------------------------------------- */
-.m-sns {
-  position: absolute;
-  top: 0px;
-  right: -20px;
-}
 .m-sns li {
   display: inline-block;
   vertical-align: middle;
@@ -910,6 +928,7 @@ footer {
   width: 100px !important;
 }
 .m-sns .btn-about {
+  text-align: center;
   display: block;
   width: 22px;
   height: 22px;
@@ -923,12 +942,6 @@ footer {
 
 /* PC */
 /* SP */
-@media only screen and (max-width: 849px) {
-  .m-sns {
-    top: 15px;
-    right: 0px;
-  }
-}
 /* --------------------------------------------------------------
     modal
 -------------------------------------------------------------- */

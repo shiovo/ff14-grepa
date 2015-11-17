@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/* --------------------------------------------------------------
+    header
+-------------------------------------------------------------- */
+.m-header{
+	text-align: left;
+	background-color: #fff;
+	@include clearfix;
+	padding:10px;
+
+  h1{
+  	font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
+  	font-size: 2rem;
+  	float: left;
+  	color: #12377c;
+ 		span{
+ 			padding-right: 10px;
+ 		}
+  }
+
+  .m-sns{
+  	float: right;
+	}
+}
+
+
+/* PC */
+@include media-pc {
+	.m-header{
+	}
+
+}
+
+/* SP */
+@include media-sp {
+	.m-header{
+		h1{
+			font-size: 1.6rem;
+		}
+	}
+
+}

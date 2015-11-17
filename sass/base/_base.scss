@@ -16,20 +16,19 @@ body {
     text-align: center;
     height: 100%;
     line-height: 1.5;
+    font-size: 1.4rem;
 
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #0f2d4a), color-stop(0.50, #000000));
-    background: -webkit-linear-gradient(top, #000000 50%, #0f2d4a 100%);
-    background: -moz-linear-gradient(top, #000000 50%, #0f2d4a 100%);
-    background: -o-linear-gradient(top, #000000 50%, #0f2d4a 100%);
-    background: -ms-linear-gradient(top, #000000 50%, #0f2d4a 100%);
-    background: linear-gradient(top, #000000 50%, #0f2d4a 100%);
-
+    // background: -webkit-gradient(linear, left top, left bottom, color-stop(1.00, #0f2d4a), color-stop(0.50, #000000));
+    // background: -webkit-linear-gradient(top, #000000 50%, #0f2d4a 100%);
+    // background: -moz-linear-gradient(top, #000000 50%, #0f2d4a 100%);
+    // background: -o-linear-gradient(top, #000000 50%, #0f2d4a 100%);
+    // background: -ms-linear-gradient(top, #000000 50%, #0f2d4a 100%);
+    // background: linear-gradient(top, #000000 50%, #0f2d4a 100%);
 }
 
 *{
     box-sizing:border-box;
 }
-
 
 a {
     color: $color-link;
@@ -107,7 +106,6 @@ main{
 /* PC */
 @include media-pc {
     body {
-        font-size: 1.5em;
     }
 
     a:hover {
@@ -119,9 +117,8 @@ main{
 
 /* SP */
 @include media-sp {
-
-    body {
-        font-size: 1.5em;
+    html{
+        font-size: 66%;
     }
 
 }

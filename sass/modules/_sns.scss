@@ -4,9 +4,6 @@
     sns
 -------------------------------------------------------------- */
 .m-sns{
-    position: absolute;
-    top: 0px;
-    right: -20px;
     li{
         display: inline-block;
         vertical-align: middle;
@@ -22,6 +19,7 @@
     }
 
 	.btn-about{
+        text-align:center;
 		display: block;
 		width:22px;
 		height: 22px;
@@ -41,9 +39,6 @@
 
 /* SP */
 @include media-sp {
-	.m-sns{
-		top: 15px;
-		right:0px;
-	}
+
 
 }
