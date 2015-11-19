@@ -4,26 +4,43 @@
     m-input
 -------------------------------------------------------------- */
 .m-input-header{
-	@include clearfix;
-
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
 	.box-select{
-		float: left;
 	}
 
 	.m-clear{
-		float: right;
+    text-align: right;
 	}
 }
 
 
 /* PC */
 @include media-pc {
-	
+.m-input-header{
+	flex-direction:row;
+}
 }
 
 /* SP */
 @include media-sp {
+
+.m-input-header{
+	-webkit-flex-direction:column;
+	flex-direction:column;
+
 	.box-select{
-		float: none;
+		-webkit-order:2;
+    order:2;
 	}
+	.m-clear{
+		-webkit-order:1;
+    order:1;
+
+    margin-bottom: 10px;
+	}
+}
+
 }

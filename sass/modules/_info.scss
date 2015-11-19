@@ -81,7 +81,7 @@
 @include media-sp {
 	.info{
 		.memo{
-			margin-top: 30px;
+			margin-top: 20px;
 			padding: 15px;
 
 			h4{
@@ -89,6 +89,11 @@
 			}
 		}
 	}
+
+.info_detail{
+	margin-top: 15px;
+}
+
 	.info_creator{
 
 		img{

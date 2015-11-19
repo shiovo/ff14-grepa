@@ -109,7 +109,7 @@ main {
 /* SP */
 @media only screen and (max-width: 849px) {
   html {
-    font-size: 66%;
+    font-size: 64%;
   }
 }
 /* --------------------------------------------------------------
@@ -559,7 +559,6 @@ footer {
 /* SP */
 @media only screen and (max-width: 849px) {
   .wrap {
-    margin-top: 10px;
     text-align: left;
   }
 
@@ -836,25 +835,35 @@ footer {
     m-input
 -------------------------------------------------------------- */
 .m-input-header {
-  zoom: 1;
-}
-.m-input-header:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.m-input-header .box-select {
-  float: left;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
 }
 .m-input-header .m-clear {
-  float: right;
+  text-align: right;
 }
 
 /* PC */
+@media only screen and (min-width: 850px) {
+  .m-input-header {
+    flex-direction: row;
+  }
+}
 /* SP */
 @media only screen and (max-width: 849px) {
-  .box-select {
-    float: none;
+  .m-input-header {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+  .m-input-header .box-select {
+    -webkit-order: 2;
+    order: 2;
+  }
+  .m-input-header .m-clear {
+    -webkit-order: 1;
+    order: 1;
+    margin-bottom: 10px;
   }
 }
 /* --------------------------------------------------------------
@@ -918,11 +927,15 @@ footer {
 /* SP */
 @media only screen and (max-width: 849px) {
   .info .memo {
-    margin-top: 30px;
+    margin-top: 20px;
     padding: 15px;
   }
   .info .memo h4 {
     margin-bottom: 10px;
+  }
+
+  .info_detail {
+    margin-top: 15px;
   }
 
   .info_creator img {
