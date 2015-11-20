@@ -633,6 +633,9 @@ footer {
   .m-header .m-sns {
     margin-top: 5px;
   }
+  .m-header h1 {
+    width: 200px;
+  }
 }
 /* SP */
 @media only screen and (max-width: 849px) {
@@ -640,7 +643,7 @@ footer {
     padding: 10px 3%;
   }
   .m-header h1 {
-    font-size: 1.6rem;
+    width: 160px;
   }
 }
 /* --------------------------------------------------------------
