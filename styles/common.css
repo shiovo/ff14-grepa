@@ -705,7 +705,7 @@ footer {
 }
 .box-input table th, .box-input table td {
   padding: 8px 5px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .box-input table input {
   width: 100%;
@@ -807,7 +807,7 @@ footer {
     padding-top: 10px !important;
   }
   .box-input table {
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
   .box-input .td-item figure {
     width: 40px;
