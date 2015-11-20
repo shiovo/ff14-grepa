@@ -4,17 +4,20 @@
     header
 -------------------------------------------------------------- */
 .m-header{
-	text-align: left;
 	//background-color: rgba(0,0,0,0.3);
 	@include clearfix;
 	border-bottom: 1px solid $color-border;
-	position: relative;
+
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	-webkit-justify-content: space-between;
+	align-items: center;
 
 
   h1{
   	// font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "メイリオ", Meiryo, serif;
   	font-size: 2rem;
-  	float: left;
   	color: #fff;
  		span{
  			padding-right: 10px;
@@ -22,26 +25,19 @@
   }
 
   .m-sns{
-  	float: right;
+  		margin-left: auto;
+  		margin-top: 5px;
 	}
 }
-
-// .hr{
-// 	height: 1px;
-// 	background-color: rgba(255,255,255, 0.1);
-// }
 
 
 /* PC */
 @include media-pc {
 .m-header{
-	padding:10px 20px;
-	.m-sns{
-		margin-top: 5px;
-	}
+	padding:12px 20px;
 
 	h1{
-		width: 200px;
+		width: 190px;
 	}
 }
 

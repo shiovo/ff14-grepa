@@ -603,10 +603,13 @@ footer {
     header
 -------------------------------------------------------------- */
 .m-header {
-  text-align: left;
   zoom: 1;
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  position: relative;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  align-items: center;
 }
 .m-header:after {
   content: "";
@@ -615,26 +618,23 @@ footer {
 }
 .m-header h1 {
   font-size: 2rem;
-  float: left;
   color: #fff;
 }
 .m-header h1 span {
   padding-right: 10px;
 }
 .m-header .m-sns {
-  float: right;
+  margin-left: auto;
+  margin-top: 5px;
 }
 
 /* PC */
 @media only screen and (min-width: 850px) {
   .m-header {
-    padding: 10px 20px;
-  }
-  .m-header .m-sns {
-    margin-top: 5px;
+    padding: 12px 20px;
   }
   .m-header h1 {
-    width: 200px;
+    width: 190px;
   }
 }
 /* SP */
