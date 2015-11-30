@@ -271,6 +271,12 @@ var data = [
 						shortName: 'ヒラ足',
 						job: 0,
 						icon: 'images/item/areki_z/2/b07_3.png'
+					},
+					{
+						name: '青の硬化薬',
+						shortName: '薬',
+						job: 0,
+						icon: 'images/item/areki_z/2/d01.png'
 					}
 				]
 			},
@@ -360,6 +366,157 @@ var data = [
 						shortName: 'ヒラ脚',
 						job: 0,
 						icon: 'images/item/areki_z/3/b07_2.png'
+					},
+					{
+						name: '青の強化繊維',
+						shortName: '繊維',
+						job: 0,
+						icon: 'images/item/areki_z/3/d01.png'
+					}
+				]
+			},
+			{
+				name: 'アレキ零式4層',
+				items: [
+					{
+						name: 'ゴルディオンブレード',
+						shortName: '片手剣',
+						job: 0,
+						icon: 'images/item/areki_z/4/a01.png'
+					},
+					{
+						name: 'ゴルディオンシールド',
+						shortName: '盾',
+						job: 0,
+						icon: 'images/item/areki_z/4/c01.png'
+					},
+					{
+						name: 'ゴルディオンアクス',
+						shortName: '斧',
+						job: 0,
+						icon: 'images/item/areki_z/4/a02.png'
+					},
+					{
+						name: 'ゴルディオングレートソード',
+						shortName: '両手剣',
+						job: 0,
+						icon: 'images/item/areki_z/4/a03.png'
+					},
+					{
+						name: 'ゴルディオンセスタス',
+						shortName: '拳',
+						job: 0,
+						icon: 'images/item/areki_z/4/a04.png'
+					},
+					{
+						name: 'ゴルディオントライデント',
+						shortName: '槍',
+						job: 0,
+						icon: 'images/item/areki_z/4/a06.png'
+					},
+					{
+						name: 'ゴルディオンバゼラード',
+						shortName: '双剣',
+						job: 0,
+						icon: 'images/item/areki_z/4/a05.png'
+					},
+					{
+						name: 'ゴルディオンロングボウ',
+						shortName: '弓',
+						job: 0,
+						icon: 'images/item/areki_z/4/a07.png'
+					},
+					{
+						name: 'ゴルディオンマスケトン',
+						shortName: '銃',
+						job: 0,
+						icon: 'images/item/areki_z/4/a08.png'
+					},
+					{
+						name: 'ゴルディオンスタッフ',
+						shortName: '黒杖',
+						job: 0,
+						icon: 'images/item/areki_z/4/a09.png'
+					},
+
+					{
+						name: 'ゴルディオングリモア',
+						shortName: '召本',
+						job: 0,
+						icon: 'images/item/areki_z/4/a10.png'
+					},
+
+					{
+						name: 'ゴルディオンケーン',
+						shortName: '白杖',
+						job: 0,
+						icon: 'images/item/areki_z/4/a11.png'
+					},
+					{
+						name: 'ゴルディオンコーデックス',
+						shortName: '学本',
+						job: 0,
+						icon: 'images/item/areki_z/4/a12.png'
+					},
+					{
+						name: 'ゴルディオンアストロメーター',
+						shortName: '天球儀',
+						job: 0,
+						icon: 'images/item/areki_z/4/a13.png'
+					},
+					{
+						name: 'ゴルディオン・ディフェンダープレートメイル',
+						shortName: 'タンク胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b01.png'
+					},
+					{
+						name: 'ゴルディオン・スレイヤーメイル',
+						shortName: '竜胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b02.png'
+					},
+					{
+						name: 'ゴルディオン・ストライカーメイル',
+						shortName: 'モンク胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b03.png'
+					},
+					{
+						name: 'ゴルディオン・レンジャーコースリット',
+						shortName: 'レンジ胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b04.png'
+					},
+					{
+						name: 'ゴルディオン・スカウトコースリット',
+						shortName: '忍胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b05.png'
+					},
+					{
+						name: 'ゴルディオン・キャスターガウン',
+						shortName: 'キャス胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b06.png'
+					},
+					{
+						name: 'ゴルディオン・ヒーラーガウン',
+						shortName: 'ヒラ胴',
+						job: 0,
+						icon: 'images/item/areki_z/4/b07.png'
+					},
+					{
+						name: '青の強化薬',
+						shortName: '薬',
+						job: 0,
+						icon: 'images/item/areki_z/4/d02.png'
+					},
+					{
+						name: 'ゴブリウォーカーギア',
+						shortName: 'タチコマ',
+						job: 0,
+						icon: 'images/item/areki_z/4/d01.png'
 					}
 				]
 			},
