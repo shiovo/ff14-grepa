@@ -997,6 +997,12 @@ var data = [
 				name: '極セフィロト',
 				items: [
 					{
+						name: 'ウォーリングラナーホイッスル',
+						shortName: '',
+						job: 0,
+						icon: 'images/item/common/mount01.png'
+					},
+					{
 						name: 'ブレード・オブ・セフィロト',
 						shortName: '片手剣',
 						job: 0,
@@ -1089,6 +1095,12 @@ var data = [
 				name: '極ナイツ・オブ・ラウンド',
 				items: [
 					{
+						name: 'ラナー・オブ・ラウンドホイッスル',
+						shortName: '',
+						job: 0,
+						icon: 'images/item/common/mount01.png'
+					},
+					{
 						name: 'ヘヴンスソード',
 						shortName: '片手剣',
 						job: 0,
@@ -1180,6 +1192,12 @@ var data = [
 			{
 				name: '極ラーヴァナ',
 				items: [
+					{
+						name: 'ラースラナーホイッスル',
+						shortName: '',
+						job: 0,
+						icon: 'images/item/common/mount01.png'
+					},
 					{
 						name: 'ラーヴァナシャムシール',
 						shortName: '片手剣',
