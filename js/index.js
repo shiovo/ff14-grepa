@@ -998,7 +998,7 @@ var data = [
 				items: [
 					{
 						name: 'ウォーリングラナーホイッスル',
-						shortName: '',
+						shortName: '鳥',
 						job: 0,
 						icon: 'images/item/common/mount01.png'
 					},
@@ -1096,7 +1096,7 @@ var data = [
 				items: [
 					{
 						name: 'ラナー・オブ・ラウンドホイッスル',
-						shortName: '',
+						shortName: '鳥',
 						job: 0,
 						icon: 'images/item/common/mount01.png'
 					},
@@ -1194,7 +1194,7 @@ var data = [
 				items: [
 					{
 						name: 'ラースラナーホイッスル',
-						shortName: '',
+						shortName: '鳥',
 						job: 0,
 						icon: 'images/item/common/mount01.png'
 					},
