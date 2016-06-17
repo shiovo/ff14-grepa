@@ -140,6 +140,12 @@ var data = [
 						shortName: 'MND指',
 						job: 0,
 						icon: 'images/item/areki_z/1/c04.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -277,6 +283,12 @@ var data = [
 						shortName: '薬',
 						job: 0,
 						icon: 'images/item/areki_z/2/d01.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -372,6 +384,12 @@ var data = [
 						shortName: '繊維',
 						job: 0,
 						icon: 'images/item/areki_z/3/d01.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -517,6 +535,12 @@ var data = [
 						shortName: 'タチコマ',
 						job: 0,
 						icon: 'images/item/areki_z/4/d01.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -642,6 +666,12 @@ var data = [
 						shortName: 'MND耳',
 						job: 0,
 						icon: 'images/item/sinsei/c02.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -755,6 +785,12 @@ var data = [
 						shortName: 'MND腕',
 						job: 0,
 						icon: 'images/item/sinsei/c03.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -869,6 +905,12 @@ var data = [
 						shortName: 'MND指',
 						job: 0,
 						icon: 'images/item/sinsei/c04.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -984,6 +1026,12 @@ var data = [
 						shortName: 'ヒラ胴',
 						job: 6,
 						icon: 'images/item/sinsei/4/b07.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			}
@@ -1088,6 +1136,12 @@ var data = [
 						shortName: '天球儀',
 						job: 0,
 						icon: 'images/item/goku_nees/a13.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -1187,6 +1241,12 @@ var data = [
 						shortName: '天球儀',
 						job: 0,
 						icon: 'images/item/goku_sefi/a13.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -1285,6 +1345,12 @@ var data = [
 						shortName: '天球儀',
 						job: 0,
 						icon: 'images/item/goku_kor/a13.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -1383,6 +1449,12 @@ var data = [
 						shortName: '天球儀',
 						job: 0,
 						icon: 'images/item/goku_ravana/a13.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			},
@@ -1497,6 +1569,12 @@ var data = [
 						shortName: 'MND腕',
 						job: 0,
 						icon: 'images/item/goku_siva/c01.png'
+					},
+					{
+						name: '希望品無し',
+						shortName: '無',
+						job: 0,
+						icon: 'images/item/common/none.png'
 					}
 				]
 			}

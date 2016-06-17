@@ -852,6 +852,10 @@ footer {
   .m-input-header {
     flex-direction: row;
   }
+
+  .m-option {
+    margin-top: 10px;
+  }
 }
 /* SP */
 @media only screen and (max-width: 849px) {
@@ -867,6 +871,10 @@ footer {
     -webkit-order: 1;
     order: 1;
     margin-bottom: 10px;
+  }
+
+  .m-option {
+    margin: 10px 3%;
   }
 }
 /* --------------------------------------------------------------

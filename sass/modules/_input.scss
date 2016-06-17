@@ -17,11 +17,17 @@
 }
 
 
+
 /* PC */
 @include media-pc {
 .m-input-header{
 	flex-direction:row;
 }
+
+.m-option{
+  margin-top: 10px;
+}
+
 }
 
 /* SP */
@@ -41,6 +47,10 @@
 
     margin-bottom: 10px;
 	}
+}
+
+.m-option{
+  margin:10px 3%;
 }
 
 }
