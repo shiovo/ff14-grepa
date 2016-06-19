@@ -1625,6 +1625,42 @@ function clearSaveData() {
 	localStorage.removeItem('data');
 }
 
+/**
+ * ダンジョン選択肢更新
+ */
+function updateSelectIdOptions() {
+	var ids = getIds();
+	var html = '';
+
+	// ダンジョン選択肢を再設定
+	for (var i=0,l=ids.length;i<l;i++) {
+		html += '<option value="'+i+'">'+ids[i].name+'</option>';
+	}
+
+	selectId.innerHTML = html;
+	selectId.selectedIndex = 0;
+}
+
+/**
+ * アイテム選択肢更新
+ */
+function resetSelectItemOptions() {
+	var items = getItems();
+	var itemSelects = members.querySelectorAll('.select-item');
+	var optionHtml = '';
+	var i,l,item,select;
+	for (i=0,l=items.length;i<l;i++) {
+		item = items[i];
+		optionHtml += '<option value="'+i+'">'+item.shortName+'</option>';
+	}
+
+	for (i=0,l=itemSelects.length;i<l;i++) {
+		select = itemSelects[i];
+		select.innerHTML = optionHtml;
+		select.selectedIndex = 0;
+	}
+}
+
 function restore() {
 	var json = localStorage.getItem('data');
 	if (!json) {
@@ -1633,28 +1669,83 @@ function restore() {
 
 	var obj = JSON.parse(json);
 
+	// カテゴリ選択復元
 	selectCategory.selectedIndex = obj.category;
-	selectCategory.dispatchEvent(new Event('change'));
+	// ダンジョン選択肢更新
+	updateSelectIdOptions();
+	// ダンジョン選択復元
 	selectId.selectedIndex = obj.id;
-	selectId.dispatchEvent(new Event('change'));
+	// アイテム選択肢を更新
+	resetSelectItemOptions();
 
 	var memberRows = members.querySelectorAll('tbody tr');
 	obj.member.forEach(function (member, i) {
-		var name = memberRows.item(i).querySelector('.input-name');
-		name.value = member.name;
-		name.dispatchEvent(new Event('change', {bubbles:true}));
+		// メンバーデータを復元
+		setMemberData(i, member.name, member.item);
 
-		var item = memberRows.item(i).querySelector('.select-item');
-		item.selectedIndex = member.item;
-		item.dispatchEvent(new Event('change', {bubbles:true}));
-
+		// 決定済の場合
 		if (member.selected) {
-			memberRows.item(i).querySelector('.btn-text').dispatchEvent(
-				new MouseEvent('click', {bubbles:true}));
+			decisionMemberItem(i);
+		} else {
+			editMemberItem(i);
 		}
 	});
 }
 
+/**
+ * メンバーデータセット
+ */
+function setMemberData(memberIndex, nameValue, itemIndex) {
+	var member = members.querySelectorAll('tbody tr')[memberIndex];
+	var name = member.querySelector('.input-name');
+	var item = member.querySelector('.select-item');
+
+console.log(member);
+console.log(name);
+	name.value = nameValue || '';
+	item.selectedIndex = itemIndex || 0;
+}
+
+/**
+ * アイテム決定
+ */
+function decisionMemberItem(memberIndex) {
+	var member = members.querySelectorAll('tbody tr')[memberIndex];
+	var name = member.querySelector('.input-name');
+	var item = member.querySelector('.select-item');
+	var btn  = member.querySelector('button');
+
+	member.classList.add('is-selected');
+
+	var nameDest = name.nextSibling;
+	nameDest.innerHTML = name.value || '';
+
+	var itemData = getItems()[item.selectedIndex || 0];
+	var itemDest = item.nextSibling;
+	itemDest.querySelector('figure img').src = itemData.icon;
+	itemDest.querySelector('figcaption span').innerHTML = item.shortName;
+	itemDest.querySelector('figcaption small').innerHTML = '<' + item.name + '>';
+
+	btn.classList.add('is-edit');
+	btn.innerHTML = '変更'
+}
+
+/**
+ * アイテム変更
+ */
+function editMemberItem(i) {
+	var member = members.querySelectorAll('tbody tr')[i];
+	var btn  = member.querySelector('button');
+
+	member.classList.remove('is-selected');
+
+	btn.classList.remove('is-edit');
+	btn.innerHTML = '決定';
+}
+
+/**
+ * マクロ設定
+ */
 function renderMacroText() {
 	var text = '';
 	var isShowName = showName.checked === true;
@@ -1708,15 +1799,7 @@ document.querySelector('.l-macro .m-switch').addEventListener('change', renderMa
 
 // カテゴリ変更
 selectCategory.addEventListener('change', function () {
-	var ids = getIds();
-	var html = '';
-
-	// ダンジョン選択肢を再設定
-	for (var i=0,l=ids.length;i<l;i++) {
-		html += '<option value="'+i+'">'+ids[i].name+'</option>';
-	}
-
-	selectId.innerHTML = html;
+	updateSelectIdOptions();
 
 	// 最初のダンジョンを選択
 	selectId.selectedIndex = 0;
@@ -1742,25 +1825,6 @@ selectId.addEventListener('change', function() {
 		selectItem.selectedIndex = 0;
 		selectItem.dispatchEvent(new Event('change', {bubbles:true}));
 	}
-}, false);
-
-members.addEventListener('change', function(e){
-	if(e.target.classList.contains('input-name')){
-		e.target.nextSibling.innerHTML = e.target.value;
-	}else if(e.target.classList.contains('select-item')){
-		var item = getItems(selectCategory.selectedIndex,selectId.selectedIndex)[e.target.selectedIndex];
-		var dest = e.target.nextSibling;
-
-		dest.querySelector('figure img').src = item.icon;
-		dest.querySelector('figcaption span').innerHTML = item.shortName;
-		dest.querySelector('figcaption small').innerHTML = '<' + item.name + '>';
-
-		var btnText = e.target.parentNode.parentNode.querySelector('.btn-text');
-
-		btnText.classList.add('is-edit');
-		btnText.dispatchEvent(new Event('click', {bubbles:true}));
-	}
-
 }, false);
 
 members.addEventListener('click', function(e){
