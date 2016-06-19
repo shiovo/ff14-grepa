@@ -1,0 +1,42 @@
+/* --------------------------------------------------------------
+    option
+-------------------------------------------------------------- */
+.m-option-title {
+  font-size: $font-size-m;
+}
+.m-option{
+  border: 1px solid $color-tb-border;
+}
+.m-option-item {
+  display: flex;
+  padding: 10px;
+  .m-option-item__title {
+  }
+  .m-option-item__body {
+    margin-left: 10px;
+    flex-grow: 1;
+    width: 0;
+  }
+}
+
+/* PC */
+@include media-pc {
+.m-option-title {
+  margin-top: 10px;
+}
+.m-option {
+  margin-top: 5px;
+}
+
+}
+
+/* SP */
+@include media-sp {
+.m-option{
+  margin:10px 3%;
+}
+.m-option {
+  margin: 5px 3%;
+}
+
+}

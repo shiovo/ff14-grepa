@@ -1583,13 +1583,6 @@ var data = [
 	}
 ];
 
-function getIds(index) {
-	return data[index].ids;
-}
-
-function getItems(i, l) {
-	return getIds(i)[l].items;
-}
 
 var selectCategory = document.getElementById('select-category');
 var selectId = document.getElementById('select-id');
@@ -1598,6 +1591,18 @@ var selectItems = document.querySelectorAll('#members select');
 var clearAll = document.querySelector('.m-clear .btn-text');
 var macroText = document.querySelector('#macro-text');
 var showName = document.querySelector('#switch-name2');
+
+// ダンジョン配列を取得
+function getIds(index) {
+	index = index || selectCategory.selectedIndex || 0;
+	return data[index].ids;
+}
+
+// ドロップアイテム配列を取得
+function getItems(categoryIndex, idIndex) {
+	idIndex = idIndex || selectId.selectedIndex || 0;
+	return getIds(categoryIndex)[idIndex].items;
+}
 
 function save() {
 	var memberdata = [];
@@ -1689,6 +1694,7 @@ function renderMacroText() {
 	macroText.value = text;
 }
 
+// カテゴリセレクトボックス初期化
 (function () {
 	var html = '';
 	for (var i=0,l=data.length;i<l;i++) {
@@ -1700,25 +1706,31 @@ function renderMacroText() {
 
 document.querySelector('.l-macro .m-switch').addEventListener('change', renderMacroText, false);
 
+// カテゴリ変更
 selectCategory.addEventListener('change', function () {
-	var ids = getIds(this.selectedIndex);
+	var ids = getIds();
 	var html = '';
 
+	// ダンジョン選択肢を再設定
 	for (var i=0,l=ids.length;i<l;i++) {
 		html += '<option value="'+i+'">'+ids[i].name+'</option>';
 	}
 
 	selectId.innerHTML = html;
+
+	// 最初のダンジョンを選択
 	selectId.selectedIndex = 0;
 	selectId.dispatchEvent(new Event('change'));
 }, false);
 
+// ダンジョン変更
 selectId.addEventListener('change', function() {
-	var items = getItems(selectCategory.selectedIndex, this.selectedIndex);
+	var items = getItems();
 	var html = '';
 
 	var i,l;
 
+	// アイテム選択肢を再設定
 	for (i=0,l=items.length;i<l;i++) {
 		html += '<option value="'+i+'">'+items[i].shortName+'</option>';
 	}
@@ -1760,7 +1772,7 @@ members.addEventListener('click', function(e){
  		}else{
  			e.target.classList.add('is-edit');
 			e.target.parentNode.parentNode.classList.add('is-selected');
-			e.target.innerHTML = '編集';
+			e.target.innerHTML = '変更';
 
 			save();
  		}
