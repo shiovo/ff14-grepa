@@ -1,13 +1,15 @@
 // @file gulpfile.js
-var gulp = require('gulp');
+var gulp        = require('gulp');
 var runSequence = require('run-sequence');
-var sass = require('gulp-sass');
-var sassGlob = require('gulp-sass-glob');
-var connect = require('gulp-connect');
-var connectSSI = require('connect-ssi');
-var open = require('gulp-open');
-var plumber = require('gulp-plumber');
-var watch = require('gulp-watch');
+var sass        = require('gulp-sass');
+var sassGlob    = require('gulp-sass-glob');
+var connect     = require('gulp-connect');
+var connectSSI  = require('connect-ssi');
+var open        = require('gulp-open');
+var plumber     = require('gulp-plumber');
+var watch       = require('gulp-watch');
+var webpack     = require('gulp-webpack');
+var named       = require('vinyl-named');
 
 //--------------------------
 // setting
@@ -39,6 +41,27 @@ gulp.task("sass", function() {
         .pipe(sassGlob())
         .pipe(sass())
         .pipe(gulp.dest('styles/'));
+});
+
+gulp.task('scripts', function () {
+  gulp.src('js-src/*.js')
+    .pipe(plumber())
+    .pipe(named())
+    .pipe(webpack({
+      cache: true,
+      output: {
+        pathinfo: true
+      },
+      resolve: {
+        alias: {
+
+        },
+        extensions: ['', '.js']
+      },
+      module: {
+      }
+    }))
+    .pipe(gulp.dest('./js'));
 });
 
 //ローカルサーバー
@@ -82,6 +105,7 @@ gulp.task('watch',function(){
   watch(['./sass/**/*.scss'],run('sass')); //scssファイルを監視
   watch(['styles/**/*.css'],run('reload'));  //cssファイルを監視
   watch(['js/**/*.js'],run('reload')); //jsファイルを監視
+  watch(['js-src/**/*'],run('scripts')); //jsファイルを監視
 
   // gulp.watch(['**/*.html'],['reload']);    //htmlファイルを監視
   // gulp.watch(['sass/**/*.scss'],['sass']); //scssファイルを監視
