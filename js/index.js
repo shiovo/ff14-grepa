@@ -205,7 +205,7 @@
 	  var member = members.querySelectorAll('tbody tr')[memberIndex];
 	  var name = member.querySelector('.input-name');
 	  var item = member.querySelector('.select-item');
-	  var btn  = member.querySelector('button');
+	  var btn  = member.querySelector('.js-decision');
 
 	  member.classList.add('is-selected');
 
@@ -227,7 +227,7 @@
 	 */
 	function editMemberItem(i) {
 	  var member = members.querySelectorAll('tbody tr')[i];
-	  var btn  = member.querySelector('button');
+	  var btn  = member.querySelector('.js-decision');
 
 	  member.classList.remove('is-selected');
 
@@ -352,7 +352,7 @@
 
 	// 決定・変更ボタン
 	members.addEventListener('click', function(e){
-	  if(!e.target.classList.contains('btn-text')){
+	  if(!e.target.classList.contains('js-decision')){
 	    return;
 	  }
 
@@ -404,6 +404,11 @@
 	clearAll();
 	restore();
 
+	var modal = new (__webpack_require__(/*! ./index/select-item-modal */ 19))( document.querySelector('.select-item-modal') );
+	var store = __webpack_require__(/*! ./index/store */ 20);
+	store.restore();
+	modal.show(0);
+
 
 /***/ },
 /* 2 */
@@ -413,7 +418,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var raids = __webpack_require__(/*! ./raids */ 3);
-	var extremes = __webpack_require__(/*! ./extremes */ 12);
+	var extremes = __webpack_require__(/*! ./extremes */ 13);
 
 	var data = [
 	  {
@@ -435,28 +440,98 @@
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	var IdData = __webpack_require__(/*! ../id-data */ 4);
+
 	module.exports = [
 	  // require('alexander_ritudou_zero_01'),
 	  // require('alexander_ritudou_zero_02'),
 	  // require('alexander_ritudou_zero_03'),
 	  // require('alexander_ritudou_zero_04'),
 
-	  __webpack_require__(/*! ./alexander_kidou_zero_01 */ 4),
-	  __webpack_require__(/*! ./alexander_kidou_zero_02 */ 5),
-	  __webpack_require__(/*! ./alexander_kidou_zero_03 */ 6),
-	  __webpack_require__(/*! ./alexander_kidou_zero_04 */ 7),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_01 */ 5)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_02 */ 6)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_03 */ 7)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_04 */ 8)),
 
-	  __webpack_require__(/*! ./bahamut_sinsei_01 */ 8),
-	  __webpack_require__(/*! ./bahamut_sinsei_02 */ 9),
-	  __webpack_require__(/*! ./bahamut_sinsei_03 */ 10),
-	  __webpack_require__(/*! ./bahamut_sinsei_04 */ 11),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_01 */ 9)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_02 */ 10)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_03 */ 11)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_04 */ 12)),
 
 	];
 
 
 /***/ },
 /* 4 */
+/*!********************************!*\
+  !*** ./js-src/data/id-data.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	function IdData(data) {
+	  this.name       = null;
+	  this.items      = [];
+	  this.categories = [];
+
+	  this.setData(data);
+	}
+
+	var p = IdData.prototype;
+
+	p.setData = function (data) {
+	  this.name  = data.name;
+	  this.items = data.items;
+
+	  var categories = {};
+	  this.categories = [];
+	  this.hasCategory = false;
+	  this.items.forEach(function (item, i) {
+	    var cat = this.getCagetoryByShortName(item.shortName);
+	    var category = categories[cat.categoryName];
+	    if (!category) {
+	      category = categories[cat.category] = {
+	        category: cat.category,
+	        name: cat.categoryName,
+	        items: []
+	      };
+	      this.categories.push(category);
+	    }
+	    if (cat.categoryName) {
+	      this.hasCategory = true;
+	    }
+	    category.items.push({
+	      id: i,
+	      item: item,
+	      name: cat.itemName
+	    });
+	  }, this);
+	};
+
+	p.getCagetoryByShortName = function (name) {
+	  var match;
+	  var category;
+	  var regParts = /(頭|胴|手|腰|脚|足|首|耳|腕|指)$/;
+	  if (match = name.match(regParts)) {
+	    category = name.replace(regParts, '')
+	    return {
+	      category: category,
+	      categoryName: category,
+	      itemName: match[1]
+	    };
+	  }
+
+	  return {
+	    category: name,
+	    categoryName: '',
+	    itemName: name
+	  };
+	};
+
+	module.exports = IdData;
+
+
+/***/ },
+/* 5 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_01.js ***!
   \******************************************************/
@@ -596,7 +671,7 @@
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_02.js ***!
   \******************************************************/
@@ -748,7 +823,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_03.js ***!
   \******************************************************/
@@ -858,7 +933,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_04.js ***!
   \******************************************************/
@@ -1018,7 +1093,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_01.js ***!
   \************************************************/
@@ -1158,7 +1233,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_02.js ***!
   \************************************************/
@@ -1286,7 +1361,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_03.js ***!
   \************************************************/
@@ -1414,7 +1489,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_04.js ***!
   \************************************************/
@@ -1543,7 +1618,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/index.js ***!
   \***************************************/
@@ -1551,17 +1626,17 @@
 
 	
 	module.exports = [
-	  __webpack_require__(/*! ./nidhogg */ 13),
-	  __webpack_require__(/*! ./sephiroth */ 14),
-	  __webpack_require__(/*! ./nights_of_round */ 15),
-	  __webpack_require__(/*! ./ravana */ 16),
-	  __webpack_require__(/*! ./shiva */ 17),
+	  __webpack_require__(/*! ./nidhogg */ 14),
+	  __webpack_require__(/*! ./sephiroth */ 15),
+	  __webpack_require__(/*! ./nights_of_round */ 16),
+	  __webpack_require__(/*! ./ravana */ 17),
+	  __webpack_require__(/*! ./shiva */ 18),
 	];
 
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /*!*****************************************!*\
   !*** ./js-src/data/extremes/nidhogg.js ***!
   \*****************************************/
@@ -1673,7 +1748,7 @@
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /*!*******************************************!*\
   !*** ./js-src/data/extremes/sephiroth.js ***!
   \*******************************************/
@@ -1785,7 +1860,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /*!*************************************************!*\
   !*** ./js-src/data/extremes/nights_of_round.js ***!
   \*************************************************/
@@ -1897,7 +1972,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /*!****************************************!*\
   !*** ./js-src/data/extremes/ravana.js ***!
   \****************************************/
@@ -2010,7 +2085,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/shiva.js ***!
   \***************************************/
@@ -2135,6 +2210,260 @@
 	    }
 	  ]
 	};
+
+
+/***/ },
+/* 19 */
+/*!*******************************************!*\
+  !*** ./js-src/index/select-item-modal.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var store = __webpack_require__(/*! ./store */ 20);
+
+	function SelectItemModal(el) {
+	  var self = this;
+
+	  this.el = el;
+	  this.itemsContainer = this.el.querySelector('.select-item-modal__items tbody');
+	  this.memberIndex = null;
+
+	  this.el.addEventListener('click', function (e) {
+	    if (e.target.classList.contains('js-dismiss')) {
+	      self.hide();
+	    } else if (e.target.classList.contains('js-close')) {
+	      self.applySelect();
+	      self.hide();
+	    }
+
+	  }, false);
+	}
+
+	var p = SelectItemModal.prototype;
+
+	p.applySelect = function () {
+	  store.setSelectedItems(this.memberIndex, this.getSelectedItems());
+	};
+
+	p.render = function () {
+	  // アイテムを描画
+	  var html = '';
+	  var instance = store.getInstance();
+	  if (instance.hasCategory) {
+	    html = this._renderCategoryTable(instance);
+	  } else {
+	    html = this._renderBasicTable(instance);
+	  }
+	  this.itemsContainer.innerHTML = html;
+
+	  // 選択中
+	  store.getSelectedItems(this.memberIndex).forEach(function (id) {
+	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
+	    itemImg.classList.add('is-selected');
+	  }, this);
+
+	  // 選択不可
+	  store.getUnSelectableItems(this.memberIndex).forEach(function (id) {
+	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
+	    itemImg.classList.add('is-disabled');
+	  }, this);
+	};
+
+	p._renderBasicTable = function (instance) {
+	  var html = '';
+	  instance.items.forEach(function (item, i) {
+	    html += '<tr><td>'+(this._renderItem(item, i))+'</td></tr>';
+	  }, this);
+	  return html;
+	};
+
+	p._renderCategoryTable = function (instance) {
+	  var html = '';
+	  instance.categories.forEach(function (category) {
+	    html += '<tr><th>'+(this._renderCategoryButton(category))+'</th><td>';
+	    category.items.forEach(function (item) {
+	      html += this._renderItem(item.item, item.id, item.name);
+	    }, this);
+	    html += '</td></tr>';
+	  }, this);
+	  return html;
+	};
+
+	p._renderItem = function (item, id, displayName) {
+	  return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
+	          '<div class="select-item-modal__itemImg"><img src="'+item.icon+'"></div>'+
+	          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
+	         '</div>';
+	};
+
+	p._renderCategoryButton = function (category) {
+	  if (category.name) {
+	    return '<button class="btn-text">'+category.name+'</button>';
+	  } else {
+	    return '';
+	  }
+	};
+
+	p.show = function (memberIndex) {
+	  if (this.memberIndex !== memberIndex) {
+	    this.memberIndex = memberIndex;
+	    this.render();
+	  }
+	  this.el.classList.add('is-active');
+	};
+
+	p.hide = function () {
+	  this.el.classList.remove('is-active');
+	};
+
+	module.exports = SelectItemModal;
+
+
+/***/ },
+/* 20 */
+/*!*******************************!*\
+  !*** ./js-src/index/store.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var idData = __webpack_require__(/*! ../data */ 2);
+
+	function Store() {
+	  this.data = {
+	    category: 0,
+	    id: 0,
+	    options: {
+	      bird: 0
+	    },
+	    member: []
+	  };
+	  for (var i=0;i<8;i++) {
+	    this.data.member.push({
+	      name: '',
+	      item: []
+	    });
+	  }
+
+	  this.listeners = {};
+	}
+
+	Store.Events = {
+	  RESTORE: 'restore',
+	  ITEM_SELECTED: 'item_selected'
+	};
+
+	var p = Store.prototype;
+
+	p.on = function (name, fn) {
+	  var listeners = this.listeners[name] || (this.listeners[name] = []);
+	  listeners.push(fn);
+	};
+
+	p.emit = function (name) {
+	  var args = Array.prototype.slice.call(arguments, 1);
+	  var listeners = this.listeners[name];
+	  if (listeners) {
+	    listeners.forEach(function (fn) {
+	      fn.apply(null, args);
+	    });
+	  }
+	};
+
+	p.restore = function () {
+	  var json = localStorage.getItem('data');
+	  if (json) {
+	    var data = JSON.parse(json);
+	    this._restoreData(data);
+	  }
+	  this.emit(Store.Events.RESTORE);
+	};
+
+	p._restoreData = function (data) {
+	  this.data.category = data.category;
+	  this.data.id = data.id;
+
+	  // 旧バージョンはoptionsがないのでチェック
+	  if (data.options) {
+	    this.data.options = data.options;
+	  }
+
+	  data.member.forEach(function (member, i) {
+	    if (Array.isArray(member.item)) {
+	      // 現バージョンデータはそのまま設定
+	      this.data.member[i].item = member.item;
+	    } else if (member.selected) {
+	      // 旧バージョンは数値型なので選択済みフラグの場合のみ設定
+	      this.data.member[i].item.push(member.item);
+	    }
+	  }, this);
+	};
+
+	/**
+	 * 行き先カテゴリを取得する
+	 */
+	p.getInstanceCategories = function () {
+	  return idData;
+	};
+
+	/**
+	 * 行き先カテゴリのダンジョンリストを取得する
+	 */
+	p.getInstances = function () {
+	  return idData[this.data.category].ids;
+	};
+
+	/**
+	 * 行き先ダンジョンを取得する
+	 */
+	p.getInstance = function () {
+	  return this.getInstances()[this.data.id];
+	};
+
+	/**
+	 * メンバーの選択中アイテムを設定する
+	 */
+	p.setSelectedItems = function (memberIndex, items) {
+	  this.data.member[memberIndex].item = items;
+	  this.emit(Store.Events.ITEM_SELECTED, memberIndex);
+	};
+
+	/**
+	 * メンバーの選択中アイテムを取得する
+	 */
+	p.getSelectedItems = function (memberIndex) {
+	  return this.data.member[memberIndex].item;
+	};
+
+	/**
+	 * メンバーの選択できないアイテムを取得する
+	 */
+	p.getUnSelectableItems = function (memberIndex) {
+	  var selected = this.getSelectedItems(memberIndex);
+	  var allSelected = this.getAllSelectedItems();
+	  var ret = [];
+	  allSelected.forEach(function (itemId) {
+	    // 自分の選択アイテムでなければ選択不可
+	    if (selected.indexOf(itemId) < 0) {
+	      ret.push(itemId);
+	    }
+	  });
+	  return ret;
+	};
+
+	/**
+	 * すべてのメンバーの選択中アイテムを取得する
+	 */
+	p.getAllSelectedItems = function () {
+	  var member;
+	  var ret = [];
+	  for (var i in this.data.member) {
+	    member = this.data.member[i];
+	    ret = ret.concat(member.item);
+	  }
+	  return ret;
+	};
+
+	module.exports = new Store();
 
 
 /***/ }

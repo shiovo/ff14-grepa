@@ -146,7 +146,7 @@ function decisionMemberItem(memberIndex) {
   var member = members.querySelectorAll('tbody tr')[memberIndex];
   var name = member.querySelector('.input-name');
   var item = member.querySelector('.select-item');
-  var btn  = member.querySelector('button');
+  var btn  = member.querySelector('.js-decision');
 
   member.classList.add('is-selected');
 
@@ -168,7 +168,7 @@ function decisionMemberItem(memberIndex) {
  */
 function editMemberItem(i) {
   var member = members.querySelectorAll('tbody tr')[i];
-  var btn  = member.querySelector('button');
+  var btn  = member.querySelector('.js-decision');
 
   member.classList.remove('is-selected');
 
@@ -293,7 +293,7 @@ selectId.addEventListener('change', function(e) {
 
 // 決定・変更ボタン
 members.addEventListener('click', function(e){
-  if(!e.target.classList.contains('btn-text')){
+  if(!e.target.classList.contains('js-decision')){
     return;
   }
 
@@ -344,3 +344,8 @@ document.querySelector('.l-macro .m-switch').addEventListener('change', renderMa
 
 clearAll();
 restore();
+
+var modal = new (require('./index/select-item-modal'))( document.querySelector('.select-item-modal') );
+var store = require('./index/store');
+store.restore();
+modal.show(0);

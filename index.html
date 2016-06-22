@@ -91,19 +91,33 @@ $(function(){
             </div>
 
             <h3 class="m-option-title">オプション設定</h3>
-            <div class="m-option">
+            <section class="m-option">
                 <div class="m-option-item">
                     <div class="m-option-item__title">
-                        複数希望
+                        鳥
                     </div>
                     <div class="m-option-item__body">
-                        あああああああああああああああああああああああああああああああああああああああああああああああああああ<br>
-                        あああ<br>
-                        あああ<br>
-                        あああ<br>
+                        <select>
+                            <option value="1">------</option>
+                            <option value="2">2〆</option>
+                            <option value="3">3〆</option>
+                            <option value="8">フリー(希望不可)</option>
+                        </select>
                     </div>
                 </div>
-            </div>
+
+                <div class="m-option-item">
+                    <div class="m-option-item__title">
+                        まとめ希望
+                    </div>
+                    <div class="m-option-item__body">
+                        <label><input type="checkbox" value=""><span>剣盾</span></label>
+                        <label><input type="checkbox" value=""><span>アクセサリ</span></label>
+                        <label><input type="checkbox" value=""><span>ジョブ</span></label>
+                    </div>
+                </div>
+
+            </section>
 
 
             <section class="box-input">
@@ -123,7 +137,9 @@ $(function(){
                         <tr>
                             <th>1</th>
                             <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
+                            <td>
+                                <button class="btn-text">アイテム選択</button>
+                                <select class="select-item"></select><div class="td-item">
                                  <figure>
                                         <img src="images/dummy/5faf78c6822.png" alt="">
                                     </figure>
@@ -133,7 +149,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -149,7 +165,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -165,7 +181,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -181,7 +197,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -197,7 +213,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -213,7 +229,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -229,7 +245,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                         <tr>
@@ -245,7 +261,7 @@ $(function(){
                                     </figcaption>
                                 </div>
                             </td>
-                            <td><button class="btn-text"></button></td>
+                            <td><button class="btn-text js-decision"></button></td>
                         </tr>
 
                     </tbody>
@@ -386,6 +402,16 @@ $(function(){
 
     </div>
 
+</div>
+
+<div class="select-item-modal is-active">
+    <div class="select-item-modal__body">
+        <button class="btn-close js-close">×</button>
+        <div class="select-item-modal__title">アイテム選択</div>
+        <table class="select-item-modal__items">
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 
 <script src="js/index.js"></script> 
