@@ -10,7 +10,9 @@ var p = IdData.prototype;
 
 p.setData = function (data) {
   this.name  = data.name;
-  this.items = data.items;
+  this.items = data.items.filter(function (item) {
+    return item.shortName !== '無';
+  });
 
   var categories = {};
   this.categories = [];
