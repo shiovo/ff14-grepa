@@ -47,6 +47,16 @@
 		}
 	}
 
+	&.is-cancel {
+		background: #eee;
+		color: #1d3f77;
+		text-shadow: none;
+	}
+
+	&.size-m {
+		width: 100px;
+	}
+
 	&:hover{
 		// box-shadow: 0 0 4px rgba(#005ad4,0.8);
 		opacity:0.7;

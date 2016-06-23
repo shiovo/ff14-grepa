@@ -345,7 +345,5 @@ document.querySelector('.l-macro .m-switch').addEventListener('change', renderMa
 clearAll();
 restore();
 
-var modal = new (require('./index/select-item-modal'))( document.querySelector('.select-item-modal') );
 var store = require('./index/store');
 store.restore();
-modal.show(0);

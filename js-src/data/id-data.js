@@ -59,4 +59,8 @@ p.getCagetoryByShortName = function (name) {
   };
 };
 
+p.getItem = function (itemId) {
+  return this.items[itemId];
+};
+
 module.exports = IdData;

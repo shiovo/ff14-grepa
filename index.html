@@ -404,13 +404,17 @@ $(function(){
 
 </div>
 
-<div class="select-item-modal is-active">
+<div class="select-item-modal">
     <div class="select-item-modal__body">
-        <button class="btn-close js-close">×</button>
+        <button class="btn-close js-dismiss">×</button>
         <div class="select-item-modal__title">アイテム選択</div>
         <table class="select-item-modal__items">
             <tbody></tbody>
         </table>
+        <div class="select-item-modal__btns">
+            <button class="btn-text is-cancel js-dismiss size-m">キャンセル</button>
+            <button class="btn-text js-close size-m">決定</button>
+        </div>
     </div>
 </div>
 

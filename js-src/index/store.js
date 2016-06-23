@@ -21,7 +21,9 @@ function Store() {
 
 Store.Events = {
   RESTORE: 'restore',
-  ITEM_SELECTED: 'item_selected'
+  CATEGORY_CHANGED: 'category_changed',
+  INSTANCE_CHANGED: 'instance_changed',
+  MEMBER_CHANGED: 'member_changed'
 };
 
 var p = Store.prototype;
@@ -48,6 +50,13 @@ p.restore = function () {
     this._restoreData(data);
   }
   this.emit(Store.Events.RESTORE);
+};
+
+/**
+ * 設定を保存する
+ */
+p.save = function () {
+
 };
 
 p._restoreData = function (data) {
@@ -92,14 +101,6 @@ p.getInstance = function () {
 };
 
 /**
- * メンバーの選択中アイテムを設定する
- */
-p.setSelectedItems = function (memberIndex, items) {
-  this.data.member[memberIndex].item = items;
-  this.emit(Store.Events.ITEM_SELECTED, memberIndex);
-};
-
-/**
  * メンバーの選択中アイテムを取得する
  */
 p.getSelectedItems = function (memberIndex) {
@@ -133,6 +134,56 @@ p.getAllSelectedItems = function () {
     ret = ret.concat(member.item);
   }
   return ret;
+};
+
+/**
+ * 行き先カテゴリを設定する
+ */
+p.setInstanceCategory = function (category) {
+  this.data.category = category;
+  // インスタンスダンジョンをリセット
+  this.data.id = 0;
+  // 選択中アイテムをリセット
+  this.data.member.forEach(function (member) {
+    member.item = [];
+  });
+  this.save();
+  this.emit(Store.Events.CATEGORY_CHANGED);
+  this.emit(Store.Events.MEMBER_CHANGED);
+};
+
+/**
+ * 行き先インスタンスダンジョンを設定する
+ */
+p.setInstance = function (instance) {
+  this.data.id = instance;
+  // 選択中アイテムをリセット
+  this.data.member.forEach(function (member) {
+    member.item = [];
+  });
+  this.save();
+  this.emit(Store.Events.INSTANCE_CHANGED);
+  this.emit(Store.Events.MEMBER_CHANGED);
+};
+
+/**
+ * メンバーの選択中アイテムを設定する
+ */
+p.setMemberItems = function (memberIndex, items) {
+  this.data.member[memberIndex].item = items;
+  this.save();
+  this.emit('member_'+memberIndex+'_changed');
+};
+
+/**
+ * メンバーの選択中アイテムを選択解除する
+ */
+p.removeMemberItem = function (memberIndex, itemId) {
+  this.setMemberItems(memberIndex, 
+    this.data.member[memberIndex].item.filter(function (id) {
+      return id !== itemId;
+    })
+  );
 };
 
 module.exports = new Store();

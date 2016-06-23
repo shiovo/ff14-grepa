@@ -404,10 +404,8 @@
 	clearAll();
 	restore();
 
-	var modal = new (__webpack_require__(/*! ./index/select-item-modal */ 19))( document.querySelector('.select-item-modal') );
-	var store = __webpack_require__(/*! ./index/store */ 20);
+	var store = __webpack_require__(/*! ./index/store */ 19);
 	store.restore();
-	modal.show(0);
 
 
 /***/ },
@@ -480,7 +478,9 @@
 
 	p.setData = function (data) {
 	  this.name  = data.name;
-	  this.items = data.items;
+	  this.items = data.items.filter(function (item) {
+	    return item.shortName !== '無';
+	  });
 
 	  var categories = {};
 	  this.categories = [];
@@ -525,6 +525,10 @@
 	    categoryName: '',
 	    itemName: name
 	  };
+	};
+
+	p.getItem = function (itemId) {
+	  return this.items[itemId];
 	};
 
 	module.exports = IdData;
@@ -2214,113 +2218,6 @@
 
 /***/ },
 /* 19 */
-/*!*******************************************!*\
-  !*** ./js-src/index/select-item-modal.js ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	var store = __webpack_require__(/*! ./store */ 20);
-
-	function SelectItemModal(el) {
-	  var self = this;
-
-	  this.el = el;
-	  this.itemsContainer = this.el.querySelector('.select-item-modal__items tbody');
-	  this.memberIndex = null;
-
-	  this.el.addEventListener('click', function (e) {
-	    if (e.target.classList.contains('js-dismiss')) {
-	      self.hide();
-	    } else if (e.target.classList.contains('js-close')) {
-	      self.applySelect();
-	      self.hide();
-	    }
-
-	  }, false);
-	}
-
-	var p = SelectItemModal.prototype;
-
-	p.applySelect = function () {
-	  store.setSelectedItems(this.memberIndex, this.getSelectedItems());
-	};
-
-	p.render = function () {
-	  // アイテムを描画
-	  var html = '';
-	  var instance = store.getInstance();
-	  if (instance.hasCategory) {
-	    html = this._renderCategoryTable(instance);
-	  } else {
-	    html = this._renderBasicTable(instance);
-	  }
-	  this.itemsContainer.innerHTML = html;
-
-	  // 選択中
-	  store.getSelectedItems(this.memberIndex).forEach(function (id) {
-	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
-	    itemImg.classList.add('is-selected');
-	  }, this);
-
-	  // 選択不可
-	  store.getUnSelectableItems(this.memberIndex).forEach(function (id) {
-	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
-	    itemImg.classList.add('is-disabled');
-	  }, this);
-	};
-
-	p._renderBasicTable = function (instance) {
-	  var html = '';
-	  instance.items.forEach(function (item, i) {
-	    html += '<tr><td>'+(this._renderItem(item, i))+'</td></tr>';
-	  }, this);
-	  return html;
-	};
-
-	p._renderCategoryTable = function (instance) {
-	  var html = '';
-	  instance.categories.forEach(function (category) {
-	    html += '<tr><th>'+(this._renderCategoryButton(category))+'</th><td>';
-	    category.items.forEach(function (item) {
-	      html += this._renderItem(item.item, item.id, item.name);
-	    }, this);
-	    html += '</td></tr>';
-	  }, this);
-	  return html;
-	};
-
-	p._renderItem = function (item, id, displayName) {
-	  return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
-	          '<div class="select-item-modal__itemImg"><img src="'+item.icon+'"></div>'+
-	          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
-	         '</div>';
-	};
-
-	p._renderCategoryButton = function (category) {
-	  if (category.name) {
-	    return '<button class="btn-text">'+category.name+'</button>';
-	  } else {
-	    return '';
-	  }
-	};
-
-	p.show = function (memberIndex) {
-	  if (this.memberIndex !== memberIndex) {
-	    this.memberIndex = memberIndex;
-	    this.render();
-	  }
-	  this.el.classList.add('is-active');
-	};
-
-	p.hide = function () {
-	  this.el.classList.remove('is-active');
-	};
-
-	module.exports = SelectItemModal;
-
-
-/***/ },
-/* 20 */
 /*!*******************************!*\
   !*** ./js-src/index/store.js ***!
   \*******************************/
@@ -2349,7 +2246,9 @@
 
 	Store.Events = {
 	  RESTORE: 'restore',
-	  ITEM_SELECTED: 'item_selected'
+	  CATEGORY_CHANGED: 'category_changed',
+	  INSTANCE_CHANGED: 'instance_changed',
+	  MEMBER_CHANGED: 'member_changed'
 	};
 
 	var p = Store.prototype;
@@ -2376,6 +2275,13 @@
 	    this._restoreData(data);
 	  }
 	  this.emit(Store.Events.RESTORE);
+	};
+
+	/**
+	 * 設定を保存する
+	 */
+	p.save = function () {
+
 	};
 
 	p._restoreData = function (data) {
@@ -2420,14 +2326,6 @@
 	};
 
 	/**
-	 * メンバーの選択中アイテムを設定する
-	 */
-	p.setSelectedItems = function (memberIndex, items) {
-	  this.data.member[memberIndex].item = items;
-	  this.emit(Store.Events.ITEM_SELECTED, memberIndex);
-	};
-
-	/**
 	 * メンバーの選択中アイテムを取得する
 	 */
 	p.getSelectedItems = function (memberIndex) {
@@ -2461,6 +2359,56 @@
 	    ret = ret.concat(member.item);
 	  }
 	  return ret;
+	};
+
+	/**
+	 * 行き先カテゴリを設定する
+	 */
+	p.setInstanceCategory = function (category) {
+	  this.data.category = category;
+	  // インスタンスダンジョンをリセット
+	  this.data.id = 0;
+	  // 選択中アイテムをリセット
+	  this.data.member.forEach(function (member) {
+	    member.item = [];
+	  });
+	  this.save();
+	  this.emit(Store.Events.CATEGORY_CHANGED);
+	  this.emit(Store.Events.MEMBER_CHANGED);
+	};
+
+	/**
+	 * 行き先インスタンスダンジョンを設定する
+	 */
+	p.setInstance = function (instance) {
+	  this.data.id = instance;
+	  // 選択中アイテムをリセット
+	  this.data.member.forEach(function (member) {
+	    member.item = [];
+	  });
+	  this.save();
+	  this.emit(Store.Events.INSTANCE_CHANGED);
+	  this.emit(Store.Events.MEMBER_CHANGED);
+	};
+
+	/**
+	 * メンバーの選択中アイテムを設定する
+	 */
+	p.setMemberItems = function (memberIndex, items) {
+	  this.data.member[memberIndex].item = items;
+	  this.save();
+	  this.emit('member_'+memberIndex+'_changed');
+	};
+
+	/**
+	 * メンバーの選択中アイテムを選択解除する
+	 */
+	p.removeMemberItem = function (memberIndex, itemId) {
+	  this.setMemberItems(memberIndex, 
+	    this.data.member[memberIndex].item.filter(function (id) {
+	      return id !== itemId;
+	    })
+	  );
 	};
 
 	module.exports = new Store();
