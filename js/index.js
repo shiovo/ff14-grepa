@@ -57,366 +57,600 @@
   \*************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var data = __webpack_require__(/*! ./data */ 2);
+	// var data = require('./data');
 
-	var selectCategory = document.getElementById('select-category');
-	var selectId = document.getElementById('select-id');
-	var members = document.querySelector('#members');
-	var selectItems = document.querySelectorAll('#members select');
-	var clearAllBtn = document.querySelector('.m-clear .btn-text');
-	var macroText = document.querySelector('#macro-text');
-	var showName = document.querySelector('#switch-name2');
+	// var selectCategory = document.getElementById('select-category');
+	// var selectId = document.getElementById('select-id');
+	// var members = document.querySelector('#members');
+	// var selectItems = document.querySelectorAll('#members select');
+	// var clearAllBtn = document.querySelector('.m-clear .btn-text');
+	// var macroText = document.querySelector('#macro-text');
+	// var showName = document.querySelector('#switch-name2');
 
-	var memberSelectedItem = [];
-	var selectedItems = {};
+	// var memberSelectedItem = [];
+	// var selectedItems = {};
 
-	// ダンジョン配列を取得
-	function getIds(index) {
-	  index = index || selectCategory.selectedIndex || 0;
-	  return data[index].ids;
+	// // ダンジョン配列を取得
+	// function getIds(index) {
+	//   index = index || selectCategory.selectedIndex || 0;
+	//   return data[index].ids;
+	// }
+
+	// // ドロップアイテム配列を取得
+	// function getItems(categoryIndex, idIndex) {
+	//   idIndex = idIndex || selectId.selectedIndex || 0;
+	//   return getIds(categoryIndex)[idIndex].items;
+	// }
+
+	// function save() {
+	//   var memberdata = [];
+	//   var memberRows = members.querySelectorAll('tbody tr');
+	//   for(var i=0,l=memberRows.length;i<l;i++) {
+	//     memberdata.push({
+	//       name: memberRows.item(i).querySelector('.input-name').value || '',
+	//       item: memberRows.item(i).querySelector('.select-item').selectedIndex || 0,
+	//       selected: memberRows.item(i).classList.contains('is-selected')
+	//     });
+	//   }
+	//   localStorage.setItem('data', JSON.stringify({
+	//     category: selectCategory.selectedIndex,
+	//     id: selectId.selectedIndex,
+	//     member: memberdata
+	//   }));
+	// }
+
+	// /**
+	//  * メンバーがアイテムを選択できるか
+	//  */
+	// function canSelect(memberIndex, itemIndex) {
+	//   return !selectedItems[itemIndex] || memberSelectedItem[memberIndex] === itemIndex;
+	// }
+
+	// function clearSaveData() {
+	//   localStorage.removeItem('data');
+	// }
+
+	// /**
+	//  * ダンジョン選択肢更新
+	//  */
+	// function updateSelectIdOptions() {
+	//   var ids = getIds();
+	//   var html = '';
+
+	//   // ダンジョン選択肢を再設定
+	//   for (var i=0,l=ids.length;i<l;i++) {
+	//     html += '<option value="'+i+'">'+ids[i].name+'</option>';
+	//   }
+
+	//   selectId.innerHTML = html;
+	//   selectId.selectedIndex = 0;
+	// }
+
+	// /**
+	//  * アイテム選択肢更新
+	//  */
+	// function resetSelectItemOptions() {
+	//   var items = getItems();
+	//   var itemSelects = members.querySelectorAll('.select-item');
+	//   var optionHtml = '';
+	//   var i,l,item,select;
+	//   for (i=0,l=items.length;i<l;i++) {
+	//     item = items[i];
+	//     optionHtml += '<option value="'+i+'">'+item.shortName+'</option>';
+	//   }
+
+	//   for (i=0,l=itemSelects.length;i<l;i++) {
+	//     select = itemSelects[i];
+	//     select.innerHTML = optionHtml;
+	//     select.selectedIndex = 0;
+	//   }
+	// }
+
+	// /**
+	//  * データ復元
+	//  */
+	// function restore() {
+	//   var json = localStorage.getItem('data');
+	//   var obj;
+	//   if (json) {
+	//     obj = JSON.parse(json);
+	//   } else {
+	//     obj = {};
+	//   }
+
+	//   // カテゴリ選択復元
+	//   selectCategory.selectedIndex = obj.category || 0;
+	//   // ダンジョン選択肢更新
+	//   updateSelectIdOptions();
+	//   // ダンジョン選択復元
+	//   selectId.selectedIndex = obj.id || 0;
+	//   // アイテム選択肢を更新
+	//   resetSelectItemOptions();
+
+	//   if (obj.member) {
+	//     obj.member.forEach(function (member, i) {
+	//       // メンバーデータを復元
+	//       setMemberData(i, member.name, member.item);
+
+	//       // 決定済の場合
+	//       if (member.selected) {
+	//         decisionMemberItem(i);
+	//       } else {
+	//         editMemberItem(i);
+	//       }
+	//     });
+	//   } else {
+	//     for (var i=0;i<8;i++) {
+	//       editMemberItem(i)
+	//     }
+	//   }
+	// }
+
+	// /**
+	//  * メンバーデータセット
+	//  */
+	// function setMemberData(memberIndex, nameValue, itemIndex) {
+	//   var member = members.querySelectorAll('tbody tr')[memberIndex];
+	//   var name = member.querySelector('.input-name');
+	//   var item = member.querySelector('.select-item');
+
+	//   name.value = nameValue || '';
+	//   item.selectedIndex = itemIndex || 0;
+	// }
+
+	// /**
+	//  * アイテム決定
+	//  */
+	// function decisionMemberItem(memberIndex) {
+	//   var member = members.querySelectorAll('tbody tr')[memberIndex];
+	//   var name = member.querySelector('.input-name');
+	//   var item = member.querySelector('.select-item');
+	//   var btn  = member.querySelector('.js-decision');
+
+	//   member.classList.add('is-selected');
+
+	//   var nameDest = name.nextSibling;
+	//   nameDest.innerHTML = name.value || '';
+
+	//   var itemData = getItems()[item.selectedIndex || 0];
+	//   var itemDest = item.nextSibling;
+	//   itemDest.querySelector('figure img').src = itemData.icon;
+	//   itemDest.querySelector('figcaption span').innerHTML = itemData.shortName;
+	//   itemDest.querySelector('figcaption small').innerHTML = '<' + itemData.name + '>';
+
+	//   btn.classList.add('is-edit');
+	//   btn.innerHTML = '変更'
+	// }
+
+	// /**
+	//  * アイテム変更
+	//  */
+	// function editMemberItem(i) {
+	//   var member = members.querySelectorAll('tbody tr')[i];
+	//   var btn  = member.querySelector('.js-decision');
+
+	//   member.classList.remove('is-selected');
+
+	//   btn.classList.remove('is-edit');
+	//   btn.innerHTML = '決定';
+	// }
+
+	// /**
+	//  * 選択済みアイテム集計
+	//  */
+	// function updateSelectedItems() {
+	//   var memberTrs = members.querySelectorAll('tbody tr');
+	//   var memberTr;
+	//   memberSelectedItem = [];
+	//   selectedItems = {};
+	//   for (var i=0,l=memberTrs.length;i<l;i++) {
+	//     memberTr = memberTrs[i];
+	//     if (memberTr.classList.contains('is-selected')) {
+	//       memberSelectedItem.push(memberTr.querySelector('.select-item').selectedIndex);
+	//     } else {
+	//       memberSelectedItem.push(false);
+	//     }
+	//   }
+
+	//   memberSelectedItem.forEach(function (itemIndex, i) {
+	//     if (itemIndex !== false) {
+	//       selectedItems[itemIndex] = (selectedItems[itemIndex] || 0) + 1;
+	//     }
+	//   });
+
+	//   updateMemberSelectItemDisabled();
+	// }
+
+	// /**
+	//  * アイテム選択肢の選択可・不可を設定する
+	//  */
+	// function updateMemberSelectItemDisabled() {
+	//   var itemSelects = members.querySelectorAll('.select-item');
+	//   var i,il, j,jl;
+	//   var options;
+	//   var selectedIndex;
+	//   for (i=0,il=itemSelects.length;i<il;i++) {
+	//     options = itemSelects[i].querySelectorAll('option');
+	//     selectedIndex = itemSelects[i].selectedIndex || 0;
+	//     for (j=0,jl=options.length;j<jl;j++) {
+	//       options[j].disabled = !canSelect(i, j);
+	//     }
+
+	//     // 選択中がdisabledの場合は選択可能な最初のアイテムを選択する
+	//     if (options[selectedIndex].disabled) {
+	//       for (j=0,jl=options.length;j<jl;j++) {
+	//         if (!options[j].disabled) {
+	//           itemSelects[i].selectedIndex = j;
+	//           break;
+	//         }
+	//       }
+	//     }
+	//   }
+	// }
+
+	// /**
+	//  * マクロ設定
+	//  */
+	// function renderMacroText() {
+	//   var text = '';
+	//   var isShowName = showName.checked === true;
+	//   var selected = document.querySelectorAll('.is-selected');
+	//   if (isShowName) {
+	//     var names = [];
+	//     var items = [];
+	//     var name;
+	//     var namesMaxLength = 0;
+	//     var lines = [];
+	//     for (var i=0,l=selected.length;i<l;i++) {
+	//       name = selected.item(i).querySelector('.td-name input').value || '';
+	//       namesMaxLength = Math.max(namesMaxLength, name.length);
+	//       names.push(name);
+
+	//       var item = selected.item(i).querySelector('.select-item')
+	//       items.push(item.options[item.selectedIndex].text);
+	//     }
+
+	//     for (i=0,l=names.length;i<l;i++) {
+	//       name = names[i] + Array(namesMaxLength - names[i].length + 1).join(' ');
+	//       lines.push('/p ' + name + ' ' + items[i]);
+	//     }
+
+	//     text = lines.join('\n');
+	//   }
+	//   else {
+	//     var items = [];
+	//     for (var i=0,l=selected.length;i<l;i++) {
+	//       var item = selected.item(i).querySelector('.select-item')
+	//       items.push(item.options[item.selectedIndex].text);
+	//     }
+
+	//     text = items.length ? '/p 〆:' + items.join(' ') : '';
+	//   }
+
+	//   macroText.value = text;
+	// }
+
+	// // カテゴリ変更
+	// selectCategory.addEventListener('change', function (e) {
+	//   // ダンジョン選択肢を更新
+	//   updateSelectIdOptions();
+
+	//   // 最初のダンジョンを選択
+	//   selectId.selectedIndex = 0;
+	//   selectId.dispatchEvent(new Event('change'));
+	// }, false);
+
+	// // ダンジョン変更
+	// selectId.addEventListener('change', function(e) {
+	//   // アイテム選択肢を更新
+	//   resetSelectItemOptions();
+	//   // 前メンバー編集
+	//   for (var i=0;i<8;i++) {
+	//     editMemberItem(i);
+	//   }
+	// }, false);
+
+	// // 決定・変更ボタン
+	// members.addEventListener('click', function(e){
+	//   if(!e.target.classList.contains('js-decision')){
+	//     return;
+	//   }
+
+	//   var memberIdx = parseInt(e.target.parentNode.parentNode.querySelector('th').innerHTML) - 1;
+	//   if (e.target.classList.contains('is-edit')){
+	//     // 変更
+	//     editMemberItem(memberIdx);
+	//   } else {
+	//     // 決定
+	//     decisionMemberItem(memberIdx);
+	//     save();
+	//   }
+
+	//   // 選択済みアイテムを更新
+	//   updateSelectedItems();
+
+	//   // マクロ更新
+	//   renderMacroText();
+
+	// }, false);
+
+	// function clearAll(shouldClearSaveData) {
+	//   var names = document.querySelectorAll('.input-name');
+	//   for (var i=0,l=names.length;i<l;i++) {
+	//     names.item(i).value = '';
+	//   }
+
+	//   selectCategory.selectedIndex = 0;
+	//   selectCategory.dispatchEvent(new Event('change'));
+
+	//   if (shouldClearSaveData) {
+	//     clearSaveData();
+	//   }
+	// }
+	// clearAllBtn.addEventListener('click', clearAll, false);
+
+	// document.querySelector('.l-macro .m-switch').addEventListener('change', renderMacroText, false);
+
+	// // カテゴリセレクトボックス初期化
+	// (function () {
+	//   var html = '';
+	//   for (var i=0,l=data.length;i<l;i++) {
+	//     html += '<option value="'+i+'">'+data[i].name+'</option>';
+	//   }
+	//   selectCategory.innerHTML = html;
+	//   selectCategory.selectedIndex = 0;
+	// })();
+
+	// clearAll();
+	// restore();
+
+
+	var store = __webpack_require__(/*! ./index/store */ 2);
+	var Config = __webpack_require__(/*! ./index/config */ 20);
+	var Member = __webpack_require__(/*! ./index/member */ 21);
+
+	var config = new Config();
+
+	var members = [];
+	var member;
+	for (var i=0;i<8;i++) {
+	  member = new Member(i);
+	  document.querySelector('#members tbody').appendChild(member.el);
+	  members.push(member);
 	}
-
-	// ドロップアイテム配列を取得
-	function getItems(categoryIndex, idIndex) {
-	  idIndex = idIndex || selectId.selectedIndex || 0;
-	  return getIds(categoryIndex)[idIndex].items;
-	}
-
-	function save() {
-	  var memberdata = [];
-	  var memberRows = members.querySelectorAll('tbody tr');
-	  for(var i=0,l=memberRows.length;i<l;i++) {
-	    memberdata.push({
-	      name: memberRows.item(i).querySelector('.input-name').value || '',
-	      item: memberRows.item(i).querySelector('.select-item').selectedIndex || 0,
-	      selected: memberRows.item(i).classList.contains('is-selected')
-	    });
-	  }
-	  localStorage.setItem('data', JSON.stringify({
-	    category: selectCategory.selectedIndex,
-	    id: selectId.selectedIndex,
-	    member: memberdata
-	  }));
-	}
-
-	/**
-	 * メンバーがアイテムを選択できるか
-	 */
-	function canSelect(memberIndex, itemIndex) {
-	  return !selectedItems[itemIndex] || memberSelectedItem[memberIndex] === itemIndex;
-	}
-
-	function clearSaveData() {
-	  localStorage.removeItem('data');
-	}
-
-	/**
-	 * ダンジョン選択肢更新
-	 */
-	function updateSelectIdOptions() {
-	  var ids = getIds();
-	  var html = '';
-
-	  // ダンジョン選択肢を再設定
-	  for (var i=0,l=ids.length;i<l;i++) {
-	    html += '<option value="'+i+'">'+ids[i].name+'</option>';
-	  }
-
-	  selectId.innerHTML = html;
-	  selectId.selectedIndex = 0;
-	}
-
-	/**
-	 * アイテム選択肢更新
-	 */
-	function resetSelectItemOptions() {
-	  var items = getItems();
-	  var itemSelects = members.querySelectorAll('.select-item');
-	  var optionHtml = '';
-	  var i,l,item,select;
-	  for (i=0,l=items.length;i<l;i++) {
-	    item = items[i];
-	    optionHtml += '<option value="'+i+'">'+item.shortName+'</option>';
-	  }
-
-	  for (i=0,l=itemSelects.length;i<l;i++) {
-	    select = itemSelects[i];
-	    select.innerHTML = optionHtml;
-	    select.selectedIndex = 0;
-	  }
-	}
-
-	/**
-	 * データ復元
-	 */
-	function restore() {
-	  var json = localStorage.getItem('data');
-	  var obj;
-	  if (json) {
-	    obj = JSON.parse(json);
-	  } else {
-	    obj = {};
-	  }
-
-	  // カテゴリ選択復元
-	  selectCategory.selectedIndex = obj.category || 0;
-	  // ダンジョン選択肢更新
-	  updateSelectIdOptions();
-	  // ダンジョン選択復元
-	  selectId.selectedIndex = obj.id || 0;
-	  // アイテム選択肢を更新
-	  resetSelectItemOptions();
-
-	  if (obj.member) {
-	    obj.member.forEach(function (member, i) {
-	      // メンバーデータを復元
-	      setMemberData(i, member.name, member.item);
-
-	      // 決定済の場合
-	      if (member.selected) {
-	        decisionMemberItem(i);
-	      } else {
-	        editMemberItem(i);
-	      }
-	    });
-	  } else {
-	    for (var i=0;i<8;i++) {
-	      editMemberItem(i)
-	    }
-	  }
-	}
-
-	/**
-	 * メンバーデータセット
-	 */
-	function setMemberData(memberIndex, nameValue, itemIndex) {
-	  var member = members.querySelectorAll('tbody tr')[memberIndex];
-	  var name = member.querySelector('.input-name');
-	  var item = member.querySelector('.select-item');
-
-	  name.value = nameValue || '';
-	  item.selectedIndex = itemIndex || 0;
-	}
-
-	/**
-	 * アイテム決定
-	 */
-	function decisionMemberItem(memberIndex) {
-	  var member = members.querySelectorAll('tbody tr')[memberIndex];
-	  var name = member.querySelector('.input-name');
-	  var item = member.querySelector('.select-item');
-	  var btn  = member.querySelector('.js-decision');
-
-	  member.classList.add('is-selected');
-
-	  var nameDest = name.nextSibling;
-	  nameDest.innerHTML = name.value || '';
-
-	  var itemData = getItems()[item.selectedIndex || 0];
-	  var itemDest = item.nextSibling;
-	  itemDest.querySelector('figure img').src = itemData.icon;
-	  itemDest.querySelector('figcaption span').innerHTML = itemData.shortName;
-	  itemDest.querySelector('figcaption small').innerHTML = '<' + itemData.name + '>';
-
-	  btn.classList.add('is-edit');
-	  btn.innerHTML = '変更'
-	}
-
-	/**
-	 * アイテム変更
-	 */
-	function editMemberItem(i) {
-	  var member = members.querySelectorAll('tbody tr')[i];
-	  var btn  = member.querySelector('.js-decision');
-
-	  member.classList.remove('is-selected');
-
-	  btn.classList.remove('is-edit');
-	  btn.innerHTML = '決定';
-	}
-
-	/**
-	 * 選択済みアイテム集計
-	 */
-	function updateSelectedItems() {
-	  var memberTrs = members.querySelectorAll('tbody tr');
-	  var memberTr;
-	  memberSelectedItem = [];
-	  selectedItems = {};
-	  for (var i=0,l=memberTrs.length;i<l;i++) {
-	    memberTr = memberTrs[i];
-	    if (memberTr.classList.contains('is-selected')) {
-	      memberSelectedItem.push(memberTr.querySelector('.select-item').selectedIndex);
-	    } else {
-	      memberSelectedItem.push(false);
-	    }
-	  }
-
-	  memberSelectedItem.forEach(function (itemIndex, i) {
-	    if (itemIndex !== false) {
-	      selectedItems[itemIndex] = (selectedItems[itemIndex] || 0) + 1;
-	    }
-	  });
-
-	  updateMemberSelectItemDisabled();
-	}
-
-	/**
-	 * アイテム選択肢の選択可・不可を設定する
-	 */
-	function updateMemberSelectItemDisabled() {
-	  var itemSelects = members.querySelectorAll('.select-item');
-	  var i,il, j,jl;
-	  var options;
-	  var selectedIndex;
-	  for (i=0,il=itemSelects.length;i<il;i++) {
-	    options = itemSelects[i].querySelectorAll('option');
-	    selectedIndex = itemSelects[i].selectedIndex || 0;
-	    for (j=0,jl=options.length;j<jl;j++) {
-	      options[j].disabled = !canSelect(i, j);
-	    }
-
-	    // 選択中がdisabledの場合は選択可能な最初のアイテムを選択する
-	    if (options[selectedIndex].disabled) {
-	      for (j=0,jl=options.length;j<jl;j++) {
-	        if (!options[j].disabled) {
-	          itemSelects[i].selectedIndex = j;
-	          break;
-	        }
-	      }
-	    }
-	  }
-	}
-
-	/**
-	 * マクロ設定
-	 */
-	function renderMacroText() {
-	  var text = '';
-	  var isShowName = showName.checked === true;
-	  var selected = document.querySelectorAll('.is-selected');
-	  if (isShowName) {
-	    var names = [];
-	    var items = [];
-	    var name;
-	    var namesMaxLength = 0;
-	    var lines = [];
-	    for (var i=0,l=selected.length;i<l;i++) {
-	      name = selected.item(i).querySelector('.td-name input').value || '';
-	      namesMaxLength = Math.max(namesMaxLength, name.length);
-	      names.push(name);
-
-	      var item = selected.item(i).querySelector('.select-item')
-	      items.push(item.options[item.selectedIndex].text);
-	    }
-
-	    for (i=0,l=names.length;i<l;i++) {
-	      name = names[i] + Array(namesMaxLength - names[i].length + 1).join(' ');
-	      lines.push('/p ' + name + ' ' + items[i]);
-	    }
-
-	    text = lines.join('\n');
-	  }
-	  else {
-	    var items = [];
-	    for (var i=0,l=selected.length;i<l;i++) {
-	      var item = selected.item(i).querySelector('.select-item')
-	      items.push(item.options[item.selectedIndex].text);
-	    }
-
-	    text = items.length ? '/p 〆:' + items.join(' ') : '';
-	  }
-
-	  macroText.value = text;
-	}
-
-	// カテゴリ変更
-	selectCategory.addEventListener('change', function (e) {
-	  // ダンジョン選択肢を更新
-	  updateSelectIdOptions();
-
-	  // 最初のダンジョンを選択
-	  selectId.selectedIndex = 0;
-	  selectId.dispatchEvent(new Event('change'));
-	}, false);
-
-	// ダンジョン変更
-	selectId.addEventListener('change', function(e) {
-	  // アイテム選択肢を更新
-	  resetSelectItemOptions();
-	  // 前メンバー編集
-	  for (var i=0;i<8;i++) {
-	    editMemberItem(i);
-	  }
-	}, false);
-
-	// 決定・変更ボタン
-	members.addEventListener('click', function(e){
-	  if(!e.target.classList.contains('js-decision')){
-	    return;
-	  }
-
-	  var memberIdx = parseInt(e.target.parentNode.parentNode.querySelector('th').innerHTML) - 1;
-	  if (e.target.classList.contains('is-edit')){
-	    // 変更
-	    editMemberItem(memberIdx);
-	  } else {
-	    // 決定
-	    decisionMemberItem(memberIdx);
-	    save();
-	  }
-
-	  // 選択済みアイテムを更新
-	  updateSelectedItems();
-
-	  // マクロ更新
-	  renderMacroText();
-
-	}, false);
-
-	function clearAll(shouldClearSaveData) {
-	  var names = document.querySelectorAll('.input-name');
-	  for (var i=0,l=names.length;i<l;i++) {
-	    names.item(i).value = '';
-	  }
-
-	  selectCategory.selectedIndex = 0;
-	  selectCategory.dispatchEvent(new Event('change'));
-
-	  if (shouldClearSaveData) {
-	    clearSaveData();
-	  }
-	}
-	clearAllBtn.addEventListener('click', clearAll, false);
-
-	document.querySelector('.l-macro .m-switch').addEventListener('change', renderMacroText, false);
-
-	// カテゴリセレクトボックス初期化
-	(function () {
-	  var html = '';
-	  for (var i=0,l=data.length;i<l;i++) {
-	    html += '<option value="'+i+'">'+data[i].name+'</option>';
-	  }
-	  selectCategory.innerHTML = html;
-	  selectCategory.selectedIndex = 0;
-	})();
-
-	clearAll();
-	restore();
-
-	var store = __webpack_require__(/*! ./index/store */ 19);
 	store.restore();
+	console.log(store);
 
 
 /***/ },
 /* 2 */
+/*!*******************************!*\
+  !*** ./js-src/index/store.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var idData = __webpack_require__(/*! ../data */ 3);
+
+	function Store() {
+	  this.data = {
+	    category: 0,
+	    id: 0,
+	    options: {
+	      mount: 3
+	    },
+	    member: []
+	  };
+	  for (var i=0;i<8;i++) {
+	    this.data.member.push({
+	      name: '',
+	      item: []
+	    });
+	  }
+
+	  this.listeners = {};
+	}
+
+	Store.Events = {
+	  RESTORE: 'restore',
+	  CATEGORY_CHANGED: 'category_changed',
+	  INSTANCE_CHANGED: 'instance_changed',
+	  MEMBER_CHANGED: 'member_changed',
+	  OPTION_MOUNT_CHANGED: 'option_mount_changed'
+	};
+
+	var p = Store.prototype;
+
+	p.on = function (name, fn) {
+	  var listeners = this.listeners[name] || (this.listeners[name] = []);
+	  listeners.push(fn);
+	};
+
+	p.emit = function (name) {
+	  var args = Array.prototype.slice.call(arguments, 1);
+	  var listeners = this.listeners[name];
+	  if (listeners) {
+	    listeners.forEach(function (fn) {
+	      fn.apply(null, args);
+	    });
+	  }
+	};
+
+	p.restore = function () {
+	  var json = localStorage.getItem('data');
+	  if (json) {
+	    var data = JSON.parse(json);
+	    this._restoreData(data);
+	  }
+	  this.emit(Store.Events.RESTORE);
+	};
+
+	/**
+	 * 設定を保存する
+	 */
+	p.save = function () {
+
+	};
+
+	p._restoreData = function (data) {
+	  this.data.category = data.category;
+	  this.data.id = data.id;
+
+	  // 旧バージョンはoptionsがないのでチェック
+	  if (data.options) {
+	    this.data.options = data.options;
+	  }
+
+	  data.member.forEach(function (member, i) {
+	    if (Array.isArray(member.item)) {
+	      // 現バージョンデータはそのまま設定
+	      this.data.member[i].item = member.item;
+	    } else if (member.selected) {
+	      // 旧バージョンは数値型なので選択済みフラグの場合のみ設定
+	      this.data.member[i].item.push(member.item);
+	    }
+	  }, this);
+	};
+
+	/**
+	 * 行き先カテゴリを取得する
+	 */
+	p.getInstanceCategories = function () {
+	  return idData;
+	};
+
+	/**
+	 * 行き先カテゴリのダンジョンリストを取得する
+	 */
+	p.getInstances = function () {
+	  return idData[this.data.category].ids;
+	};
+
+	/**
+	 * 行き先ダンジョンを取得する
+	 */
+	p.getInstance = function () {
+	  return this.getInstances()[this.data.id];
+	};
+
+	/**
+	 * メンバーの選択中アイテムを取得する
+	 */
+	p.getSelectedItems = function (memberIndex) {
+	  return this.data.member[memberIndex].item;
+	};
+
+	/**
+	 * メンバーの選択できないアイテムを取得する
+	 */
+	p.getUnSelectableItems = function (memberIndex) {
+	  var idData = this.getInstance();
+	  var selected = this.getSelectedItems(memberIndex);
+	  var allSelected = this.getAllSelectedItems();
+	  // 選択済のマウントの数を計算
+	  var mountCount = 0;
+	  if (idData.hasMount()) {
+	    allSelected.forEach(function (itemId) {
+	      var item = idData.items[itemId];
+	      if (item.shortName.match(/(馬|鳥)/)) {
+	        mountCount++;
+	      }
+	    });
+
+	  }
+	  var ret = [];
+	  allSelected.forEach(function (itemId) {
+	    // 自分の選択アイテムでなければ選択不可
+	    if (selected.indexOf(itemId) < 0) {
+	      ret.push(itemId);
+	    }
+	  });
+	  return ret;
+	};
+
+	/**
+	 * すべてのメンバーの選択中アイテムを取得する
+	 */
+	p.getAllSelectedItems = function () {
+	  var member;
+	  var ret = [];
+	  for (var i in this.data.member) {
+	    member = this.data.member[i];
+	    ret = ret.concat(member.item);
+	  }
+	  return ret;
+	};
+
+	/**
+	 * 行き先カテゴリを設定する
+	 */
+	p.setInstanceCategory = function (category) {
+	  this.data.category = category;
+	  // インスタンスダンジョンをリセット
+	  this.data.id = 0;
+	  // 選択中アイテムをリセット
+	  this.data.member.forEach(function (member) {
+	    member.item = [];
+	  });
+	  this.save();
+	  this.emit(Store.Events.CATEGORY_CHANGED);
+	  this.emit(Store.Events.MEMBER_CHANGED);
+	};
+
+	/**
+	 * 行き先インスタンスダンジョンを設定する
+	 */
+	p.setInstance = function (instance) {
+	  this.data.id = instance;
+	  // 選択中アイテムをリセット
+	  this.data.member.forEach(function (member) {
+	    member.item = [];
+	  });
+	  this.save();
+	  this.emit(Store.Events.INSTANCE_CHANGED);
+	  this.emit(Store.Events.MEMBER_CHANGED);
+	};
+
+	/**
+	 * マウントオプション設定
+	 */
+	p.setMountOption = function (value) {
+	  this.data.options.mount = value;
+	  this.save();
+	  this.emit(Store.Events.OPTION_MOUNT_CHANGED);
+	};
+
+	/**
+	 * メンバーの選択中アイテムを設定する
+	 */
+	p.setMemberItems = function (memberIndex, items) {
+	  this.data.member[memberIndex].item = items;
+	  this.save();
+	  this.emit('member_'+memberIndex+'_changed');
+	};
+
+	/**
+	 * メンバーの選択中アイテムを選択解除する
+	 */
+	p.removeMemberItem = function (memberIndex, itemId) {
+	  this.setMemberItems(memberIndex, 
+	    this.data.member[memberIndex].item.filter(function (id) {
+	      return id !== itemId;
+	    })
+	  );
+	};
+
+	module.exports = new Store();
+
+
+/***/ },
+/* 3 */
 /*!******************************!*\
   !*** ./js-src/data/index.js ***!
   \******************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var raids = __webpack_require__(/*! ./raids */ 3);
-	var extremes = __webpack_require__(/*! ./extremes */ 13);
+	var raids = __webpack_require__(/*! ./raids */ 4);
+	var extremes = __webpack_require__(/*! ./extremes */ 14);
 
 	var data = [
 	  {
@@ -432,13 +666,13 @@
 	module.exports = data;
 
 /***/ },
-/* 3 */
+/* 4 */
 /*!************************************!*\
   !*** ./js-src/data/raids/index.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var IdData = __webpack_require__(/*! ../id-data */ 4);
+	var IdData = __webpack_require__(/*! ../id-data */ 5);
 
 	module.exports = [
 	  // require('alexander_ritudou_zero_01'),
@@ -446,21 +680,21 @@
 	  // require('alexander_ritudou_zero_03'),
 	  // require('alexander_ritudou_zero_04'),
 
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_01 */ 5)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_02 */ 6)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_03 */ 7)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_04 */ 8)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_01 */ 6)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_02 */ 7)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_03 */ 8)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_04 */ 9)),
 
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_01 */ 9)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_02 */ 10)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_03 */ 11)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_04 */ 12)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_01 */ 10)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_02 */ 11)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_03 */ 12)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_04 */ 13)),
 
 	];
 
 
 /***/ },
-/* 4 */
+/* 5 */
 /*!********************************!*\
   !*** ./js-src/data/id-data.js ***!
   \********************************/
@@ -531,11 +765,20 @@
 	  return this.items[itemId];
 	};
 
+	p.hasMount = function () {
+	  for (var i=0,l=this.items.length;i<l;i++) {
+	    if (this.items[i].shortName.match(/(馬|鳥)/)) {
+	      return true;
+	    }
+	  }
+	  return false;
+	}
+
 	module.exports = IdData;
 
 
 /***/ },
-/* 5 */
+/* 6 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_01.js ***!
   \******************************************************/
@@ -675,7 +918,7 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_02.js ***!
   \******************************************************/
@@ -827,7 +1070,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_03.js ***!
   \******************************************************/
@@ -937,7 +1180,7 @@
 
 
 /***/ },
-/* 8 */
+/* 9 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_04.js ***!
   \******************************************************/
@@ -1097,7 +1340,7 @@
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_01.js ***!
   \************************************************/
@@ -1237,7 +1480,7 @@
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_02.js ***!
   \************************************************/
@@ -1365,7 +1608,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_03.js ***!
   \************************************************/
@@ -1493,7 +1736,7 @@
 
 
 /***/ },
-/* 12 */
+/* 13 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_04.js ***!
   \************************************************/
@@ -1622,25 +1865,26 @@
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/index.js ***!
   \***************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	
+	var IdData = __webpack_require__(/*! ../id-data */ 5);
+
 	module.exports = [
-	  __webpack_require__(/*! ./nidhogg */ 14),
-	  __webpack_require__(/*! ./sephiroth */ 15),
-	  __webpack_require__(/*! ./nights_of_round */ 16),
-	  __webpack_require__(/*! ./ravana */ 17),
-	  __webpack_require__(/*! ./shiva */ 18),
+	  new IdData(__webpack_require__(/*! ./nidhogg */ 15)),
+	  new IdData(__webpack_require__(/*! ./sephiroth */ 16)),
+	  new IdData(__webpack_require__(/*! ./nights_of_round */ 17)),
+	  new IdData(__webpack_require__(/*! ./ravana */ 18)),
+	  new IdData(__webpack_require__(/*! ./shiva */ 19)),
 	];
 
 
 
 /***/ },
-/* 14 */
+/* 15 */
 /*!*****************************************!*\
   !*** ./js-src/data/extremes/nidhogg.js ***!
   \*****************************************/
@@ -1752,7 +1996,7 @@
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /*!*******************************************!*\
   !*** ./js-src/data/extremes/sephiroth.js ***!
   \*******************************************/
@@ -1864,7 +2108,7 @@
 
 
 /***/ },
-/* 16 */
+/* 17 */
 /*!*************************************************!*\
   !*** ./js-src/data/extremes/nights_of_round.js ***!
   \*************************************************/
@@ -1976,7 +2220,7 @@
 
 
 /***/ },
-/* 17 */
+/* 18 */
 /*!****************************************!*\
   !*** ./js-src/data/extremes/ravana.js ***!
   \****************************************/
@@ -2089,7 +2333,7 @@
 
 
 /***/ },
-/* 18 */
+/* 19 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/shiva.js ***!
   \***************************************/
@@ -2217,201 +2461,344 @@
 
 
 /***/ },
-/* 19 */
-/*!*******************************!*\
-  !*** ./js-src/index/store.js ***!
-  \*******************************/
+/* 20 */
+/*!********************************!*\
+  !*** ./js-src/index/config.js ***!
+  \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var idData = __webpack_require__(/*! ../data */ 2);
+	var store = __webpack_require__(/*! ./store */ 2);
 
-	function Store() {
-	  this.data = {
-	    category: 0,
-	    id: 0,
-	    options: {
-	      bird: 0
-	    },
-	    member: []
-	  };
-	  for (var i=0;i<8;i++) {
-	    this.data.member.push({
-	      name: '',
-	      item: []
-	    });
-	  }
+	function Config() {
+	  this.categoryEl = document.querySelector('#select-category');
+	  this.instanceEl = document.querySelector('#select-id');
 
-	  this.listeners = {};
+	  // オプション
+	  this.mountContainer = document.querySelector('#option-mount');
+	  this.mount = this.mountContainer.querySelector('select');
+
+	  this.initBindings();
 	}
 
-	Store.Events = {
-	  RESTORE: 'restore',
-	  CATEGORY_CHANGED: 'category_changed',
-	  INSTANCE_CHANGED: 'instance_changed',
-	  MEMBER_CHANGED: 'member_changed'
+	var p = Config.prototype;
+
+	p.initBindings = function () {
+	  var self = this;
+
+	  this.categoryEl.addEventListener('change', function () {
+	    store.setInstanceCategory(self.categoryEl.selectedIndex);
+	  }, false);
+
+	  this.instanceEl.addEventListener('change', function () {
+	    store.setInstance(self.instanceEl.selectedIndex);
+	  }, false);
+
+	  this.mount.addEventListener('change', function () {
+	    var value = parseInt(self.mount.value);
+	    if (isNaN(value)) {
+	      value = 1;
+	    }
+	    store.setMountOption(value);
+	  }, false);
+
+	  // storeイベント
+	  store.on('restore', function () {
+	    self.renderCategory();
+	    self.renderId();
+	    self.renderOptionMount();
+	  });
+	  store.on('category_changed', function () {
+	    self.renderId();
+	    self.renderOptionMount();
+	  });
+	  store.on('instance_changed', function () {
+	    self.renderOptionMount();
+	  });
 	};
 
-	var p = Store.prototype;
-
-	p.on = function (name, fn) {
-	  var listeners = this.listeners[name] || (this.listeners[name] = []);
-	  listeners.push(fn);
+	p.renderCategory = function () {
+	  var html = '';
+	  store.getInstanceCategories().forEach(function (category, i) {
+	    html += '<option value="' + i + '">' + category.name + '</option>';
+	  });
+	  this.categoryEl.innerHTML = html;
+	  this.categoryEl.selectedIndex = store.data.category;
 	};
 
-	p.emit = function (name) {
-	  var args = Array.prototype.slice.call(arguments, 1);
-	  var listeners = this.listeners[name];
-	  if (listeners) {
-	    listeners.forEach(function (fn) {
-	      fn.apply(null, args);
-	    });
-	  }
+	p.renderId = function () {
+	  var html = '';
+	  store.getInstances().forEach(function (instance, i) {
+	    html += '<option value="' + i + '">' + instance.name + '</option>';
+	  });
+	  this.instanceEl.innerHTML = html;
+	  this.instanceEl.selectedIndex = store.data.id;
 	};
 
-	p.restore = function () {
-	  var json = localStorage.getItem('data');
-	  if (json) {
-	    var data = JSON.parse(json);
-	    this._restoreData(data);
-	  }
-	  this.emit(Store.Events.RESTORE);
+	p.renderOptionMount = function () {
+	  var idData = store.getInstance();
+	  this.mount.value = store.data.options.mount;
+	  this.mountContainer.classList.toggle('is-hide', !idData.hasMount());
+	};
+
+	module.exports = Config;
+
+/***/ },
+/* 21 */
+/*!********************************!*\
+  !*** ./js-src/index/member.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var store = __webpack_require__(/*! ./store */ 2);
+	var modal = __webpack_require__(/*! ./select-item-modal */ 22);
+
+	function Member(id) {
+	  this.id = id;
+	  this.el = document.createElement('tr');
+	  this.el.classList.add('member');
+	  this.el.innerHTML = '<th>' + (id + 1) + '</th>'+
+	                      '<td class="td-name"><input type="text" class="input-name"></td>'+
+	                      '<td>'+
+	                        '<div class="member__selectedItems"></div>'+
+	                        '<button class="btn-text js-show-select-item-modal">アイテム選択</button>'+
+	                      '</td>';
+
+	  this.name = this.el.querySelector('.input-name');
+	  this.itemsContainer = this.el.querySelector('.member__selectedItems');
+
+	  this.initBindings();
+	}
+
+	var p = Member.prototype;
+
+	p.initBindings = function () {
+	  var self = this;
+
+	  this.el.addEventListener('click', function (e) {
+	    // モーダル表示
+	    if (e.target.classList.contains('js-show-select-item-modal')) {
+	      modal.show(self.id);
+	    }
+	    // アイテム選択解除
+	    else if (e.target.classList.contains('js-item-unselect')) {
+	      store.removeMemberItem(self.id, parseInt(e.target.parentElement.parentElement.dataset.itemId));
+	    }
+	  }, false);
+
+	  // storeイベント
+	  this.render = this.render.bind(this);
+	  store.on('restore', this.render);
+	  store.on('member_'+this.id+'_changed', this.render);
+	  store.on('member_changed', this.render);
 	};
 
 	/**
-	 * 設定を保存する
+	 * storeの状態を描画
 	 */
-	p.save = function () {
-
+	p.render = function() {
+	  var member = store.data.member[this.id];
+	  this.name.value = member.name || '';
+	  this.renderItems(member.item);
 	};
 
-	p._restoreData = function (data) {
-	  this.data.category = data.category;
-	  this.data.id = data.id;
+	/**
+	 * 選択済みアイテムを描画
+	 */
+	p.renderItems = function(itemIds) {
+	  var idData = store.getInstance();
 
-	  // 旧バージョンはoptionsがないのでチェック
-	  if (data.options) {
-	    this.data.options = data.options;
-	  }
-
-	  data.member.forEach(function (member, i) {
-	    if (Array.isArray(member.item)) {
-	      // 現バージョンデータはそのまま設定
-	      this.data.member[i].item = member.item;
-	    } else if (member.selected) {
-	      // 旧バージョンは数値型なので選択済みフラグの場合のみ設定
-	      this.data.member[i].item.push(member.item);
+	  var html = '';
+	  itemIds.forEach(function (itemId) {
+	    var item = idData.getItem(itemId);
+	    if (!item) {
+	      return;
 	    }
+	    html += '<div class="td-item" data-item-id="'+itemId+'">'+
+	              '<figure><img src="'+item.icon+'"></figure>'+
+	              '<figcaption>'+
+	                '<span>'+item.shortName+'</span>'+
+	                '<small><'+item.name+'></small>'+
+	              '</figcaption>'+
+	              '<div class="td-item-btn"><button class="btn-delete btn-text is-danger js-item-unselect">×</button></div>'+
+	            '</div>';
+	  }, this);
+	  this.itemsContainer.innerHTML = html;
+	};
+
+	module.exports = Member;
+
+/***/ },
+/* 22 */
+/*!*******************************************!*\
+  !*** ./js-src/index/select-item-modal.js ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var store = __webpack_require__(/*! ./store */ 2);
+
+	function SelectItemModal() {
+	  this.el = document.querySelector('.select-item-modal');
+	  this.itemsContainer = this.el.querySelector('.select-item-modal__items tbody');
+	  this.memberIndex = null;
+
+	  this.initBinding();
+	}
+
+	var p = SelectItemModal.prototype;
+
+	/**
+	 * イベントハンドル
+	 */
+	p.initBinding = function () {
+	  var self = this;
+
+	  this.el.addEventListener('click', function (e) {
+	    // キャンセル
+	    if (e.target.classList.contains('js-dismiss')) {
+	      self.hide();
+	    }
+	    // 決定
+	    else if (e.target.classList.contains('js-close')) {
+	      self.applySelect();
+	      self.hide();
+	    }
+	    // 選択・選択解除
+	    else if (e.target.parentElement.classList.contains('select-item-modal__itemImg')) {
+	      var item = e.target.parentElement.parentElement;
+	      item.classList.toggle('is-selected');
+	    }
+	    // カテゴリのアイテム全て選択・選択解除
+	    else if (e.target.classList.contains('js-category-select')) {
+	      var items = e.target.parentElement.nextElementSibling.querySelectorAll('[data-item-id]');
+	      var selectAll = false;
+	      // 未選択アイテムがあるかチェック
+	      for (var i=0,l=items.length;i<l;i++) {
+	        if (!items[i].classList.contains('is-disabled') && !items[i].classList.contains('is-selected')) {
+	          selectAll = true;
+	          break;
+	        }
+	      }
+	      // 全選択・選択解除
+	      for (var i=0,l=items.length;i<l;i++) {
+	        if (items[i].classList.contains('is-disabled')) {
+
+	        } else {
+	          items[i].classList.toggle('is-selected', selectAll);
+	        }
+	      }      
+	    }
+	  }, false);
+	};
+
+	/**
+	 * ストアに選択中アイテムをセットする
+	 */
+	p.applySelect = function () {
+	  store.setMemberItems(this.memberIndex, this.getSelectedItems());
+	};
+
+	/**
+	 * 選択中のアイテムを取得する
+	 */
+	p.getSelectedItems = function () {
+	  var selected = [];
+	  var selectedElements = this.itemsContainer.querySelectorAll('.is-selected');
+	  for (var i=0,l=selectedElements.length;i<l;i++) {
+	    selected.push(parseInt(selectedElements[i].dataset.itemId));
+	  }
+	  return selected;
+	};
+
+	/**
+	 * storeの状態を描画する
+	 */
+	p.render = function () {
+	  // アイテムを描画
+	  var html = '';
+	  var instance = store.getInstance();
+	  if (instance.hasCategory) {
+	    html = this._renderCategoryTable(instance);
+	  } else {
+	    html = this._renderBasicTable(instance);
+	  }
+	  this.itemsContainer.innerHTML = html;
+
+	  // 選択中
+	  store.getSelectedItems(this.memberIndex).forEach(function (id) {
+	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
+	    itemImg.classList.add('is-selected');
+	  }, this);
+
+	  // 選択不可
+	  store.getUnSelectableItems(this.memberIndex).forEach(function (id) {
+	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
+	    itemImg.classList.add('is-disabled');
 	  }, this);
 	};
 
 	/**
-	 * 行き先カテゴリを取得する
+	 * カテゴリなしアイテムテーブルを描画
 	 */
-	p.getInstanceCategories = function () {
-	  return idData;
+	p._renderBasicTable = function (instance) {
+	  var html = '<tr><td>';
+	  instance.items.forEach(function (item, i) {
+	    html += (this._renderItem(item, i));
+	  }, this);
+	  return html+'</td></tr>';
 	};
 
 	/**
-	 * 行き先カテゴリのダンジョンリストを取得する
+	 * カテゴリありアイテムテーブルを描画
 	 */
-	p.getInstances = function () {
-	  return idData[this.data.category].ids;
+	p._renderCategoryTable = function (instance) {
+	  var html = '';
+	  instance.categories.forEach(function (category) {
+	    html += '<tr><th>'+(this._renderCategoryButton(category))+'</th><td>';
+	    category.items.forEach(function (item) {
+	      html += this._renderItem(item.item, item.id, item.name);
+	    }, this);
+	    html += '</td></tr>';
+	  }, this);
+	  return html;
 	};
 
 	/**
-	 * 行き先ダンジョンを取得する
+	 * アイテムを描画
 	 */
-	p.getInstance = function () {
-	  return this.getInstances()[this.data.id];
+	p._renderItem = function (item, id, displayName) {
+	  return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
+	          '<div class="select-item-modal__itemImg"><img src="'+item.icon+'"></div>'+
+	          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
+	         '</div>';
 	};
 
 	/**
-	 * メンバーの選択中アイテムを取得する
+	 * カテゴリボタンを描画
 	 */
-	p.getSelectedItems = function (memberIndex) {
-	  return this.data.member[memberIndex].item;
-	};
-
-	/**
-	 * メンバーの選択できないアイテムを取得する
-	 */
-	p.getUnSelectableItems = function (memberIndex) {
-	  var selected = this.getSelectedItems(memberIndex);
-	  var allSelected = this.getAllSelectedItems();
-	  var ret = [];
-	  allSelected.forEach(function (itemId) {
-	    // 自分の選択アイテムでなければ選択不可
-	    if (selected.indexOf(itemId) < 0) {
-	      ret.push(itemId);
-	    }
-	  });
-	  return ret;
-	};
-
-	/**
-	 * すべてのメンバーの選択中アイテムを取得する
-	 */
-	p.getAllSelectedItems = function () {
-	  var member;
-	  var ret = [];
-	  for (var i in this.data.member) {
-	    member = this.data.member[i];
-	    ret = ret.concat(member.item);
+	p._renderCategoryButton = function (category) {
+	  if (category.name) {
+	    return '<button class="btn-text js-category-select">'+category.name+'</button>';
+	  } else {
+	    return '';
 	  }
-	  return ret;
 	};
 
-	/**
-	 * 行き先カテゴリを設定する
-	 */
-	p.setInstanceCategory = function (category) {
-	  this.data.category = category;
-	  // インスタンスダンジョンをリセット
-	  this.data.id = 0;
-	  // 選択中アイテムをリセット
-	  this.data.member.forEach(function (member) {
-	    member.item = [];
-	  });
-	  this.save();
-	  this.emit(Store.Events.CATEGORY_CHANGED);
-	  this.emit(Store.Events.MEMBER_CHANGED);
+	p.show = function (memberIndex) {
+	  if (this.memberIndex !== memberIndex) {
+	    this.memberIndex = memberIndex;
+	    this.render();
+	  }
+	  document.body.classList.add('select-item-open');
+	  this.el.classList.add('is-active');
 	};
 
-	/**
-	 * 行き先インスタンスダンジョンを設定する
-	 */
-	p.setInstance = function (instance) {
-	  this.data.id = instance;
-	  // 選択中アイテムをリセット
-	  this.data.member.forEach(function (member) {
-	    member.item = [];
-	  });
-	  this.save();
-	  this.emit(Store.Events.INSTANCE_CHANGED);
-	  this.emit(Store.Events.MEMBER_CHANGED);
+	p.hide = function () {
+	  this.el.classList.remove('is-active');
+	  document.body.classList.remove('select-item-open');
+	  this.memberIndex = null;
 	};
 
-	/**
-	 * メンバーの選択中アイテムを設定する
-	 */
-	p.setMemberItems = function (memberIndex, items) {
-	  this.data.member[memberIndex].item = items;
-	  this.save();
-	  this.emit('member_'+memberIndex+'_changed');
-	};
-
-	/**
-	 * メンバーの選択中アイテムを選択解除する
-	 */
-	p.removeMemberItem = function (memberIndex, itemId) {
-	  this.setMemberItems(memberIndex, 
-	    this.data.member[memberIndex].item.filter(function (id) {
-	      return id !== itemId;
-	    })
-	  );
-	};
-
-	module.exports = new Store();
+	module.exports = new SelectItemModal();
 
 
 /***/ }

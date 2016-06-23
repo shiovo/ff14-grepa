@@ -104,11 +104,11 @@ p.render = function () {
  * カテゴリなしアイテムテーブルを描画
  */
 p._renderBasicTable = function (instance) {
-  var html = '';
+  var html = '<tr><td>';
   instance.items.forEach(function (item, i) {
-    html += '<tr><td>'+(this._renderItem(item, i))+'</td></tr>';
+    html += (this._renderItem(item, i));
   }, this);
-  return html;
+  return html+'</td></tr>';
 };
 
 /**
@@ -152,11 +152,13 @@ p.show = function (memberIndex) {
     this.memberIndex = memberIndex;
     this.render();
   }
+  document.body.classList.add('select-item-open');
   this.el.classList.add('is-active');
 };
 
 p.hide = function () {
   this.el.classList.remove('is-active');
+  document.body.classList.remove('select-item-open');
   this.memberIndex = null;
 };
 

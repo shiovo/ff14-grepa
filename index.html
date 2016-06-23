@@ -75,15 +75,8 @@ $(function(){
                  <section class="box-select">
                     <span>行き先:</span>
                     <select id="select-category">
-                        <option value="cate-1">討伐・討滅選</option>
-                        <option value="cate-2">レイド</option>
                     </select>
-
                     <select id="select-id">
-                        <option value="id-1">真成1層</option>
-                        <option value="id-2">真成2層</option>
-                        <option value="id-3">真成3層</option>
-                        <option value="id-4">真成4層</option>
                     </select>
                 </section>
 
@@ -92,28 +85,17 @@ $(function(){
 
             <h3 class="m-option-title">オプション設定</h3>
             <section class="m-option">
-                <div class="m-option-item">
+                <div id="option-mount" class="m-option-item">
                     <div class="m-option-item__title">
-                        鳥
+                        マウント
                     </div>
                     <div class="m-option-item__body">
                         <select>
-                            <option value="1">------</option>
+                            <option value="1">1〆</option>
                             <option value="2">2〆</option>
                             <option value="3">3〆</option>
-                            <option value="8">フリー(希望不可)</option>
+                            <option value="0">フリー</option>
                         </select>
-                    </div>
-                </div>
-
-                <div class="m-option-item">
-                    <div class="m-option-item__title">
-                        まとめ希望
-                    </div>
-                    <div class="m-option-item__body">
-                        <label><input type="checkbox" value=""><span>剣盾</span></label>
-                        <label><input type="checkbox" value=""><span>アクセサリ</span></label>
-                        <label><input type="checkbox" value=""><span>ジョブ</span></label>
                     </div>
                 </div>
 
@@ -130,141 +112,9 @@ $(function(){
                             <th>No.</th>
                             <th>名前</th>
                             <th>希望品</th>
-                            <th></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td>
-                                <button class="btn-text">アイテム選択</button>
-                                <select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>2</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>3</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>4</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>5</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>6</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>7</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                        <tr>
-                            <th>8</th>
-                            <td class="td-name"><input type="text" class="input-name"><span></span></td>
-                            <td><select class="select-item"></select><div class="td-item">
-                                 <figure>
-                                        <img src="images/dummy/5faf78c6822.png" alt="">
-                                    </figure>
-                                    <figcaption>
-                                        <span></span>
-                                        <small></small>
-                                    </figcaption>
-                                </div>
-                            </td>
-                            <td><button class="btn-text js-decision"></button></td>
-                        </tr>
-
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </section>
 

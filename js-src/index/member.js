@@ -6,7 +6,7 @@ function Member(id) {
   this.el = document.createElement('tr');
   this.el.classList.add('member');
   this.el.innerHTML = '<th>' + (id + 1) + '</th>'+
-                      '<td class="td-name"><input type="text" class="input-name"></td>';
+                      '<td class="td-name"><input type="text" class="input-name"></td>'+
                       '<td>'+
                         '<div class="member__selectedItems"></div>'+
                         '<button class="btn-text js-show-select-item-modal">アイテム選択</button>'+
@@ -30,14 +30,14 @@ p.initBindings = function () {
     }
     // アイテム選択解除
     else if (e.target.classList.contains('js-item-unselect')) {
-      store.removeMemberItem(self.id, parseInt(e.target.parentElement.dataset.itemId));
+      store.removeMemberItem(self.id, parseInt(e.target.parentElement.parentElement.dataset.itemId));
     }
   }, false);
 
   // storeイベント
   this.render = this.render.bind(this);
   store.on('restore', this.render);
-  store.on('member_'+memberId+'_changed', this.render);
+  store.on('member_'+this.id+'_changed', this.render);
   store.on('member_changed', this.render);
 };
 
@@ -57,18 +57,18 @@ p.renderItems = function(itemIds) {
   var idData = store.getInstance();
 
   var html = '';
-  items.forEach(function (itemId) {
+  itemIds.forEach(function (itemId) {
     var item = idData.getItem(itemId);
     if (!item) {
       return;
     }
     html += '<div class="td-item" data-item-id="'+itemId+'">'+
-              '<button class="btn-delete js-item-unselect">×</button>'+
               '<figure><img src="'+item.icon+'"></figure>'+
               '<figcaption>'+
                 '<span>'+item.shortName+'</span>'+
-                '<small>'+item.name+'</small>'+
+                '<small><'+item.name+'></small>'+
               '</figcaption>'+
+              '<div class="td-item-btn"><button class="btn-delete btn-text is-danger js-item-unselect">×</button></div>'+
             '</div>';
   }, this);
   this.itemsContainer.innerHTML = html;

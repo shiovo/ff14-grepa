@@ -5,7 +5,7 @@ function Store() {
     category: 0,
     id: 0,
     options: {
-      bird: 0
+      mount: 3
     },
     member: []
   };
@@ -23,7 +23,8 @@ Store.Events = {
   RESTORE: 'restore',
   CATEGORY_CHANGED: 'category_changed',
   INSTANCE_CHANGED: 'instance_changed',
-  MEMBER_CHANGED: 'member_changed'
+  MEMBER_CHANGED: 'member_changed',
+  OPTION_MOUNT_CHANGED: 'option_mount_changed'
 };
 
 var p = Store.prototype;
@@ -111,8 +112,20 @@ p.getSelectedItems = function (memberIndex) {
  * メンバーの選択できないアイテムを取得する
  */
 p.getUnSelectableItems = function (memberIndex) {
+  var idData = this.getInstance();
   var selected = this.getSelectedItems(memberIndex);
   var allSelected = this.getAllSelectedItems();
+  // 選択済のマウントの数を計算
+  var mountCount = 0;
+  if (idData.hasMount()) {
+    allSelected.forEach(function (itemId) {
+      var item = idData.items[itemId];
+      if (item.shortName.match(/(馬|鳥)/)) {
+        mountCount++;
+      }
+    });
+
+  }
   var ret = [];
   allSelected.forEach(function (itemId) {
     // 自分の選択アイテムでなければ選択不可
@@ -164,6 +177,15 @@ p.setInstance = function (instance) {
   this.save();
   this.emit(Store.Events.INSTANCE_CHANGED);
   this.emit(Store.Events.MEMBER_CHANGED);
+};
+
+/**
+ * マウントオプション設定
+ */
+p.setMountOption = function (value) {
+  this.data.options.mount = value;
+  this.save();
+  this.emit(Store.Events.OPTION_MOUNT_CHANGED);
 };
 
 /**

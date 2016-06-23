@@ -55,36 +55,11 @@
 				height: 60px;
 			}
 
-			& > tr > td:last-child{
-				width: 12%;
-				text-align: center;
-			}
-
 			.td-item,.td-name span{
-				display: none;
 			}
 
 			.td-name{
 				width: 30%;
-			}
-		}
-
-		.is-selected{
-			select{
-				display: none;
-			}
-			.td-item{
-				display: block;
-			}
-
-			.td-name{
-				input{
-					display: none;
-				}
-				span{
-					display: block;
-				}
-
 			}
 		}
 	}
@@ -92,6 +67,16 @@
 	.td-item{
 		display: table;
 		width: 100%;
+		margin-bottom: 5px;
+
+		.td-item-btn {
+			display: table-cell;
+			vertical-align: middle;
+			width: 35px;
+
+			.btn-delete {
+			}
+		}
 
 		figure{
 			display: table-cell;

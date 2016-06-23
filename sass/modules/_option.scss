@@ -10,6 +10,11 @@
 .m-option-item {
   display: flex;
   padding: 10px;
+
+  &.is-hide {
+    display: none;
+  }
+
   .m-option-item__title {
   }
   .m-option-item__body {

@@ -63,4 +63,13 @@ p.getItem = function (itemId) {
   return this.items[itemId];
 };
 
+p.hasMount = function () {
+  for (var i=0,l=this.items.length;i<l;i++) {
+    if (this.items[i].shortName.match(/(馬|鳥)/)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 module.exports = IdData;

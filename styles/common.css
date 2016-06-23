@@ -478,6 +478,8 @@ footer {
   .btn-text.is-edit {
     background: #4a37ff;
     text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3); }
+  .btn-text.is-danger {
+    background-color: #9f42a5; }
   .btn-text.is-normal {
     background: rgba(0, 0, 0, 0.4);
     text-shadow: 0px -1px 1px rgba(0, 90, 212, 0.3); }
@@ -539,25 +541,17 @@ footer {
     text-align: center;
     width: 30px;
     height: 60px; }
-  .box-input table tbody > tr > td:last-child {
-    width: 12%;
-    text-align: center; }
-  .box-input table tbody .td-item, .box-input table tbody .td-name span {
-    display: none; }
   .box-input table tbody .td-name {
     width: 30%; }
-  .box-input table .is-selected select {
-    display: none; }
-  .box-input table .is-selected .td-item {
-    display: block; }
-  .box-input table .is-selected .td-name input {
-    display: none; }
-  .box-input table .is-selected .td-name span {
-    display: block; }
 
 .box-input .td-item {
   display: table;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 5px; }
+  .box-input .td-item .td-item-btn {
+    display: table-cell;
+    vertical-align: middle;
+    width: 35px; }
   .box-input .td-item figure {
     display: table-cell;
     vertical-align: top;
@@ -797,6 +791,9 @@ footer {
     display: block;
     padding: 5px; }
 
+.select-item-open {
+  overflow: hidden; }
+
 .select-item-modal {
   position: fixed;
   top: 0;
@@ -894,6 +891,8 @@ footer {
 .m-option-item {
   display: flex;
   padding: 10px; }
+  .m-option-item.is-hide {
+    display: none; }
   .m-option-item .m-option-item__body {
     margin-left: 10px;
     flex-grow: 1;
