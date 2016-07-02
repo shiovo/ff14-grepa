@@ -436,6 +436,7 @@
 	    category: 0,
 	    id: 0,
 	    options: {
+	      item: 1,
 	      mount: 3
 	    },
 	    member: []
@@ -484,6 +485,12 @@
 	  this.emit(Store.Events.RESTORE);
 	};
 
+	p.getOption = function (name) {
+	  return this.data.options[name] !== undefined ?
+	              this.data.options[name]:
+	              defaultOptions[name];
+	};
+
 	/**
 	 * 設定を保存する
 	 */
@@ -497,7 +504,9 @@
 
 	  // 旧バージョンはoptionsがないのでチェック
 	  if (data.options) {
-	    this.data.options = data.options;
+	    for (var i in data.options) {
+	      this.data.options[i] = data.options[i];
+	    }
 	  }
 
 	  data.member.forEach(function (member, i) {
@@ -530,6 +539,13 @@
 	 */
 	p.getInstance = function () {
 	  return this.getInstances()[this.data.id];
+	};
+
+	/**
+	 * アイテムを取得する
+	 */
+	p.getItem = function(itemId) {
+	  return this.getInstance().items[itemId];
 	};
 
 	/**
@@ -570,14 +586,32 @@
 	/**
 	 * すべてのメンバーの選択中アイテムを取得する
 	 */
-	p.getAllSelectedItems = function () {
+	p.getAllSelectedItems = function (ignoreMemberId) {
 	  var member;
 	  var ret = [];
-	  for (var i in this.data.member) {
+	  for (var i=0,l=this.data.member.length;i<l;i++) {
+	    if (i === ignoreMemberId) {
+	      continue;
+	    }
 	    member = this.data.member[i];
 	    ret = ret.concat(member.item);
 	  }
 	  return ret;
+	};
+
+	p.getItemSelectedCount = function (itemId, ignoreMemberId) {
+	  return this.getAllSelectedItems(ignoreMemberId).filter(function (id) {
+	    return itemId === id;
+	  }).length;
+	};
+
+	p.getItemLimit = function (itemId) {
+	  var item = this.getItem(itemId);
+	  if (item.shortName.match(/^(鳥|馬)$/)) {
+	    return this.data.options.mount;
+	  } else {
+	    return this.data.options.item;
+	  }
 	};
 
 	/**
@@ -2665,7 +2699,12 @@
 	    // 選択・選択解除
 	    else if (e.target.parentElement.classList.contains('select-item-modal__itemImg')) {
 	      var item = e.target.parentElement.parentElement;
-	      item.classList.toggle('is-selected');
+	      if (item.classList.contains('is-disabled')) {
+	        item.classList.remove('is-selected');
+	      } else {
+	        item.classList.toggle('is-selected');
+	      }
+	      self._updateSelectedCount(item);
 	    }
 	    // カテゴリのアイテム全て選択・選択解除
 	    else if (e.target.classList.contains('js-category-select')) {
@@ -2685,7 +2724,8 @@
 	        } else {
 	          items[i].classList.toggle('is-selected', selectAll);
 	        }
-	      }      
+	        self._updateSelectedCount(items[i]);
+	      }
 	    }
 	  }, false);
 	};
@@ -2729,11 +2769,7 @@
 	    itemImg.classList.add('is-selected');
 	  }, this);
 
-	  // 選択不可
-	  store.getUnSelectableItems(this.memberIndex).forEach(function (id) {
-	    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
-	    itemImg.classList.add('is-disabled');
-	  }, this);
+	  this._updateSelectedCountAll();
 	};
 
 	/**
@@ -2766,8 +2802,16 @@
 	 * アイテムを描画
 	 */
 	p._renderItem = function (item, id, displayName) {
+	  var itemSelectedCount = store.getItemSelectedCount(id, this.memberIndex);
+	  var itemLimit = store.getItemLimit(id);
 	  return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
-	          '<div class="select-item-modal__itemImg"><img src="'+item.icon+'"></div>'+
+	          '<div class="select-item-modal__itemImg">'+
+	            '<div class="select-item-modal__limit">'+
+	              '<span data-count="'+itemSelectedCount+'">'+itemSelectedCount+'</span>'+
+	              '/'+
+	              '<span>'+itemLimit+'</span>'+
+	            '</div>'+
+	            '<img src="'+item.icon+'"></div>'+
 	          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
 	         '</div>';
 	};
@@ -2781,6 +2825,20 @@
 	  } else {
 	    return '';
 	  }
+	};
+
+	p._updateSelectedCountAll = function() {
+	  var items = this.el.querySelectorAll('.select-item-modal__item');
+	  for (var i=0,l=items.length;i<l;i++) {
+	    this._updateSelectedCount(items[i]);
+	  }
+	};
+
+	p._updateSelectedCount = function(itemEle) {
+	  var countEle = itemEle.querySelector('.select-item-modal__limit span:first-child');
+	  var count = parseInt(countEle.dataset.count);
+	  count += ~~itemEle.classList.contains('is-selected');
+	  countEle.innerHTML = count;
 	};
 
 	p.show = function (memberIndex) {

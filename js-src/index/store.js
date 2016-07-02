@@ -5,6 +5,7 @@ function Store() {
     category: 0,
     id: 0,
     options: {
+      item: 1,
       mount: 3
     },
     member: []
@@ -53,6 +54,12 @@ p.restore = function () {
   this.emit(Store.Events.RESTORE);
 };
 
+p.getOption = function (name) {
+  return this.data.options[name] !== undefined ?
+              this.data.options[name]:
+              defaultOptions[name];
+};
+
 /**
  * 設定を保存する
  */
@@ -66,7 +73,9 @@ p._restoreData = function (data) {
 
   // 旧バージョンはoptionsがないのでチェック
   if (data.options) {
-    this.data.options = data.options;
+    for (var i in data.options) {
+      this.data.options[i] = data.options[i];
+    }
   }
 
   data.member.forEach(function (member, i) {
@@ -99,6 +108,13 @@ p.getInstances = function () {
  */
 p.getInstance = function () {
   return this.getInstances()[this.data.id];
+};
+
+/**
+ * アイテムを取得する
+ */
+p.getItem = function(itemId) {
+  return this.getInstance().items[itemId];
 };
 
 /**
@@ -139,14 +155,32 @@ p.getUnSelectableItems = function (memberIndex) {
 /**
  * すべてのメンバーの選択中アイテムを取得する
  */
-p.getAllSelectedItems = function () {
+p.getAllSelectedItems = function (ignoreMemberId) {
   var member;
   var ret = [];
-  for (var i in this.data.member) {
+  for (var i=0,l=this.data.member.length;i<l;i++) {
+    if (i === ignoreMemberId) {
+      continue;
+    }
     member = this.data.member[i];
     ret = ret.concat(member.item);
   }
   return ret;
+};
+
+p.getItemSelectedCount = function (itemId, ignoreMemberId) {
+  return this.getAllSelectedItems(ignoreMemberId).filter(function (id) {
+    return itemId === id;
+  }).length;
+};
+
+p.getItemLimit = function (itemId) {
+  var item = this.getItem(itemId);
+  if (item.shortName.match(/^(鳥|馬)$/)) {
+    return this.data.options.mount;
+  } else {
+    return this.data.options.item;
+  }
 };
 
 /**

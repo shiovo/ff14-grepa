@@ -29,7 +29,12 @@ p.initBinding = function () {
     // 選択・選択解除
     else if (e.target.parentElement.classList.contains('select-item-modal__itemImg')) {
       var item = e.target.parentElement.parentElement;
-      item.classList.toggle('is-selected');
+      if (item.classList.contains('is-disabled')) {
+        item.classList.remove('is-selected');
+      } else {
+        item.classList.toggle('is-selected');
+      }
+      self._updateSelectedCount(item);
     }
     // カテゴリのアイテム全て選択・選択解除
     else if (e.target.classList.contains('js-category-select')) {
@@ -49,7 +54,8 @@ p.initBinding = function () {
         } else {
           items[i].classList.toggle('is-selected', selectAll);
         }
-      }      
+        self._updateSelectedCount(items[i]);
+      }
     }
   }, false);
 };
@@ -93,11 +99,7 @@ p.render = function () {
     itemImg.classList.add('is-selected');
   }, this);
 
-  // 選択不可
-  store.getUnSelectableItems(this.memberIndex).forEach(function (id) {
-    var itemImg = this.itemsContainer.querySelector('[data-item-id="'+id+'"]');
-    itemImg.classList.add('is-disabled');
-  }, this);
+  this._updateSelectedCountAll();
 };
 
 /**
@@ -130,8 +132,16 @@ p._renderCategoryTable = function (instance) {
  * アイテムを描画
  */
 p._renderItem = function (item, id, displayName) {
+  var itemSelectedCount = store.getItemSelectedCount(id, this.memberIndex);
+  var itemLimit = store.getItemLimit(id);
   return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
-          '<div class="select-item-modal__itemImg"><img src="'+item.icon+'"></div>'+
+          '<div class="select-item-modal__itemImg">'+
+            '<div class="select-item-modal__limit">'+
+              '<span data-count="'+itemSelectedCount+'">'+itemSelectedCount+'</span>'+
+              '/'+
+              '<span>'+itemLimit+'</span>'+
+            '</div>'+
+            '<img src="'+item.icon+'"></div>'+
           '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
          '</div>';
 };
@@ -145,6 +155,20 @@ p._renderCategoryButton = function (category) {
   } else {
     return '';
   }
+};
+
+p._updateSelectedCountAll = function() {
+  var items = this.el.querySelectorAll('.select-item-modal__item');
+  for (var i=0,l=items.length;i<l;i++) {
+    this._updateSelectedCount(items[i]);
+  }
+};
+
+p._updateSelectedCount = function(itemEle) {
+  var countEle = itemEle.querySelector('.select-item-modal__limit span:first-child');
+  var count = parseInt(countEle.dataset.count);
+  count += ~~itemEle.classList.contains('is-selected');
+  countEle.innerHTML = count;
 };
 
 p.show = function (memberIndex) {
