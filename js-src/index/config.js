@@ -5,6 +5,9 @@ function Config() {
   this.instanceEl = document.querySelector('#select-id');
 
   // オプション
+  this.limitContainer = document.querySelector('#option-limit');
+  this.limit = this.limitContainer.querySelector('select');
+
   this.mountContainer = document.querySelector('#option-mount');
   this.mount = this.mountContainer.querySelector('select');
 
@@ -32,18 +35,26 @@ p.initBindings = function () {
     store.setMountOption(value);
   }, false);
 
+  this.limit.addEventListener('change', function () {
+    var value = parseInt(self.limit.value);
+    if (isNaN(value)) {
+      value = 1;
+    }
+    store.setLimitOption(value);
+  }, false);
+
   // storeイベント
   store.on('restore', function () {
     self.renderCategory();
     self.renderId();
-    self.renderOptionMount();
+    self.renderOptionLimit();
   });
   store.on('category_changed', function () {
     self.renderId();
-    self.renderOptionMount();
+    self.renderOptionLimit();
   });
   store.on('instance_changed', function () {
-    self.renderOptionMount();
+    self.renderOptionLimit();
   });
 };
 
@@ -65,10 +76,12 @@ p.renderId = function () {
   this.instanceEl.selectedIndex = store.data.id;
 };
 
-p.renderOptionMount = function () {
+p.renderOptionLimit = function () {
   var idData = store.getInstance();
+  var mount = idData.hasMount();
   this.mount.value = store.data.options.mount;
   this.mountContainer.classList.toggle('is-hide', !idData.hasMount());
+  this.mountContainer.querySelector('span').innerHTML = mount || '';
 };
 
 module.exports = Config;

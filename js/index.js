@@ -405,11 +405,13 @@
 	// restore();
 
 
-	var store = __webpack_require__(/*! ./index/store */ 2);
+	var store  = __webpack_require__(/*! ./index/store */ 2);
 	var Config = __webpack_require__(/*! ./index/config */ 20);
-	var Member = __webpack_require__(/*! ./index/member */ 21);
+	var Macro  = __webpack_require__(/*! ./index/macro */ 21);
+	var Member = __webpack_require__(/*! ./index/member */ 22);
 
 	var config = new Config();
+	var macro  = new Macro();
 
 	var members = [];
 	var member;
@@ -436,7 +438,7 @@
 	    category: 0,
 	    id: 0,
 	    options: {
-	      item: 1,
+	      limit: 1,
 	      mount: 3
 	    },
 	    member: []
@@ -456,7 +458,8 @@
 	  CATEGORY_CHANGED: 'category_changed',
 	  INSTANCE_CHANGED: 'instance_changed',
 	  MEMBER_CHANGED: 'member_changed',
-	  OPTION_MOUNT_CHANGED: 'option_mount_changed'
+	  OPTION_CHANGED: 'option_changed',
+	  REQUEST_MACRO_UPDATE: 'request_macro_update'
 	};
 
 	var p = Store.prototype;
@@ -610,7 +613,7 @@
 	  if (item.shortName.match(/^(鳥|馬)$/)) {
 	    return this.data.options.mount;
 	  } else {
-	    return this.data.options.item;
+	    return this.data.options.limit;
 	  }
 	};
 
@@ -650,7 +653,16 @@
 	p.setMountOption = function (value) {
 	  this.data.options.mount = value;
 	  this.save();
-	  this.emit(Store.Events.OPTION_MOUNT_CHANGED);
+	  this.emit(Store.Events.OPTION_CHANGED);
+	};
+
+	/**
+	 * 制限オプション設定
+	 */
+	p.setLimitOption = function (value) {
+	  this.data.options.limit = value;
+	  this.save();
+	  this.emit(Store.Events.OPTION_CHANGED);
 	};
 
 	/**
@@ -660,6 +672,7 @@
 	  this.data.member[memberIndex].item = items;
 	  this.save();
 	  this.emit('member_'+memberIndex+'_changed');
+	  this.emit(Store.Events.REQUEST_MACRO_UPDATE);
 	};
 
 	/**
@@ -672,6 +685,14 @@
 	    })
 	  );
 	};
+
+	p.setMemberName = function (memberIndex, name) {
+	  this.data.member[memberIndex].name = name;
+	  this.save();
+	  // memberからの更新なのでメンバーイベント送らない
+	  // this.emit('member_'+memberIndex+'_changed');
+	  this.emit(Store.Events.REQUEST_MACRO_UPDATE);
+	}
 
 	module.exports = new Store();
 
@@ -773,6 +794,15 @@
 	      name: cat.itemName
 	    });
 	  }, this);
+
+	  this.itemCategoryMap = {};
+	  if (this.hasCategory) {
+	    this.categories.forEach(function (category, i) {
+	      category.items.forEach(function (item) {
+	        this.itemCategoryMap[item.id] = i;
+	      }, this);
+	    }, this);
+	  }
 	};
 
 	p.getCagetoryByShortName = function (name) {
@@ -800,13 +830,64 @@
 	};
 
 	p.hasMount = function () {
+	  var match;
 	  for (var i=0,l=this.items.length;i<l;i++) {
-	    if (this.items[i].shortName.match(/(馬|鳥)/)) {
-	      return true;
+	    if (match = this.items[i].shortName.match(/(馬|鳥)/)) {
+	      return match[0];
 	    }
 	  }
 	  return false;
 	}
+
+	p.resolveItemName = function (itemIds) {
+	  if (!itemIds.length) {
+	    return [];
+	  }
+
+	  var result = [];
+	  // カテゴリがある場合、カテゴリ内すべて選択されていれば、カテゴリ名でまとめる
+	  if (this.hasCategory) {
+	    // カテゴリごとにアイテムを分ける
+	    var itemsByCategory = [];
+	    var itemsByCategoryMap = {};
+	    itemIds.forEach(function (itemId) {
+	      var categoryId = this.itemCategoryMap[itemId];
+	      var category = this.categories[categoryId];
+	      var itemCategory = itemsByCategoryMap[category.category];
+	      if (!itemCategory) {
+	        itemCategory = itemsByCategoryMap[category.category] = {
+	          category: category,
+	          items: []
+	        };
+	        itemsByCategory.push(itemCategory);
+	      }
+	      itemCategory.items.push(itemId);
+	    }, this);
+	    // カテゴリ単位で処理
+	    itemsByCategory.forEach(function (itemCategory) {
+	      // カテゴリ内の選択アイテム数とカテゴリ内の全アイテム数が同じ場合=カテゴリ選択の場合
+	      if (itemCategory.items.length === itemCategory.category.items.length) {
+	        // カテゴリ名でまとめる
+	        result.push(itemCategory.category.name);
+	      } else {
+	        // カテゴリ名＋表示名でまとめる
+	        var dispNames = [];
+	        console.log(itemCategory);
+	        itemCategory.category.items.forEach(function (item) {
+	          if (itemCategory.items.indexOf(item.id) >= 0) {
+	            dispNames.push(item.name);
+	          }
+	        });
+	        result.push(itemCategory.category.name + dispNames.join('/'));
+	      }
+	    }, this);
+	  } else {
+	    itemIds.forEach(function (itemId) {
+	      result.push(this.getItem(itemId).shortName);
+	    }, this);
+	  }
+	  return result;
+	};
 
 	module.exports = IdData;
 
@@ -2508,6 +2589,9 @@
 	  this.instanceEl = document.querySelector('#select-id');
 
 	  // オプション
+	  this.limitContainer = document.querySelector('#option-limit');
+	  this.limit = this.limitContainer.querySelector('select');
+
 	  this.mountContainer = document.querySelector('#option-mount');
 	  this.mount = this.mountContainer.querySelector('select');
 
@@ -2535,18 +2619,26 @@
 	    store.setMountOption(value);
 	  }, false);
 
+	  this.limit.addEventListener('change', function () {
+	    var value = parseInt(self.limit.value);
+	    if (isNaN(value)) {
+	      value = 1;
+	    }
+	    store.setLimitOption(value);
+	  }, false);
+
 	  // storeイベント
 	  store.on('restore', function () {
 	    self.renderCategory();
 	    self.renderId();
-	    self.renderOptionMount();
+	    self.renderOptionLimit();
 	  });
 	  store.on('category_changed', function () {
 	    self.renderId();
-	    self.renderOptionMount();
+	    self.renderOptionLimit();
 	  });
 	  store.on('instance_changed', function () {
-	    self.renderOptionMount();
+	    self.renderOptionLimit();
 	  });
 	};
 
@@ -2568,23 +2660,88 @@
 	  this.instanceEl.selectedIndex = store.data.id;
 	};
 
-	p.renderOptionMount = function () {
+	p.renderOptionLimit = function () {
 	  var idData = store.getInstance();
+	  var mount = idData.hasMount();
 	  this.mount.value = store.data.options.mount;
 	  this.mountContainer.classList.toggle('is-hide', !idData.hasMount());
+	  this.mountContainer.querySelector('span').innerHTML = mount || '';
 	};
 
 	module.exports = Config;
 
 /***/ },
 /* 21 */
+/*!*******************************!*\
+  !*** ./js-src/index/macro.js ***!
+  \*******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var store = __webpack_require__(/*! ./store */ 2);
+
+	function Macro() {
+	  this.el = document.querySelector('.l-macro');
+	  this.macroText = this.el.querySelector('#macro-text');
+
+	  this.initBinding();
+	}
+
+	var p = Macro.prototype;
+
+	/**
+	 * イベントハンドル
+	 */
+	p.initBinding = function () {
+	  var self = this;
+
+	  store.on('restore', function () {
+	    self.render();
+	  });
+	  store.on('option_changed', function () {
+	    self.render();
+	  });
+	  store.on('member_changed', function () {
+	    self.render();
+	  });
+	  store.on('request_macro_update', function () {
+	    self.render();
+	  });
+	};
+
+	p.render = function () {
+	  var html = '';
+
+	  var idData = store.getInstance();
+	  var mount = idData.hasMount();
+	  // option
+	  html += '〆:' + store.data.options.limit;
+	  if (mount) {
+	    html += ' ' + mount + (store.data.options.mount || 'フリー');
+	  }
+	  html += '\n';
+
+	  // 選択アイテム
+	  store.data.member.forEach(function (member) {
+	    html += member.name + ' ';
+	    html += idData.resolveItemName(member.item).join(' ') + '\n';
+	  });
+
+	  this.macroText.innerHTML = html;
+	};
+
+	module.exports = Macro;
+
+
+
+/***/ },
+/* 22 */
 /*!********************************!*\
   !*** ./js-src/index/member.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var store = __webpack_require__(/*! ./store */ 2);
-	var modal = __webpack_require__(/*! ./select-item-modal */ 22);
+	var modal = __webpack_require__(/*! ./select-item-modal */ 23);
 
 	function Member(id) {
 	  this.id = id;
@@ -2616,6 +2773,20 @@
 	    // アイテム選択解除
 	    else if (e.target.classList.contains('js-item-unselect')) {
 	      store.removeMemberItem(self.id, parseInt(e.target.parentElement.parentElement.dataset.itemId));
+	    }
+	  }, false);
+
+	  this.el.addEventListener('keydown', function (e) {
+	    // 名前設定
+	    if (e.target.classList.contains('input-name')) {
+	      store.setMemberName(self.id, (e.target.value || '').trim());
+	    }
+	  }, false);
+
+	  this.el.addEventListener('change', function (e) {
+	    // 名前設定
+	    if (e.target.classList.contains('input-name')) {
+	      store.setMemberName(self.id, (e.target.value || '').trim());
 	    }
 	  }, false);
 
@@ -2662,7 +2833,7 @@
 	module.exports = Member;
 
 /***/ },
-/* 22 */
+/* 23 */
 /*!*******************************************!*\
   !*** ./js-src/index/select-item-modal.js ***!
   \*******************************************/

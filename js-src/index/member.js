@@ -34,6 +34,20 @@ p.initBindings = function () {
     }
   }, false);
 
+  this.el.addEventListener('keydown', function (e) {
+    // 名前設定
+    if (e.target.classList.contains('input-name')) {
+      store.setMemberName(self.id, (e.target.value || '').trim());
+    }
+  }, false);
+
+  this.el.addEventListener('change', function (e) {
+    // 名前設定
+    if (e.target.classList.contains('input-name')) {
+      store.setMemberName(self.id, (e.target.value || '').trim());
+    }
+  }, false);
+
   // storeイベント
   this.render = this.render.bind(this);
   store.on('restore', this.render);

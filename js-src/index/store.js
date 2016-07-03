@@ -5,7 +5,7 @@ function Store() {
     category: 0,
     id: 0,
     options: {
-      item: 1,
+      limit: 1,
       mount: 3
     },
     member: []
@@ -25,7 +25,8 @@ Store.Events = {
   CATEGORY_CHANGED: 'category_changed',
   INSTANCE_CHANGED: 'instance_changed',
   MEMBER_CHANGED: 'member_changed',
-  OPTION_MOUNT_CHANGED: 'option_mount_changed'
+  OPTION_CHANGED: 'option_changed',
+  REQUEST_MACRO_UPDATE: 'request_macro_update'
 };
 
 var p = Store.prototype;
@@ -179,7 +180,7 @@ p.getItemLimit = function (itemId) {
   if (item.shortName.match(/^(鳥|馬)$/)) {
     return this.data.options.mount;
   } else {
-    return this.data.options.item;
+    return this.data.options.limit;
   }
 };
 
@@ -219,7 +220,16 @@ p.setInstance = function (instance) {
 p.setMountOption = function (value) {
   this.data.options.mount = value;
   this.save();
-  this.emit(Store.Events.OPTION_MOUNT_CHANGED);
+  this.emit(Store.Events.OPTION_CHANGED);
+};
+
+/**
+ * 制限オプション設定
+ */
+p.setLimitOption = function (value) {
+  this.data.options.limit = value;
+  this.save();
+  this.emit(Store.Events.OPTION_CHANGED);
 };
 
 /**
@@ -229,6 +239,7 @@ p.setMemberItems = function (memberIndex, items) {
   this.data.member[memberIndex].item = items;
   this.save();
   this.emit('member_'+memberIndex+'_changed');
+  this.emit(Store.Events.REQUEST_MACRO_UPDATE);
 };
 
 /**
@@ -241,5 +252,13 @@ p.removeMemberItem = function (memberIndex, itemId) {
     })
   );
 };
+
+p.setMemberName = function (memberIndex, name) {
+  this.data.member[memberIndex].name = name;
+  this.save();
+  // memberからの更新なのでメンバーイベント送らない
+  // this.emit('member_'+memberIndex+'_changed');
+  this.emit(Store.Events.REQUEST_MACRO_UPDATE);
+}
 
 module.exports = new Store();

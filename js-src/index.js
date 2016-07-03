@@ -346,11 +346,13 @@
 // restore();
 
 
-var store = require('./index/store');
+var store  = require('./index/store');
 var Config = require('./index/config');
+var Macro  = require('./index/macro');
 var Member = require('./index/member');
 
 var config = new Config();
+var macro  = new Macro();
 
 var members = [];
 var member;
