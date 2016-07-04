@@ -34,7 +34,7 @@ p.initBindings = function () {
     }
   }, false);
 
-  this.el.addEventListener('keydown', function (e) {
+  this.el.addEventListener('keyup', function (e) {
     // 名前設定
     if (e.target.classList.contains('input-name')) {
       store.setMemberName(self.id, (e.target.value || '').trim());

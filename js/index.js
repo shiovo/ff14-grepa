@@ -844,7 +844,20 @@
 	    return [];
 	  }
 
-	  var result = [];
+	  var results = [];
+	  var resultMap = {};
+	  function pushResult(name) {
+	    result = resultMap[name];
+	    if (!result) {
+	      result = resultMap[name] = {
+	        name: name,
+	        count: 0
+	      };
+	      results.push(result);
+	    }
+	    result.count++;
+	  }
+
 	  // カテゴリがある場合、カテゴリ内すべて選択されていれば、カテゴリ名でまとめる
 	  if (this.hasCategory) {
 	    // カテゴリごとにアイテムを分ける
@@ -865,28 +878,44 @@
 	    }, this);
 	    // カテゴリ単位で処理
 	    itemsByCategory.forEach(function (itemCategory) {
-	      // カテゴリ内の選択アイテム数とカテゴリ内の全アイテム数が同じ場合=カテゴリ選択の場合
-	      if (itemCategory.items.length === itemCategory.category.items.length) {
-	        // カテゴリ名でまとめる
-	        result.push(itemCategory.category.name);
-	      } else {
-	        // カテゴリ名＋表示名でまとめる
-	        var dispNames = [];
-	        console.log(itemCategory);
-	        itemCategory.category.items.forEach(function (item) {
-	          if (itemCategory.items.indexOf(item.id) >= 0) {
-	            dispNames.push(item.name);
-	          }
-	        });
-	        result.push(itemCategory.category.name + dispNames.join('/'));
-	      }
+	      // ユニークなアイテムIDでグルーピングする
+	      var groups = [[]];
+	      var group;
+	      var idx;
+	      itemCategory.items.forEach(function (itemId) {
+	        idx = groups.length - 1;
+	        group = groups[idx];
+	        // 既にIDが存在する場合は新しいグループ
+	        if (group.indexOf(itemId) >= 0) {
+	          group = [];
+	          groups.push(group);
+	          idx++;
+	        }
+	        group.push(itemId);
+	      });
+
+	      // カテゴリ名でまとめられるものはカテゴリ名で
+	      groups.forEach(function (group) {
+	        // カテゴリ内アイテム全選択の場合はカテゴリ名でまとめる
+	        var name;
+	        var result;
+	        if (itemCategory.category.items.length === group.length) {
+	          name = itemCategory.category.name;
+	          pushResult(name);
+	        } else {
+	          group.forEach(function (itemId) {
+	            name = this.getItem(itemId).shortName;
+	            pushResult(name);
+	          }, this);
+	        }
+	      }, this);
 	    }, this);
 	  } else {
 	    itemIds.forEach(function (itemId) {
-	      result.push(this.getItem(itemId).shortName);
+	      pushResult(this.getItem(itemId).shortName);
 	    }, this);
 	  }
-	  return result;
+	  return results;
 	};
 
 	module.exports = IdData;
@@ -2716,14 +2745,34 @@
 	  // option
 	  html += '〆:' + store.data.options.limit;
 	  if (mount) {
-	    html += ' ' + mount + (store.data.options.mount || 'フリー');
+	    html += ' ' + mount + (store.data.options.mount !== 8 ? store.data.options.mount: 'フリー');
 	  }
 	  html += '\n';
 
-	  // 選択アイテム
+	  // 全選択アイテム
+	  var names = [];
+	  idData.resolveItemName(store.getAllSelectedItems()).forEach(function (ret) {
+	    var name = ret.name;
+	    if (ret.count > 1) {
+	      name += ret.count;
+	    }
+	    names.push(name);
+	  });
+	  html += names.join(' ') + '\n';
+	  html += '\n';
+
+	  // 個人選択アイテム
 	  store.data.member.forEach(function (member) {
-	    html += member.name + ' ';
-	    html += idData.resolveItemName(member.item).join(' ') + '\n';
+	    var names = [];
+	    idData.resolveItemName(member.item).forEach(function (ret) {
+	      var name = ret.name;
+	      if (ret.count > 1) {
+	        name += ret.count;
+	      }
+	      names.push(name);
+	    });
+	    html += '/p ' + member.name + ' ';
+	    html += names.join(' ') + '\n';
 	  });
 
 	  this.macroText.innerHTML = html;
@@ -2776,7 +2825,7 @@
 	    }
 	  }, false);
 
-	  this.el.addEventListener('keydown', function (e) {
+	  this.el.addEventListener('keyup', function (e) {
 	    // 名前設定
 	    if (e.target.classList.contains('input-name')) {
 	      store.setMemberName(self.id, (e.target.value || '').trim());
@@ -2857,6 +2906,17 @@
 	p.initBinding = function () {
 	  var self = this;
 
+	  function getParentElement(classSelector, element) {
+	    var current = element;
+	    while (current.parentElement) {
+	      current = current.parentElement;
+	      if (current.classList.contains(classSelector)) {
+	        return current;
+	      }
+	    }
+	    return null;
+	  }
+
 	  this.el.addEventListener('click', function (e) {
 	    // キャンセル
 	    if (e.target.classList.contains('js-dismiss')) {
@@ -2868,8 +2928,8 @@
 	      self.hide();
 	    }
 	    // 選択・選択解除
-	    else if (e.target.parentElement.classList.contains('select-item-modal__itemImg')) {
-	      var item = e.target.parentElement.parentElement;
+	    else if (getParentElement('select-item-modal__itemImg', e.target)) {
+	      var item = getParentElement('select-item-modal__item', e.target);
 	      if (item.classList.contains('is-disabled')) {
 	        item.classList.remove('is-selected');
 	      } else {
@@ -2979,8 +3039,11 @@
 	          '<div class="select-item-modal__itemImg">'+
 	            '<div class="select-item-modal__limit">'+
 	              '<span data-count="'+itemSelectedCount+'">'+itemSelectedCount+'</span>'+
-	              '/'+
-	              '<span>'+itemLimit+'</span>'+
+	              (
+	                itemLimit === 8 ? '' :
+	                '/'+
+	                '<span>'+itemLimit+'</span>'
+	              )+
 	            '</div>'+
 	            '<img src="'+item.icon+'"></div>'+
 	          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
@@ -3006,10 +3069,14 @@
 	};
 
 	p._updateSelectedCount = function(itemEle) {
+	  var id = parseInt(itemEle.dataset.itemId);
+	  var itemLimit = store.getItemLimit(id);
 	  var countEle = itemEle.querySelector('.select-item-modal__limit span:first-child');
 	  var count = parseInt(countEle.dataset.count);
 	  count += ~~itemEle.classList.contains('is-selected');
 	  countEle.innerHTML = count;
+	  itemEle.classList.toggle('is-selected-just', count === itemLimit);
+	  itemEle.classList.toggle('is-selected-over', count > itemLimit);
 	};
 
 	p.show = function (memberIndex) {

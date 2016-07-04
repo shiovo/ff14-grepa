@@ -16,6 +16,17 @@ var p = SelectItemModal.prototype;
 p.initBinding = function () {
   var self = this;
 
+  function getParentElement(classSelector, element) {
+    var current = element;
+    while (current.parentElement) {
+      current = current.parentElement;
+      if (current.classList.contains(classSelector)) {
+        return current;
+      }
+    }
+    return null;
+  }
+
   this.el.addEventListener('click', function (e) {
     // キャンセル
     if (e.target.classList.contains('js-dismiss')) {
@@ -27,8 +38,8 @@ p.initBinding = function () {
       self.hide();
     }
     // 選択・選択解除
-    else if (e.target.parentElement.classList.contains('select-item-modal__itemImg')) {
-      var item = e.target.parentElement.parentElement;
+    else if (getParentElement('select-item-modal__itemImg', e.target)) {
+      var item = getParentElement('select-item-modal__item', e.target);
       if (item.classList.contains('is-disabled')) {
         item.classList.remove('is-selected');
       } else {
@@ -138,8 +149,11 @@ p._renderItem = function (item, id, displayName) {
           '<div class="select-item-modal__itemImg">'+
             '<div class="select-item-modal__limit">'+
               '<span data-count="'+itemSelectedCount+'">'+itemSelectedCount+'</span>'+
-              '/'+
-              '<span>'+itemLimit+'</span>'+
+              (
+                itemLimit === 8 ? '' :
+                '/'+
+                '<span>'+itemLimit+'</span>'
+              )+
             '</div>'+
             '<img src="'+item.icon+'"></div>'+
           '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
@@ -165,10 +179,14 @@ p._updateSelectedCountAll = function() {
 };
 
 p._updateSelectedCount = function(itemEle) {
+  var id = parseInt(itemEle.dataset.itemId);
+  var itemLimit = store.getItemLimit(id);
   var countEle = itemEle.querySelector('.select-item-modal__limit span:first-child');
   var count = parseInt(countEle.dataset.count);
   count += ~~itemEle.classList.contains('is-selected');
   countEle.innerHTML = count;
+  itemEle.classList.toggle('is-selected-just', count === itemLimit);
+  itemEle.classList.toggle('is-selected-over', count > itemLimit);
 };
 
 p.show = function (memberIndex) {

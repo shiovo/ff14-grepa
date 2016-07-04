@@ -87,7 +87,20 @@ p.resolveItemName = function (itemIds) {
     return [];
   }
 
-  var result = [];
+  var results = [];
+  var resultMap = {};
+  function pushResult(name) {
+    result = resultMap[name];
+    if (!result) {
+      result = resultMap[name] = {
+        name: name,
+        count: 0
+      };
+      results.push(result);
+    }
+    result.count++;
+  }
+
   // カテゴリがある場合、カテゴリ内すべて選択されていれば、カテゴリ名でまとめる
   if (this.hasCategory) {
     // カテゴリごとにアイテムを分ける
@@ -108,28 +121,44 @@ p.resolveItemName = function (itemIds) {
     }, this);
     // カテゴリ単位で処理
     itemsByCategory.forEach(function (itemCategory) {
-      // カテゴリ内の選択アイテム数とカテゴリ内の全アイテム数が同じ場合=カテゴリ選択の場合
-      if (itemCategory.items.length === itemCategory.category.items.length) {
-        // カテゴリ名でまとめる
-        result.push(itemCategory.category.name);
-      } else {
-        // カテゴリ名＋表示名でまとめる
-        var dispNames = [];
-        console.log(itemCategory);
-        itemCategory.category.items.forEach(function (item) {
-          if (itemCategory.items.indexOf(item.id) >= 0) {
-            dispNames.push(item.name);
-          }
-        });
-        result.push(itemCategory.category.name + dispNames.join('/'));
-      }
+      // ユニークなアイテムIDでグルーピングする
+      var groups = [[]];
+      var group;
+      var idx;
+      itemCategory.items.forEach(function (itemId) {
+        idx = groups.length - 1;
+        group = groups[idx];
+        // 既にIDが存在する場合は新しいグループ
+        if (group.indexOf(itemId) >= 0) {
+          group = [];
+          groups.push(group);
+          idx++;
+        }
+        group.push(itemId);
+      });
+
+      // カテゴリ名でまとめられるものはカテゴリ名で
+      groups.forEach(function (group) {
+        // カテゴリ内アイテム全選択の場合はカテゴリ名でまとめる
+        var name;
+        var result;
+        if (itemCategory.category.items.length === group.length) {
+          name = itemCategory.category.name;
+          pushResult(name);
+        } else {
+          group.forEach(function (itemId) {
+            name = this.getItem(itemId).shortName;
+            pushResult(name);
+          }, this);
+        }
+      }, this);
     }, this);
   } else {
     itemIds.forEach(function (itemId) {
-      result.push(this.getItem(itemId).shortName);
+      pushResult(this.getItem(itemId).shortName);
     }, this);
   }
-  return result;
+  return results;
 };
 
 module.exports = IdData;

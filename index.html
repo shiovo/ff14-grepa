@@ -85,30 +85,30 @@ $(function(){
 
             <h3 class="m-option-title">オプション設定</h3>
             <section class="m-option">
-                <div class="m-option-item">
-                    <div class="m-option-item__title">
-                        〆
-                    </div>
-                    <div class="m-option-item__body">
-                        <div id="option-limit">
-                            <select>
-                                <option value="1">1〆</option>
-                                <option value="2">2〆</option>
-                                <option value="3">3〆</option>
-                                <option value="0">フリー</option>
-                            </select>
-                        </div>
-                        <div id="option-mount">
-                            <span>マウント</span>
-                            <select>
-                                <option value="1">1〆</option>
-                                <option value="2">2〆</option>
-                                <option value="3">3〆</option>
-                                <option value="0">フリー</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
+                <table>
+                    <tr>
+                        <th>〆</th>
+                        <td>
+                            <div id="option-limit" class="m-option__inlineItem">
+                                <select>
+                                    <option value="1">1〆</option>
+                                    <option value="2">2〆</option>
+                                    <option value="3">3〆</option>
+                                    <option value="8">フリー</option>
+                                </select>
+                            </div>
+                            <div id="option-mount" class="m-option__inlineItem">
+                                <span>マウント</span>
+                                <select>
+                                    <option value="1">1〆</option>
+                                    <option value="2">2〆</option>
+                                    <option value="3">3〆</option>
+                                    <option value="8">フリー</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
             </section>
 
@@ -134,17 +134,11 @@ $(function(){
         <div class="l-macro">
             <section class="box-macro">
                 <header>
-                    <h3>コピペ用マクロ</h3>
+                    <h3>コピペ用テキスト</h3>
                     <!-- <button class="btn-text is-normal">コピー</button> -->
                 </header>
 
-                <div class="m-switch">
-                    <input type="radio" id="switch-name1" name="switch-name" checked="checked"><label for="switch-name1">アイテムのみ</label>
-
-                    <input type="radio" id="switch-name2" name="switch-name"><label for="switch-name2">名前入り</label>
-                </div>
-
-                <textarea id="macro-text" name="" id="" cols="30" rows="10"></textarea>
+                <textarea id="macro-text" name="" id="" cols="30" rows="10" readonly></textarea>
 
                 <!-- <div class="pc">
                     <br>

@@ -7,20 +7,21 @@
 .m-option{
   border: 1px solid $color-tb-border;
 }
-.m-option-item {
-  display: flex;
-  padding: 10px;
-
-  &.is-hide {
-    display: none;
+.m-option {
+  th, td {
+    padding: 10px;
   }
 
-  .m-option-item__title {
-  }
-  .m-option-item__body {
+  .m-option__inlineItem {
+    display: inline-block;
     margin-left: 10px;
-    flex-grow: 1;
-    width: 0;
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+
+  &.is-hide, & .is-hide {
+    display: none;
   }
 }
 
