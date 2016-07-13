@@ -1,22 +1,7 @@
 var idData = require('../data');
 
 function Store() {
-  this.data = {
-    category: 0,
-    id: 0,
-    options: {
-      limit: 1,
-      mount: 3
-    },
-    member: []
-  };
-  for (var i=0;i<8;i++) {
-    this.data.member.push({
-      name: '',
-      item: []
-    });
-  }
-
+  this.data = this.getDefaultData();
   this.listeners = {};
 }
 
@@ -55,6 +40,25 @@ p.restore = function () {
   this.emit(Store.Events.RESTORE);
 };
 
+p.getDefaultData = function () {
+  var data = {
+    category: 0,
+    id: 0,
+    options: {
+      limit: 1,
+      mount: 3
+    },
+    member: []
+  };
+  for (var i=0;i<8;i++) {
+    data.member.push({
+      name: '',
+      item: []
+    });
+  }
+  return data;
+};
+
 p.getOption = function (name) {
   return this.data.options[name] !== undefined ?
               this.data.options[name]:
@@ -65,7 +69,17 @@ p.getOption = function (name) {
  * 設定を保存する
  */
 p.save = function () {
+  var json = JSON.stringify(this.data);
+  localStorage.setItem('data', json);
+};
 
+/**
+ * データをクリアする
+ */
+p.clear = function () {
+  this.data = this.getDefaultData();
+  this.save();
+  this.emit(Store.Events.RESTORE);
 };
 
 p._restoreData = function (data) {
@@ -80,6 +94,8 @@ p._restoreData = function (data) {
   }
 
   data.member.forEach(function (member, i) {
+    this.data.member[i].name = member.name;
+
     if (Array.isArray(member.item)) {
       // 現バージョンデータはそのまま設定
       this.data.member[i].item = member.item;

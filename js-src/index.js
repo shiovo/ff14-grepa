@@ -362,4 +362,3 @@ for (var i=0;i<8;i++) {
   members.push(member);
 }
 store.restore();
-console.log(store);

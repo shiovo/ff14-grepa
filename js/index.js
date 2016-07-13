@@ -421,7 +421,6 @@
 	  members.push(member);
 	}
 	store.restore();
-	console.log(store);
 
 
 /***/ },
@@ -434,22 +433,7 @@
 	var idData = __webpack_require__(/*! ../data */ 3);
 
 	function Store() {
-	  this.data = {
-	    category: 0,
-	    id: 0,
-	    options: {
-	      limit: 1,
-	      mount: 3
-	    },
-	    member: []
-	  };
-	  for (var i=0;i<8;i++) {
-	    this.data.member.push({
-	      name: '',
-	      item: []
-	    });
-	  }
-
+	  this.data = this.getDefaultData();
 	  this.listeners = {};
 	}
 
@@ -488,6 +472,25 @@
 	  this.emit(Store.Events.RESTORE);
 	};
 
+	p.getDefaultData = function () {
+	  var data = {
+	    category: 0,
+	    id: 0,
+	    options: {
+	      limit: 1,
+	      mount: 3
+	    },
+	    member: []
+	  };
+	  for (var i=0;i<8;i++) {
+	    data.member.push({
+	      name: '',
+	      item: []
+	    });
+	  }
+	  return data;
+	};
+
 	p.getOption = function (name) {
 	  return this.data.options[name] !== undefined ?
 	              this.data.options[name]:
@@ -498,7 +501,17 @@
 	 * 設定を保存する
 	 */
 	p.save = function () {
+	  var json = JSON.stringify(this.data);
+	  localStorage.setItem('data', json);
+	};
 
+	/**
+	 * データをクリアする
+	 */
+	p.clear = function () {
+	  this.data = this.getDefaultData();
+	  this.save();
+	  this.emit(Store.Events.RESTORE);
 	};
 
 	p._restoreData = function (data) {
@@ -513,6 +526,8 @@
 	  }
 
 	  data.member.forEach(function (member, i) {
+	    this.data.member[i].name = member.name;
+
 	    if (Array.isArray(member.item)) {
 	      // 現バージョンデータはそのまま設定
 	      this.data.member[i].item = member.item;
@@ -2617,6 +2632,9 @@
 	  this.categoryEl = document.querySelector('#select-category');
 	  this.instanceEl = document.querySelector('#select-id');
 
+	  // クリア
+	  this.clearEl = document.querySelector('.m-clear button');
+
 	  // オプション
 	  this.limitContainer = document.querySelector('#option-limit');
 	  this.limit = this.limitContainer.querySelector('select');
@@ -2638,6 +2656,10 @@
 
 	  this.instanceEl.addEventListener('change', function () {
 	    store.setInstance(self.instanceEl.selectedIndex);
+	  }, false);
+
+	  this.clearEl.addEventListener('click', function () {
+	    store.clear();
 	  }, false);
 
 	  this.mount.addEventListener('change', function () {

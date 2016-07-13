@@ -4,6 +4,9 @@ function Config() {
   this.categoryEl = document.querySelector('#select-category');
   this.instanceEl = document.querySelector('#select-id');
 
+  // クリア
+  this.clearEl = document.querySelector('.m-clear button');
+
   // オプション
   this.limitContainer = document.querySelector('#option-limit');
   this.limit = this.limitContainer.querySelector('select');
@@ -25,6 +28,10 @@ p.initBindings = function () {
 
   this.instanceEl.addEventListener('change', function () {
     store.setInstance(self.instanceEl.selectedIndex);
+  }, false);
+
+  this.clearEl.addEventListener('click', function () {
+    store.clear();
   }, false);
 
   this.mount.addEventListener('change', function () {
