@@ -12,6 +12,10 @@
     padding: 10px;
   }
 
+  th{
+    border-right: 1px solid $color-tb-border;
+  }
+
   .m-option__inlineItem {
     display: inline-block;
     margin-left: 10px;
@@ -44,5 +48,9 @@
 .m-option {
   margin: 5px 3%;
 }
+.m-option-title {
+  margin-left: 3%;
+}
+
 
 }

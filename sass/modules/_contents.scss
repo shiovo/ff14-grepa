@@ -52,7 +52,6 @@
 			th{
 				text-align: center;
 				width: 30px;
-				height: 60px;
 			}
 
 			.td-item,.td-name span{
@@ -61,6 +60,13 @@
 			.td-name{
 				width: 30%;
 			}
+		}
+
+		.member{
+			th,td{
+				vertical-align: top;
+			}
+
 		}
 	}
 
@@ -158,6 +164,11 @@
 			}
 		}
 	}
+
+  #macro-text{
+      height: 20em;
+  }
+
 }
 
 /* SP */
@@ -183,7 +194,7 @@
 	}
 
   #macro-text{
-      height: 10em;
+      height: 14em;
   }
 
 
