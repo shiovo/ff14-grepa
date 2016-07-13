@@ -3,7 +3,7 @@ module.exports = {
   items: [
     {
       name: 'ゴルディオンブレード',
-      shortName: '片手剣',
+      shortName: '剣',
       job: 0,
       icon: 'images/item/areki_z/4/a01.png'
     },
@@ -21,7 +21,7 @@ module.exports = {
     },
     {
       name: 'ゴルディオングレートソード',
-      shortName: '両手剣',
+      shortName: '暗黒剣',
       job: 0,
       icon: 'images/item/areki_z/4/a03.png'
     },
@@ -83,7 +83,7 @@ module.exports = {
     },
     {
       name: 'ゴルディオンアストロメーター',
-      shortName: '天球儀',
+      shortName: '天球',
       job: 0,
       icon: 'images/item/areki_z/4/a13.png'
     },

@@ -9,7 +9,7 @@ module.exports = {
     },
     {
       name: 'ニーズヘッグブレード',
-      shortName: '片手剣',
+      shortName: '剣',
       job: 0,
       icon: 'images/item/goku_nees/a01.png'
     },
@@ -27,7 +27,7 @@ module.exports = {
     },
     {
       name: 'ニーズヘッグディバイダー',
-      shortName: '両手剣',
+      shortName: '暗黒剣',
       job: 0,
       icon: 'images/item/goku_nees/a03.png'
     },
@@ -89,7 +89,7 @@ module.exports = {
     },
     {
       name: 'ニーズヘッグスターグローブ',
-      shortName: '天球儀',
+      shortName: '天球',
       job: 0,
       icon: 'images/item/goku_nees/a13.png'
     },

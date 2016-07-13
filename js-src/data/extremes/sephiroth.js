@@ -9,7 +9,7 @@ module.exports = {
     },
     {
       name: 'ブレード・オブ・セフィロト',
-      shortName: '片手剣',
+      shortName: '剣',
       job: 0,
       icon: 'images/item/goku_sefi/a01.png'
     },
@@ -27,7 +27,7 @@ module.exports = {
     },
     {
       name: 'エッジ・オブ・セフィロト',
-      shortName: '両手剣',
+      shortName: '暗黒剣',
       job: 0,
       icon: 'images/item/goku_sefi/a03.png'
     },
@@ -89,7 +89,7 @@ module.exports = {
     },
     {
       name: 'スター・オブ・セフィロト',
-      shortName: '天球儀',
+      shortName: '天球',
       job: 0,
       icon: 'images/item/goku_sefi/a13.png'
     },
