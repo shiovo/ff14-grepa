@@ -114,7 +114,7 @@ gulp.task('watch',function(){
 });
  
 gulp.task('default', function (cb) {
-  runSequence('sass',['watch','connectDev'], 'open', cb);
+  runSequence(['scripts', 'sass'],['watch','connectDev'], 'open', cb);
 });
 // gulp.task('build', function (cb) {
 //   runSequence('clean-tmp', 'clean-dist', 'sass', ['copy-all', 'imagemin'], cb);
