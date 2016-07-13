@@ -4,6 +4,5 @@ dist/css/common.css
 tmp/
 dist/
 .sass-cache/
-_index.js
-index.js
-common.css
+js/
+css/
