@@ -35,9 +35,9 @@ p.render = function () {
   var idData = store.getInstance();
   var mount = idData.hasMount();
   // option
-  html += '〆:' + store.data.options.limit;
+  html += '装備' + this.limitText(store.data.options.limit);
   if (mount) {
-    html += ' ' + mount + (store.data.options.mount !== 8 ? store.data.options.mount: 'フリー');
+    html += ' ' + mount + this.limitText(store.data.options.mount);
   }
   html += '\n';
 
@@ -68,6 +68,10 @@ p.render = function () {
   });
 
   this.macroText.innerHTML = html;
+};
+
+p.limitText = function (limit) {
+  return limit === 8 ? 'フリー' : limit + '〆';
 };
 
 module.exports = Macro;
