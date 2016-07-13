@@ -7,6 +7,7 @@
 
 .select-item-modal{
 	position: fixed;
+	display:flex;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -18,10 +19,11 @@
 	background: rgba(0,0,0,0);
 	visibility: hidden;
 	transition: all 0.25s;
+	padding:20px 0;
 
 	.select-item-modal__body {
 		border-radius: 5px;
-		margin: 20px auto;
+		margin: auto auto;
 		padding: 20px;
 		width: 100%;
 		max-width: 640px;
@@ -32,6 +34,7 @@
 		transform: translate3d(0,-30px,0);
 		opacity: 0;
 		transition: all 0.25s;
+		position: relative;
 	}
 
 	.btn-close {
@@ -177,4 +180,32 @@
 			opacity: 1;
 		}
 	}
+}
+
+
+
+/* SP */
+@include media-sp {
+
+.select-item-modal{
+	padding:10px;
+
+	.select-item-modal__body {
+		padding: 10px;
+	}
+
+
+	.select-item-modal__items {
+		td, th {
+			padding: 5px;
+		}
+
+		th{
+			width: auto;
+		}
+	}
+}
+
+
+
 }
