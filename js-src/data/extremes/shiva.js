@@ -1,5 +1,6 @@
 module.exports = {
   name: '極シヴァ',
+  id: 4,
   items: [
     {
       name: 'ボレアスホイッスル',

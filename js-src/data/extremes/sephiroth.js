@@ -1,5 +1,6 @@
 module.exports = {
   name: '極セフィロト',
+  id: 1,
   items: [
     {
       name: 'ウォーリングラナーホイッスル',
