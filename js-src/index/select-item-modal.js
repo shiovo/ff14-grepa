@@ -84,8 +84,13 @@ p.applySelect = function () {
 p.getSelectedItems = function () {
   var selected = [];
   var selectedElements = this.itemsContainer.querySelectorAll('.is-selected');
+  var id;
   for (var i=0,l=selectedElements.length;i<l;i++) {
-    selected.push(parseInt(selectedElements[i].dataset.itemId));
+    id = selectedElements[i].dataset.itemId;
+    if (!isNaN(id)) {
+      id = parseInt(id);
+    }
+    selected.push(id);
   }
   return selected;
 };
@@ -97,11 +102,7 @@ p.render = function () {
   // アイテムを描画
   var html = '';
   var instance = store.getInstance();
-  if (instance.hasCategory) {
-    html = this._renderCategoryTable(instance);
-  } else {
-    html = this._renderBasicTable(instance);
-  }
+  html = this._renderTable(instance);
   this.itemsContainer.innerHTML = html;
 
   // 選択中
@@ -114,25 +115,14 @@ p.render = function () {
 };
 
 /**
- * カテゴリなしアイテムテーブルを描画
- */
-p._renderBasicTable = function (instance) {
-  var html = '<tr><td>';
-  instance.items.forEach(function (item, i) {
-    html += (this._renderItem(item, i));
-  }, this);
-  return html+'</td></tr>';
-};
-
-/**
  * カテゴリありアイテムテーブルを描画
  */
-p._renderCategoryTable = function (instance) {
+p._renderTable = function (instance) {
   var html = '';
   instance.categories.forEach(function (category) {
-    html += '<tr><th>'+(this._renderCategoryButton(category))+'</th><td>';
+    html += '<tr><th>'+category.name+'</th><td>';
     category.items.forEach(function (item) {
-      html += this._renderItem(item.item, item.id, item.name);
+      html += this._renderItem(item);
     }, this);
     html += '</td></tr>';
   }, this);
@@ -142,10 +132,10 @@ p._renderCategoryTable = function (instance) {
 /**
  * アイテムを描画
  */
-p._renderItem = function (item, id, displayName) {
-  var itemSelectedCount = store.getItemSelectedCount(id, this.memberIndex);
-  var itemLimit = store.getItemLimit(id);
-  return '<div class="select-item-modal__item" data-item-id="'+id+'">'+
+p._renderItem = function (item) {
+  var itemSelectedCount = store.getItemSelectedCount(item.id, this.memberIndex);
+  var itemLimit = store.getItemLimit(item.id);
+  return '<div class="select-item-modal__item" data-item-id="'+item.id+'">'+
           '<div class="select-item-modal__itemImg">'+
             '<div class="select-item-modal__limit">'+
               '<span data-count="'+itemSelectedCount+'">'+itemSelectedCount+'</span>'+
@@ -156,19 +146,8 @@ p._renderItem = function (item, id, displayName) {
               )+
             '</div>'+
             '<img src="'+item.icon+'"></div>'+
-          '<span class="select-item-modal__itemName">'+(displayName || item.shortName)+'</span>'+
+          '<span class="select-item-modal__itemName">'+item.shortName+'</span>'+
          '</div>';
-};
-
-/**
- * カテゴリボタンを描画
- */
-p._renderCategoryButton = function (category) {
-  if (category.name) {
-    return '<button class="btn-text js-category-select">'+category.name+'</button>';
-  } else {
-    return '';
-  }
 };
 
 p._updateSelectedCountAll = function() {
@@ -179,7 +158,10 @@ p._updateSelectedCountAll = function() {
 };
 
 p._updateSelectedCount = function(itemEle) {
-  var id = parseInt(itemEle.dataset.itemId);
+  var id = itemEle.dataset.itemId;
+  if (!isNaN(id)) {
+    id = parseInt(id);
+  }
   var itemLimit = store.getItemLimit(id);
   var countEle = itemEle.querySelector('.select-item-modal__limit span:first-child');
   var count = parseInt(countEle.dataset.count);

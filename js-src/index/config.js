@@ -27,7 +27,7 @@ p.initBindings = function () {
   }, false);
 
   this.instanceEl.addEventListener('change', function () {
-    store.setInstance(self.instanceEl.selectedIndex);
+    store.setInstance(parseInt(self.instanceEl.value));
   }, false);
 
   this.clearEl.addEventListener('click', function () {
@@ -76,11 +76,11 @@ p.renderCategory = function () {
 
 p.renderId = function () {
   var html = '';
-  store.getInstances().forEach(function (instance, i) {
-    html += '<option value="' + i + '">' + instance.name + '</option>';
+  store.getInstances().forEach(function (instance) {
+    html += '<option value="' + instance.id + '">' + instance.name + '</option>';
   });
   this.instanceEl.innerHTML = html;
-  this.instanceEl.selectedIndex = store.data.id;
+  this.instanceEl.value = store.data.id;
 };
 
 p.renderOptionLimit = function () {

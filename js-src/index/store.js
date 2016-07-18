@@ -124,14 +124,20 @@ p.getInstances = function () {
  * 行き先ダンジョンを取得する
  */
 p.getInstance = function () {
-  return this.getInstances()[this.data.id];
+  var instances = this.getInstances();
+  for (var i=0,l=instances.length;i<l;i++) {
+    if (instances[i].id === this.data.id) {
+      return instances[i];
+    }
+  }
+  return null;
 };
 
 /**
  * アイテムを取得する
  */
 p.getItem = function(itemId) {
-  return this.getInstance().items[itemId];
+  return this.getInstance().itemMap[itemId];
 };
 
 /**
