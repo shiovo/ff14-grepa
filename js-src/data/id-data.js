@@ -38,6 +38,10 @@ IdData.categoryMap = {
   }
 };
 
+IdData.category = {
+  MOUNT: 4
+};
+
 var p = IdData.prototype;
 
 p.setData = function (data) {
@@ -100,13 +104,31 @@ p.hasMount = function () {
   return !!this.categoryMap[4];
 };
 
+p.getMount = function () {
+  if (this.hasMount()) {
+    return this.categoryMap[4].items[0];
+  }
+  return null;
+};
+
 p.resolveItemName = function (itemIds) {
   if (!itemIds.length) {
     return [];
   }
   var ret = [];
+  var nameMap = {};
   itemIds.forEach(function (id) {
-    ret.push(this.getItem(id).name);
+    var item = this.getItem(id);
+    var name = nameMap[item.id];
+    if (!name) {
+      name = nameMap[item.id] = {
+        name: item.name,
+        shortName: item.shortName,
+        count: 0
+      };
+      ret.push(name);
+    }
+    name.count++;
   }, this)
   return ret;
 };

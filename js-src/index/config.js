@@ -85,11 +85,9 @@ p.renderId = function () {
 
 p.renderOptionLimit = function () {
   var idData = store.getInstance();
-  var mount = idData.hasMount();
   this.limit.value = store.data.options.limit;
   this.mount.value = store.data.options.mount;
   this.mountContainer.classList.toggle('is-hide', !idData.hasMount());
-  this.mountContainer.querySelector('span').innerHTML = mount || '';
 };
 
 module.exports = Config;

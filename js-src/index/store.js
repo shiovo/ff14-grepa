@@ -1,3 +1,4 @@
+var IdData = require('../data/id-data');
 var idData = require('../data');
 
 function Store() {
@@ -199,7 +200,7 @@ p.getItemSelectedCount = function (itemId, ignoreMemberId) {
 
 p.getItemLimit = function (itemId) {
   var item = this.getItem(itemId);
-  if (item.shortName.match(/^(鳥|馬)$/)) {
+  if (item.category === IdData.category.MOUNT) {
     return this.data.options.mount;
   } else {
     return this.data.options.limit;

@@ -33,18 +33,17 @@ p.render = function () {
   var html = '';
 
   var idData = store.getInstance();
-  var mount = idData.hasMount();
   // option
   html += '装備' + this.limitText(store.data.options.limit);
-  if (mount) {
-    html += ' ' + mount + this.limitText(store.data.options.mount);
+  if (idData.hasMount()) {
+    html += ' ' + idData.getMount().shortName + this.limitText(store.data.options.mount);
   }
   html += '\n';
 
   // 全選択アイテム
   var names = [];
   idData.resolveItemName(store.getAllSelectedItems()).forEach(function (ret) {
-    var name = ret.name;
+    var name = ret.shortName;
     if (ret.count > 1) {
       name += ret.count;
     }
@@ -57,7 +56,7 @@ p.render = function () {
   store.data.member.forEach(function (member) {
     var names = [];
     idData.resolveItemName(member.item).forEach(function (ret) {
-      var name = ret.name;
+      var name = ret.shortName;
       if (ret.count > 1) {
         name += ret.count;
       }
