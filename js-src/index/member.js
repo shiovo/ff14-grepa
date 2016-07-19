@@ -30,7 +30,11 @@ p.initBindings = function () {
     }
     // アイテム選択解除
     else if (e.target.classList.contains('js-item-unselect')) {
-      store.removeMemberItem(self.id, parseInt(e.target.parentElement.parentElement.dataset.itemId));
+      var itemId = e.target.parentElement.parentElement.dataset.itemId;
+      if (!isNaN(itemId)) {
+        itemId = parseInt(itemId);
+      }
+      store.removeMemberItem(self.id, itemId);
     }
   }, false);
 
