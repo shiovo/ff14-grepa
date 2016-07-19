@@ -26,7 +26,7 @@
 		margin: auto auto;
 		padding: 20px;
 		width: 100%;
-		max-width: 640px;
+		max-width: 740px;
 		background: url(../images/common/bg.jpg) center center no-repeat;
 		background-size: cover;
 		background-color: #fff;
@@ -61,11 +61,11 @@
 		}
 
 		th {
-			width: 100px;
+			width: 120px;
 		}
 
 		td {
-			text-align: center;
+			text-align: left;
 			padding-bottom: 0;
 		}
 
@@ -201,7 +201,7 @@
 		}
 
 		th{
-			width: auto;
+			// width: auto;
 		}
 	}
 }

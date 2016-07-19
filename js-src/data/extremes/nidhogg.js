@@ -38,7 +38,7 @@ module.exports = {
       id: 4,
       category: 0,
       name: 'ニーズヘッグディバイダー',
-      shortName: '暗黒剣',
+      shortName: '暗剣',
       job: 0,
       icon: 'images/item/goku_nees/a03.png'
     },
@@ -123,14 +123,6 @@ module.exports = {
       shortName: '天球',
       job: 0,
       icon: 'images/item/goku_nees/a13.png'
-    },
-    {
-      id: 15,
-      category: 0,
-      name: '希望品無し',
-      shortName: '無',
-      job: 0,
-      icon: 'images/item/common/none.png'
     }
   ]
 };

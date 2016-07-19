@@ -20,7 +20,7 @@ module.exports = {
     },
     {
       id: 2,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナスクトゥム',
       shortName: '盾',
       job: 0,
@@ -28,7 +28,7 @@ module.exports = {
     },
     {
       id: 3,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナバトルアクス',
       shortName: '斧',
       job: 0,
@@ -36,15 +36,15 @@ module.exports = {
     },
     {
       id: 4,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナクレイモア',
-      shortName: '暗黒剣',
+      shortName: '暗剣',
       job: 0,
       icon: 'images/item/goku_ravana/a03.png'
     },
     {
       id: 5,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナクロー',
       shortName: '拳',
       job: 0,
@@ -52,7 +52,7 @@ module.exports = {
     },
     {
       id: 6,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナスピア',
       shortName: '槍',
       job: 0,
@@ -60,7 +60,7 @@ module.exports = {
     },
     {
       id: 7,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナクリス',
       shortName: '双剣',
       job: 0,
@@ -68,7 +68,7 @@ module.exports = {
     },
     {
       id: 8,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナボウ',
       shortName: '弓',
       job: 0,
@@ -76,7 +76,7 @@ module.exports = {
     },
     {
       id: 9,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナマスケトン',
       shortName: '銃',
       job: 0,
@@ -84,7 +84,7 @@ module.exports = {
     },
     {
       id: 10,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナロングポール',
       shortName: '黒杖',
       job: 0,
@@ -93,7 +93,7 @@ module.exports = {
 
     {
       id: 11,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナグリモア',
       shortName: '召本',
       job: 0,
@@ -102,7 +102,7 @@ module.exports = {
 
     {
       id: 12,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナケーン',
       shortName: '白杖',
       job: 0,
@@ -110,7 +110,7 @@ module.exports = {
     },
     {
       id: 13,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナコーデックス',
       shortName: '学本',
       job: 0,
@@ -118,19 +118,11 @@ module.exports = {
     },
     {
       id: 14,
-      category: 4,
+      category: 0,
       name: 'ラーヴァナプラニスフィア',
       shortName: '天球',
       job: 0,
       icon: 'images/item/goku_ravana/a13.png'
-    },
-    {
-      id: 15,
-      category: 4,
-      name: '希望品無し',
-      shortName: '無',
-      job: 0,
-      icon: 'images/item/common/none.png'
     }
   ]
 };

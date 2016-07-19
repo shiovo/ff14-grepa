@@ -38,7 +38,7 @@ module.exports = {
       id: 4,
       category: 0,
       name: 'エッジ・オブ・セフィロト',
-      shortName: '暗黒剣',
+      shortName: '暗剣',
       job: 0,
       icon: 'images/item/goku_sefi/a03.png'
     },

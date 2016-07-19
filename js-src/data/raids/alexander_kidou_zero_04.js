@@ -30,7 +30,7 @@ module.exports = {
       id: 4,
       category: 0,
       name: 'ゴルディオングレートソード',
-      shortName: '暗黒剣',
+      shortName: '暗剣',
       job: 0,
       icon: 'images/item/areki_z/4/a03.png'
     },
