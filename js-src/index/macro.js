@@ -34,11 +34,11 @@ p.render = function () {
 
   var idData = store.getInstance();
   // option
-  html += '装備' + this.limitText(store.data.options.limit);
-  if (idData.hasMount()) {
-    html += ' ' + idData.getMount().shortName + this.limitText(store.data.options.mount);
-  }
-  html += '\n';
+  // html += '装備' + this.limitText(store.data.options.limit);
+  // if (idData.hasMount()) {
+  //   html += ' ' + idData.getMount().shortName + this.limitText(store.data.options.mount);
+  // }
+  // html += '\n';
 
   // 全選択アイテム
   var names = [];
@@ -49,7 +49,9 @@ p.render = function () {
     }
     names.push(name);
   });
-  html += names.join(' ') + '\n';
+  if (names.length) {
+    html += '〆' + names.join(' ') + '\n';
+  }
   html += '\n';
 
   // 個人選択アイテム
