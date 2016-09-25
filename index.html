@@ -73,7 +73,7 @@ $(function(){
             <div class="m-input-header">
 
                  <section class="box-select">
-                    <span>行き先:</span>
+                    <span class="tit_cursor">行き先:</span>
                     <select id="select-category">
                     </select>
                     <select id="select-id">
@@ -83,8 +83,32 @@ $(function(){
                 <div class="m-clear"><button class="btn-text is-normal">クリア</button></div>
             </div>
 
-            <h3 class="m-option-title">オプション設定</h3>
-            <section class="m-option">
+            <div class="m-option">
+                <h3 class="m-option-title tit_cursor">〆設定:　</h3>
+                <div class="m-option_select">
+                    <div id="option-limit" class="m-option__inlineItem">
+                    <span>装備</span>
+                    <select>
+                    <option value="1">1〆</option>
+                    <option value="2">2〆</option>
+                    <option value="3">3〆</option>
+                    <option value="8">フリー</option>
+                    </select>
+                    </div>
+                    <div id="option-mount" class="m-option__inlineItem">
+                    <span>マウント</span>
+                    <select>
+                    <option value="1">1〆</option>
+                    <option value="2">2〆</option>
+                    <option value="3">3〆</option>
+                    <option value="8">フリー</option>
+                    </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <section class="m-option">
                 <table>
                     <tr>
                         <th>〆</th>
@@ -111,7 +135,7 @@ $(function(){
                     </tr>
                 </table>
 
-            </section>
+            </section> -->
 
 
             <section class="box-input">
@@ -135,7 +159,7 @@ $(function(){
         <div class="l-macro">
             <section class="box-macro">
                 <header>
-                    <h3>コピペ用テキスト</h3>
+                    <h3 class="tit_cursor">コピペ用テキスト</h3>
                     <!-- <button class="btn-text is-normal">コピー</button> -->
                 </header>
 
@@ -144,7 +168,7 @@ $(function(){
                 <!-- <div class="pc">
                     <br>
                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                   
+
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-4766551689489253"
@@ -243,13 +267,13 @@ $(function(){
     <div class="modal-body">
         <h3>ABOUT</h3>
         <p>グリパ帳はグリード周回PT主催者さんのためのメモ帳です。</p>
-        <h4>▼使い方</h4>
+        <h4 class="tit_cursor">使い方</h4>
         <ol>
             <li>行き先を選びます</li>
-            <li>参加者の名前入力・希望品を選択します</li>
-            <li>「決定」ボタンを押すと入力した内容が「コピペ用マクロ」エリアに反映されます</li>
+            <li>〆数を設定します</li>
+            <li>参加者の名前入力し、「アイテム選択」から希望品を選択します</li>
+            <li>入力した内容が「コピペ用テキスト」エリアに反映されます</li>
         </ol>
-        <small>※「編集」ボタンを押すと入力した内容を編集することができます。</small>
         <small>※「クリア」ボタンを押すと内容がリセットされます。</small>
 
         <div class="modal-btn">
@@ -263,7 +287,7 @@ $(function(){
 <div class="select-item-modal">
     <div class="select-item-modal__body">
         <button class="btn-close js-dismiss">×</button>
-        <div class="select-item-modal__title">アイテム選択</div>
+        <div class="select-item-modal__title tit_cursor">アイテム選択</div>
         <table class="select-item-modal__items">
             <tbody></tbody>
         </table>
