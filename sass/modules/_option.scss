@@ -1,0 +1,62 @@
+/* --------------------------------------------------------------
+    option
+-------------------------------------------------------------- */
+.m-option-title {
+  font-size: $font-size-m;
+}
+.m-option{
+  // border: 1px solid $color-tb-border;
+}
+.m-option {
+  display:flex;
+  h3{
+
+  }
+
+  .m-option_select{
+  }
+
+  th, td {
+    padding: 10px;
+  }
+
+  th{
+    border-right: 1px solid $color-tb-border;
+  }
+
+  .m-option__inlineItem {
+    display: inline-block;
+    margin-left: 10px;
+    &:first-child {
+      margin-left: auto;
+    }
+  }
+
+  &.is-hide, & .is-hide {
+    display: none;
+  }
+}
+
+/* PC */
+@include media-pc {
+.m-option-title {
+}
+.m-option {
+  margin-top: 10px;
+}
+
+}
+
+/* SP */
+@include media-sp {
+.m-option{
+  margin:10px 3%;
+}
+.m-option {
+  margin: 5px 3%;
+}
+.m-option-title {
+}
+
+
+}

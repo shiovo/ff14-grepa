@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 /* --------------------------------------------------------------
     sns
 -------------------------------------------------------------- */
@@ -11,10 +9,6 @@
     }
     .m-sns-t{
         overflow: hidden;
-    }
-
-    #twitter-widget-0{
-    	width: 100px!important;
     }
 
 	.btn-about{
@@ -33,11 +27,5 @@
 
 /* PC */
 @include media-pc {
-
-}
-
-/* SP */
-@include media-sp {
-
 
 }

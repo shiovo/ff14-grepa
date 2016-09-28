@@ -1,11 +1,16 @@
 // @file gulpfile.js
-var gulp = require('gulp');
+var gulp        = require('gulp');
 var runSequence = require('run-sequence');
-//var sass = require('gulp-sass');
-var sass = require('gulp-ruby-sass');
-var connect = require('gulp-connect');
-var connectSSI = require('connect-ssi');
-var open = require('gulp-open');
+var sass        = require('gulp-sass');
+var sassGlob    = require('gulp-sass-glob');
+var connect     = require('gulp-connect');
+var connectSSI  = require('connect-ssi');
+var open        = require('gulp-open');
+var plumber     = require('gulp-plumber');
+var watch       = require('gulp-watch');
+var webpack     = require('gulp-webpack');
+var named       = require('vinyl-named');
+
 //--------------------------
 // setting
 var HOST = (function () {
@@ -29,11 +34,34 @@ var PORT = 8000;
 //--------------------------
 
 gulp.task("sass", function() {
-    return sass("sass/", {
-          // require:'./src/sass/_foundation/color.rb',
-          style: 'expanded'
+    return gulp.src(["./sass/**/*.scss", "!./sass/**/_*.scss"], {
+          base: './sass'
         })
+        .pipe(plumber())
+        .pipe(sassGlob())
+        .pipe(sass())
         .pipe(gulp.dest('styles/'));
+});
+
+gulp.task('scripts', function () {
+  gulp.src('js-src/*.js')
+    .pipe(plumber())
+    .pipe(named())
+    .pipe(webpack({
+      cache: true,
+      output: {
+        pathinfo: true
+      },
+      resolve: {
+        alias: {
+
+        },
+        extensions: ['', '.js']
+      },
+      module: {
+      }
+    }))
+    .pipe(gulp.dest('./js'));
 });
 
 //ローカルサーバー
@@ -66,14 +94,27 @@ gulp.task('reload',function(){
 
 //ファイルの監視
 gulp.task('watch',function(){
-  gulp.watch(['**/*.html'],['reload']);    //htmlファイルを監視
-  gulp.watch(['sass/**/*.scss'],['sass']); //scssファイルを監視
-  gulp.watch(['styles/**/*.css'],['reload']);  //cssファイルを監視
-  gulp.watch(['js/**/*.js'],['reload']); //jsファイルを監視
+
+  function run(name) {
+    return function () {
+      gulp.start(name);
+    }
+  }
+
+  watch(['**/*.html'],run('reload'));    //htmlファイルを監視
+  watch(['./sass/**/*.scss'],run('sass')); //scssファイルを監視
+  watch(['styles/**/*.css'],run('reload'));  //cssファイルを監視
+  watch(['js/**/*.js'],run('reload')); //jsファイルを監視
+  watch(['js-src/**/*'],run('scripts')); //jsファイルを監視
+
+  // gulp.watch(['**/*.html'],['reload']);    //htmlファイルを監視
+  // gulp.watch(['sass/**/*.scss'],['sass']); //scssファイルを監視
+  // gulp.watch(['styles/**/*.css'],['reload']);  //cssファイルを監視
+  // gulp.watch(['js/**/*.js'],['reload']); //jsファイルを監視
 });
  
 gulp.task('default', function (cb) {
-  runSequence('sass',['watch','connectDev'], 'open', cb);
+  runSequence(['scripts', 'sass'],['watch','connectDev'], 'open', cb);
 });
 // gulp.task('build', function (cb) {
 //   runSequence('clean-tmp', 'clean-dist', 'sass', ['copy-all', 'imagemin'], cb);
