@@ -4,6 +4,3 @@ dist/css/common.css
 tmp/
 dist/
 .sass-cache/
-js/
-css/
-styles
