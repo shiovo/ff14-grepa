@@ -1,6 +1,7 @@
 var IdData = require('../id-data');
 
 module.exports = [
+  new IdData(require('./sophia')),
   new IdData(require('./nidhogg')),
   new IdData(require('./sephiroth')),
   new IdData(require('./nights_of_round')),
