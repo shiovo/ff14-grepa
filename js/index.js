@@ -58,9 +58,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var store  = __webpack_require__(/*! ./index/store */ 2);
-	var Config = __webpack_require__(/*! ./index/config */ 22);
-	var Macro  = __webpack_require__(/*! ./index/macro */ 23);
-	var Member = __webpack_require__(/*! ./index/member */ 24);
+	var Config = __webpack_require__(/*! ./index/config */ 26);
+	var Macro  = __webpack_require__(/*! ./index/macro */ 27);
+	var Member = __webpack_require__(/*! ./index/member */ 28);
 
 	var config = new Config();
 	var macro  = new Macro();
@@ -584,7 +584,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var raids = __webpack_require__(/*! ./raids */ 6);
-	var extremes = __webpack_require__(/*! ./extremes */ 15);
+	var extremes = __webpack_require__(/*! ./extremes */ 19);
 
 	var data = [
 	  {
@@ -614,21 +614,736 @@
 	  // require('alexander_ritudou_zero_03'),
 	  // require('alexander_ritudou_zero_04'),
 
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_01 */ 7)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_02 */ 8)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_03 */ 9)),
-	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_04 */ 10)),
+	  new IdData(__webpack_require__(/*! ./alexander_tendou_zero_01 */ 7)),
+	  new IdData(__webpack_require__(/*! ./alexander_tendou_zero_02 */ 8)),
+	  new IdData(__webpack_require__(/*! ./alexander_tendou_zero_03 */ 9)),
+	  new IdData(__webpack_require__(/*! ./alexander_tendou_zero_04 */ 10)),
 
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_01 */ 11)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_02 */ 12)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_03 */ 13)),
-	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_04 */ 14)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_01 */ 11)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_02 */ 12)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_03 */ 13)),
+	  new IdData(__webpack_require__(/*! ./alexander_kidou_zero_04 */ 14)),
+
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_01 */ 15)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_02 */ 16)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_03 */ 17)),
+	  new IdData(__webpack_require__(/*! ./bahamut_sinsei_04 */ 18)),
 
 	];
 
 
 /***/ },
 /* 7 */
+/*!*******************************************************!*\
+  !*** ./js-src/data/raids/alexander_tendou_zero_01.js ***!
+  \*******************************************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+	  name: 'アレキ天動編零式1層',
+	  id: 0,
+	  items: [
+	    {
+	      id: 0,
+	      category: 2,
+	      name: 'アレキサンダー・ディフェンダーネックバンド',
+	      shortName: 'VIT首',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c01.png'
+	    },
+	    {
+	      id: 1,
+	      category: 2,
+	      name: 'アレキサンダー・ディフェンダーイヤリング',
+	      shortName: 'VIT耳',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c02.png'
+	    },
+	    {
+	      id: 2,
+	      category: 2,
+	      name: 'アレキサンダー・ディフェンダーリストバンド',
+	      shortName: 'VIT腕',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c03.png'
+	    },
+	    {
+	      id: 3,
+	      category: 2,
+	      name: 'アレキサンダー・ディフェンダーリング',
+	      shortName: 'VIT指',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c04.png'
+	    },
+	    {
+	      id: 4,
+	      category: 2,
+	      name: 'アレキサンダー・アタッカーネックバンド',
+	      shortName: 'STR首',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c01.png'
+	    },
+	    {
+	      id: 5,
+	      category: 2,
+	      name: 'アレキサンダー・アタッカーイヤリング',
+	      shortName: 'STR耳',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c02.png'
+	    },
+	    {
+	      id: 6,
+	      category: 2,
+	      name: 'アレキサンダー・アタッカーリストバンド',
+	      shortName: 'STR腕',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c03.png'
+	    },
+	    {
+	      id: 7,
+	      category: 2,
+	      name: 'アレキサンダー・アタッカーリング',
+	      shortName: 'STR指',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c04.png'
+	    },
+	    {
+	      id: 8,
+	      category: 2,
+	      name: 'アレキサンダー・レンジャーネックバンド',
+	      shortName: 'DEX首',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c01.png'
+	    },
+	    {
+	      id: 9,
+	      category: 2,
+	      name: 'アレキサンダー・レンジャーイヤリング',
+	      shortName: 'DEX耳',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c02.png'
+	    },
+	    {
+	      id: 10,
+	      category: 2,
+	      name: 'アレキサンダー・レンジャーリストバンド',
+	      shortName: 'DEX腕',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c03.png'
+	    },
+	    {
+	      id: 11,
+	      category: 2,
+	      name: 'アレキサンダー・レンジャーリング',
+	      shortName: 'DEX指',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c04.png'
+	    },
+	    {
+	      id: 12,
+	      category: 2,
+	      name: 'アレキサンダー・キャスターネックバンド',
+	      shortName: 'INT首',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c01.png'
+	    },
+	    {
+	      id: 13,
+	      category: 2,
+	      name: 'アレキサンダー・キャスターイヤリング',
+	      shortName: 'INT耳',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c02.png'
+	    },
+	    {
+	      id: 14,
+	      category: 2,
+	      name: 'アレキサンダー・キャスターリストバンド',
+	      shortName: 'INT腕',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c03.png'
+	    },
+	    {
+	      id: 15,
+	      category: 2,
+	      name: 'アレキサンダー・キャスターリング',
+	      shortName: 'INT指',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c04.png'
+	    },
+	    {
+	      name: 'アレキサンダー・ヒーラーネックバンド',
+	      category: 2,
+	      id: 16,
+	      shortName: 'MND首',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c01.png'
+	    },
+	    {
+	      id: 17,
+	      category: 2,
+	      name: 'アレキサンダー・ヒーラーイヤリング',
+	      shortName: 'MND耳',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c02.png'
+	    },
+	    {
+	      id: 18,
+	      category: 2,
+	      name: 'アレキサンダー・ヒーラーリストバンド',
+	      shortName: 'MND腕',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c03.png'
+	    },
+	    {
+	      id: 19,
+	      category: 2,
+	      name: 'アレキサンダー・ヒーラーリング',
+	      shortName: 'MND指',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/c04.png'
+	    },
+	    {
+	      id: 20,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーベルト',
+	      shortName: 'タンク腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 22,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカーベルト',
+	      shortName: 'モ腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 21,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤーベルト',
+	      shortName: '竜腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 24,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトベルト',
+	      shortName: '忍腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 23,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャーベルト',
+	      shortName: 'レンジ腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 25,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターベルト',
+	      shortName: 'キャス腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    },
+	    {
+	      id: 26,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーベルト',
+	      shortName: 'ヒラ腰',
+	      job: 0,
+	      icon: 'images/item/areki_3/1/b01.png'
+	    }
+	  ]
+	};
+
+
+/***/ },
+/* 8 */
+/*!*******************************************************!*\
+  !*** ./js-src/data/raids/alexander_tendou_zero_02.js ***!
+  \*******************************************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+	  id: 1,
+	  name: 'アレキ天動編零式2層',
+	  items: [
+	    {
+	      id: 0,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーバイザー',
+	      shortName: 'タンク頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b01_1.png'
+	    },
+	    {
+	      id: 1,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーガントレット',
+	      shortName: 'タンク手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b01_2.png'
+	    },
+	    {
+	      id: 2,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーソルレット',
+	      shortName: 'タンク足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b01_3.png'
+	    },
+	    {
+	      id: 4,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤーバイザー',
+	      shortName: '竜頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b01_1.png'
+	    },
+	    {
+	      id: 5,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤーガントレット',
+	      shortName: '竜手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b02_2.png'
+	    },
+	    {
+	      id: 6,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤーソルレット',
+	      shortName: '竜足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b02_3.png'
+	    },
+	    {
+	      id: 7,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカーマスク',
+	      shortName: 'モンク頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b03_1.png'
+	    },
+	    {
+	      id: 8,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカーグローブ',
+	      shortName: 'モンク手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b03_2.png'
+	    },
+	    {
+	      id: 9,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカーサイブーツ',
+	      shortName: 'モンク足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b03_3.png'
+	    },
+	    {
+	      id: 10,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャーサークレット',
+	      shortName: 'レンジ頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b04_1.png'
+	    },
+	    {
+	      id: 11,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャーグローブ',
+	      shortName: 'レンジ手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b04_2.png'
+	    },
+	    {
+	      id: 12,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャーサイブーツ',
+	      shortName: 'レンジ足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b04_3.png'
+	    },
+	    {
+	      id: 13,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトマスク',
+	      shortName: '忍頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b05_1.png'
+	    },
+	    {
+	      id: 14,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトグローブ',
+	      shortName: '忍手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b05_2.png'
+	    },
+	    {
+	      id: 15,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトサイブーツ',
+	      shortName: '忍足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b05_3.png'
+	    },
+	    {
+	      id: 16,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターフード',
+	      shortName: 'キャス頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b06_1.png'
+	    },
+	    {
+	      id: 17,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターグローブ',
+	      shortName: 'キャス手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b06_2.png'
+	    },
+	    {
+	      id: 18,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターブーツ',
+	      shortName: 'キャス足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b06_3.png'
+	    },
+	    {
+	      id: 19,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーフード',
+	      shortName: 'ヒラ頭',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b07_1.png'
+	    },
+	    {
+	      id: 20,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーグローブ',
+	      shortName: 'ヒラ手',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b07_2.png'
+	    },
+	    {
+	      id: 21,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーブーツ',
+	      shortName: 'ヒラ足',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/b07_3.png'
+	    },
+	    {
+	      id: 22,
+	      category: 3,
+	      name: '紺青の硬化薬',
+	      shortName: '薬',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/d01.png'
+	    },
+	    {
+	      id: 23,
+	      category: 3,
+	      name: '超小型トームストーン',
+	      shortName: '石',
+	      job: 0,
+	      icon: 'images/item/areki_3/2/d02.png'
+	    }
+	  ]
+	};
+
+
+/***/ },
+/* 9 */
+/*!*******************************************************!*\
+  !*** ./js-src/data/raids/alexander_tendou_zero_03.js ***!
+  \*******************************************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+	  id: 2,
+	  name: 'アレキ天動編零式3層',
+	  items: [
+	    {
+	      id: 0,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーブリーチ',
+	      shortName: 'タンク脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b01.png'
+	    },
+	    {
+	      id: 1,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤーブリーチ',
+	      shortName: '竜脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b02.png'
+	    },
+	    {
+	      id: 2,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカーブリーチ',
+	      shortName: 'モンク脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b03.png'
+	    },
+	    {
+	      id: 3,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャーガスキン',
+	      shortName: 'レンジ脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b04.png'
+	    },
+	    {
+	      id: 4,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトガスキン',
+	      shortName: '忍脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b05.png'
+	    },
+	    {
+	      id: 5,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターボトム',
+	      shortName: 'キャス脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b06.png'
+	    },
+	    {
+	      id: 6,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーボトム',
+	      shortName: 'ヒラ脚',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/b07.png'
+	    },
+	    {
+	      id: 7,
+	      category: 3,
+	      name: '紺青の強化繊維',
+	      shortName: '繊維',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/d01.png'
+	    },
+	    {
+	      id: 8,
+	      category: 3,
+	      name: '紺青の強化薬',
+	      shortName: '強化薬',
+	      job: 0,
+	      icon: 'images/item/areki_3/3/d02.png'
+	    }
+	  ]
+	};
+
+
+/***/ },
+/* 10 */
+/*!*******************************************************!*\
+  !*** ./js-src/data/raids/alexander_tendou_zero_04.js ***!
+  \*******************************************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+	  id: 3,
+	  name: 'アレキ天動編零式4層',
+	  items: [
+	    {
+	      id: 0,
+	      category: 0,
+	      name: 'アレキサンダー・メタルブレード',
+	      shortName: '剣',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a01.png'
+	    },
+	    {
+	      id: 2,
+	      category: 0,
+	      name: 'アレキサンダー・メタルバックラー',
+	      shortName: '盾',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/c01.png'
+	    },
+	    {
+	      id: 3,
+	      category: 0,
+	      name: 'アレキサンダー・メタルアクス',
+	      shortName: '斧',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a03.png'
+	    },
+	    {
+	      id: 4,
+	      category: 0,
+	      name: 'アレキサンダー・メタルディバイダー',
+	      shortName: '暗剣',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a07.png'
+	    },
+	    {
+	      id: 5,
+	      category: 0,
+	      name: 'アレキサンダー・メタルナックル',
+	      shortName: '拳',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a02.png'
+	    },
+	    {
+	      id: 6,
+	      category: 0,
+	      name: 'アレキサンダー・メタルスピア',
+	      shortName: '槍',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a04.png'
+	    },
+	    {
+	      id: 7,
+	      category: 0,
+	      name: 'アレキサンダー・メタルダガー',
+	      shortName: '双剣',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a06.png'
+	    },
+	    {
+	      id: 8,
+	      category: 0,
+	      name: 'アレキサンダー・メタルボウ',
+	      shortName: '弓',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a05.png'
+	    },
+	    {
+	      id: 9,
+	      category: 0,
+	      name: 'アレキサンダー・メタルカノン',
+	      shortName: '銃',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a08.png'
+	    },
+	    {
+	      id: 10,
+	      category: 0,
+	      name: 'アレキサンダー・メタルロッド',
+	      shortName: '黒杖',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a10.png'
+	    },
+
+	    {
+	      id: 11,
+	      category: 0,
+	      name: 'アレキサンダー・メタルグリモア',
+	      shortName: '召本',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a11.png'
+	    },
+
+	    {
+	      id: 12,
+	      category: 0,
+	      name: 'アレキサンダー・メタルケーン',
+	      shortName: '白杖',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a09.png'
+	    },
+	    {
+	      id: 13,
+	      category: 0,
+	      name: 'アレキサンダー・メタルコーデックス',
+	      shortName: '学本',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a12.png'
+	    },
+	    {
+	      id: 14,
+	      category: 0,
+	      name: 'アレキサンダー・メタルメーター',
+	      shortName: '天球',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/a13.png'
+	    },
+	    {
+	      id: 15,
+	      category: 1,
+	      name: 'アレキサンダー・ディフェンダーメイル',
+	      shortName: 'タンク胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b01.png'
+	    },
+	    {
+	      id: 16,
+	      category: 1,
+	      name: 'アレキサンダー・スレイヤージャケット',
+	      shortName: '竜胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b02.png'
+	    },
+	    {
+	      id: 17,
+	      category: 1,
+	      name: 'アレキサンダー・ストライカージャケット',
+	      shortName: 'モンク胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b03.png'
+	    },
+	    {
+	      id: 18,
+	      category: 1,
+	      name: 'アレキサンダー・レンジャージャケット',
+	      shortName: 'レンジ胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b04.png'
+	    },
+	    {
+	      id: 19,
+	      category: 1,
+	      name: 'アレキサンダー・スカウトコート',
+	      shortName: '忍胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b05.png'
+	    },
+	    {
+	      id: 20,
+	      category: 1,
+	      name: 'アレキサンダー・キャスターコート',
+	      shortName: 'キャス胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b06.png'
+	    },
+	    {
+	      id: 21,
+	      category: 1,
+	      name: 'アレキサンダー・ヒーラーコート',
+	      shortName: 'ヒラ胴',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/b07.png'
+	    },
+	    {
+	      id: 22,
+	      category: 4,
+	      name: 'アリダイオス・マスターキー',
+	      shortName: 'マウント',
+	      job: 0,
+	      icon: 'images/item/areki_3/4/d01.png'
+	    }
+	  ]
+	};
+
+
+/***/ },
+/* 11 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_01.js ***!
   \******************************************************/
@@ -803,7 +1518,7 @@
 
 
 /***/ },
-/* 8 */
+/* 12 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_02.js ***!
   \******************************************************/
@@ -994,7 +1709,7 @@
 
 
 /***/ },
-/* 9 */
+/* 13 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_03.js ***!
   \******************************************************/
@@ -1129,7 +1844,7 @@
 
 
 /***/ },
-/* 10 */
+/* 14 */
 /*!******************************************************!*\
   !*** ./js-src/data/raids/alexander_kidou_zero_04.js ***!
   \******************************************************/
@@ -1330,7 +2045,7 @@
 
 
 /***/ },
-/* 11 */
+/* 15 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_01.js ***!
   \************************************************/
@@ -1505,7 +2220,7 @@
 
 
 /***/ },
-/* 12 */
+/* 16 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_02.js ***!
   \************************************************/
@@ -1664,7 +2379,7 @@
 
 
 /***/ },
-/* 13 */
+/* 17 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_03.js ***!
   \************************************************/
@@ -1823,7 +2538,7 @@
 
 
 /***/ },
-/* 14 */
+/* 18 */
 /*!************************************************!*\
   !*** ./js-src/data/raids/bahamut_sinsei_04.js ***!
   \************************************************/
@@ -1981,7 +2696,7 @@
 
 
 /***/ },
-/* 15 */
+/* 19 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/index.js ***!
   \***************************************/
@@ -1990,18 +2705,18 @@
 	var IdData = __webpack_require__(/*! ../id-data */ 3);
 
 	module.exports = [
-	  new IdData(__webpack_require__(/*! ./sophia */ 16)),
-	  new IdData(__webpack_require__(/*! ./nidhogg */ 17)),
-	  new IdData(__webpack_require__(/*! ./sephiroth */ 18)),
-	  new IdData(__webpack_require__(/*! ./nights_of_round */ 19)),
-	  new IdData(__webpack_require__(/*! ./ravana */ 20)),
-	  new IdData(__webpack_require__(/*! ./shiva */ 21)),
+	  new IdData(__webpack_require__(/*! ./sophia */ 20)),
+	  new IdData(__webpack_require__(/*! ./nidhogg */ 21)),
+	  new IdData(__webpack_require__(/*! ./sephiroth */ 22)),
+	  new IdData(__webpack_require__(/*! ./nights_of_round */ 23)),
+	  new IdData(__webpack_require__(/*! ./ravana */ 24)),
+	  new IdData(__webpack_require__(/*! ./shiva */ 25)),
 	];
 
 
 
 /***/ },
-/* 16 */
+/* 20 */
 /*!****************************************!*\
   !*** ./js-src/data/extremes/sophia.js ***!
   \****************************************/
@@ -2138,7 +2853,7 @@
 
 
 /***/ },
-/* 17 */
+/* 21 */
 /*!*****************************************!*\
   !*** ./js-src/data/extremes/nidhogg.js ***!
   \*****************************************/
@@ -2275,7 +2990,7 @@
 
 
 /***/ },
-/* 18 */
+/* 22 */
 /*!*******************************************!*\
   !*** ./js-src/data/extremes/sephiroth.js ***!
   \*******************************************/
@@ -2412,7 +3127,7 @@
 
 
 /***/ },
-/* 19 */
+/* 23 */
 /*!*************************************************!*\
   !*** ./js-src/data/extremes/nights_of_round.js ***!
   \*************************************************/
@@ -2549,7 +3264,7 @@
 
 
 /***/ },
-/* 20 */
+/* 24 */
 /*!****************************************!*\
   !*** ./js-src/data/extremes/ravana.js ***!
   \****************************************/
@@ -2687,7 +3402,7 @@
 
 
 /***/ },
-/* 21 */
+/* 25 */
 /*!***************************************!*\
   !*** ./js-src/data/extremes/shiva.js ***!
   \***************************************/
@@ -2844,7 +3559,7 @@
 
 
 /***/ },
-/* 22 */
+/* 26 */
 /*!********************************!*\
   !*** ./js-src/index/config.js ***!
   \********************************/
@@ -2945,7 +3660,7 @@
 	module.exports = Config;
 
 /***/ },
-/* 23 */
+/* 27 */
 /*!*******************************!*\
   !*** ./js-src/index/macro.js ***!
   \*******************************/
@@ -3033,14 +3748,14 @@
 
 
 /***/ },
-/* 24 */
+/* 28 */
 /*!********************************!*\
   !*** ./js-src/index/member.js ***!
   \********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	var store = __webpack_require__(/*! ./store */ 2);
-	var modal = __webpack_require__(/*! ./select-item-modal */ 25);
+	var modal = __webpack_require__(/*! ./select-item-modal */ 29);
 
 	function Member(id) {
 	  this.id = id;
@@ -3136,7 +3851,7 @@
 	module.exports = Member;
 
 /***/ },
-/* 25 */
+/* 29 */
 /*!*******************************************!*\
   !*** ./js-src/index/select-item-modal.js ***!
   \*******************************************/

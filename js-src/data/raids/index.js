@@ -6,6 +6,11 @@ module.exports = [
   // require('alexander_ritudou_zero_03'),
   // require('alexander_ritudou_zero_04'),
 
+  new IdData(require('./alexander_tendou_zero_01')),
+  new IdData(require('./alexander_tendou_zero_02')),
+  new IdData(require('./alexander_tendou_zero_03')),
+  new IdData(require('./alexander_tendou_zero_04')),
+
   new IdData(require('./alexander_kidou_zero_01')),
   new IdData(require('./alexander_kidou_zero_02')),
   new IdData(require('./alexander_kidou_zero_03')),
