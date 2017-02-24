@@ -1,6 +1,6 @@
 module.exports = {
   name: '極ソフィア',
-  id: 0,
+  id: 5,
   items: [
     {
       id: 0,

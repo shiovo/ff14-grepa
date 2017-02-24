@@ -641,7 +641,7 @@
 
 	module.exports = {
 	  name: 'アレキ天動編零式1層',
-	  id: 0,
+	  id: 8,
 	  items: [
 	    {
 	      id: 0,
@@ -871,7 +871,7 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-	  id: 1,
+	  id: 9,
 	  name: 'アレキ天動編零式2層',
 	  items: [
 	    {
@@ -1070,7 +1070,7 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-	  id: 2,
+	  id: 10,
 	  name: 'アレキ天動編零式3層',
 	  items: [
 	    {
@@ -1157,7 +1157,7 @@
 /***/ function(module, exports) {
 
 	module.exports = {
-	  id: 3,
+	  id: 11,
 	  name: 'アレキ天動編零式4層',
 	  items: [
 	    {
@@ -2724,7 +2724,7 @@
 
 	module.exports = {
 	  name: '極ソフィア',
-	  id: 0,
+	  id: 5,
 	  items: [
 	    {
 	      id: 0,

@@ -1,5 +1,5 @@
 module.exports = {
-  id: 2,
+  id: 10,
   name: 'アレキ天動編零式3層',
   items: [
     {

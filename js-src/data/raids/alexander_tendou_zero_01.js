@@ -1,6 +1,6 @@
 module.exports = {
   name: 'アレキ天動編零式1層',
-  id: 0,
+  id: 8,
   items: [
     {
       id: 0,
