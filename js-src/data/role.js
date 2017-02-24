@@ -45,7 +45,7 @@ module.exports = [
     id: 'healer',
     category: 99,
     name: 'ヒーラー',
-    shortName: 'ヒーラー',
+    shortName: 'ヒラ',
     icon: 'images/job/role_healer.png'
   }
 ];
